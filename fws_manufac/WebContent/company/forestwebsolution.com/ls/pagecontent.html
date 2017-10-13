@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li>LS RANGE</li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Page Content - LS RANGE</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li><li><a href="#" id="btnPrint">Print</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id="pagecontentModule" class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='pagecontent' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='4' id='controlBar'><a href='#' class='paginate_button tip' title='Remove Record' id='action.delete'>Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord'>Add</a><a href='#' class='paginate_button tip' title='Copy Record' id='action.retrieve.copy'>Copy</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Page Code</th><th>Page Title</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><div id='entryDiv' style='display: none;overflow:scroll;'><div id="pagecontentModuleEntry" title='Page Content - LS RANGE' class="entryScreen">
+<form id='entryForm' method='POST' autocomplete='off'><table id='entryFormTable' width='100%' class='validateForm listTable'><col width='15%'><col /><tr><th>Page Code</th><td><input type='text' id='code' name='code' class='' size='30' maxlength='50' value=''/></td></tr><tr><th>Page Title</th><td><input type='text' id='title' name='title' class='' size='50' maxlength='150' value=''/></td></tr><tr><th>Page Content</th><td><textarea id='content' name='content' class='editor' width='800px' height='500px' ></textarea></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='cid' name='cid' value=''/><input type='hidden' id='companyid' name='companyid' value=''/>
+<br></form></div>
+</div></div>
+
+			
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+
+
+<script type="text/javascript">
+	var iconPath = "/components/rte/";
+	var editorObj;
+	var editorId;
+	
+	function initEditor(){
+		var td = $("textarea[class=editor]").parents("td");		
+		td.prev().remove();
+		td.attr("colspan", "2");
+		viewEditor();
+		$("<a href='#' onclick='viewEditor();return false;'><b>View Editor</b></a>, <a href='#' onclick='viewHTML();return false;'><b>View HTML</b></a>").prependTo(td);			
+	}
+	
+	function viewEditor(){
+		$("textarea[class=editor]").each(function(i){
+			$(this).attr("id", new Date().getTime());	
+			editorId = $(this).attr("id");
+			$(this).width($(this).attr("width"));
+			$(this).height($(this).attr("height"));								
+			editorObj = new nicEditor({fullPanel : true, uploadURI: 'upload.htm'}).panelInstance($(this).attr("id"));
+		});
+	}
+	
+	function viewHTML(){			
+		editorObj.removeInstance(editorId);
+	}
+	
+	function initPage(){
+		initEditor();
+	}
+
+	$(document).ready(initPage);
+</script>
+<script type="text/javascript" src="/components/rte/nicEdit.js"></script>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

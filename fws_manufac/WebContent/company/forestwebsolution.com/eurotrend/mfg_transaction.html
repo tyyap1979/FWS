@@ -1,0 +1,733 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>
+
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">
+
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+
+
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>
+			        </ul>
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+
+
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li>
+			        </ul>
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+
+		</div>
+		<!-- User Panel: End -->
+
+		<!-- Header: Start -->
+		<div id="header">
+
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+
+		</div>
+		<!-- Header: End -->
+
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">
+			<!-- Breadcrumb Icon Links: Start -->
+
+			<ul class='companybar'><li>EURO KINGSTON</li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li></ul>
+
+			<ul class="right">
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+
+		</div>
+		<!-- Breadcrumb Bar: End -->
+
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+
+	<!-- Box Header: Start -->
+	<div class="box_top">
+		<h2 class="icon pages">Transaction - EURO KINGSTON</h2>
+
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+
+	<!-- Box Content: Start -->
+
+<div id='mfg_transactionModule' class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_transaction' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='10' id='controlBar'><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Transaction No.</th><th>Job Code</th><th>Customer</th><th>Customer Ref. No.</th><th>Sales Date</th><th>Update By</th><th>Last Update</th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><ul id='preload' style='display:none'><li id='opt10'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Center Piece Material ---</option><option value='4'>L.Film (S/Blast) 215</option><option value='5'>L.Film (S/Blast) 216(Snow)</option><option value='18'>L.Film (S/Blast) 217(Green)</option><option value='17'>L.Film (S/Blast) 218(Pink)</option><option value='19'>L.Film (S/Blast) 219(Brown)</option><option value='26'>L.Film (S/Blast) 220(Blue)</option><option value='28'>L.Film (Solid) T501(White)</option><option value='27'>L.Film (Solid) T505(Black)</option><option value='29'>L.Film (Solid) T-Red(Red)</option><option value='123'>L.Film (Solid) T-Oren8S(Orange)</option><option value='124'>L.Film (Solid) T-Yellow22F(Yellow)</option><option value='125'>L.Film (Solid) T724 (Apple Green</option><option value='1933'>L.Film (Solid) Silver</option><option value='1934'>L.Film (Solid) Beige</option><option value='1935'>L.Film (Solid) Grey</option><option value='1936'>L.Film (Solid) Light Blue</option><option value='1827'>L.Film (Metalic Solid) Sticker</option><option value='2028'>L.Film (Metalic Solid) Sticker (Amin)</option><option value='32'>Spray Colours Glass Only</option><option value='130'>Custom Spray Colours Only</option><option value='1765'>Spray Colours Glass + T501</option><option value='1766'>Custom Spray Colours + T501</option><option value='1931'>5mm Crystal Glass+Spray Color+T501 (New)</option><option value='1932'>5mm Crystal Glass + Solid Sticker (New)</option><option value='31'>Reflective Glass (5mm)</option><option value='30'>Mirror (5mm) + T501</option><option value='33'>Own Board/Class</option><option value='59'>Melamine Board 16mm (Meico)</option><option value='78'>Laminated Board 5mm (ICA/MAICA)</option><option value='126'>Black Glass (5mm)</option><option value='127'>Brown Glass (5mm)</option><option value='362'>Brown Mirror + T501</option><option value='128'>Sibu</option><option value='134'>S/Blast Line Cutting</option><option value='361'>Clear Glass</option><option value='1683'>Grey Mirror + T501</option><option value='1764'>For Antijump Solid Acrylic c/w Board</option><option value='1862'>Black Mirror+T501</option><option value='1875'>For Antijump Spray Paint Acrylic c/w Board</option><option value='1819'>Crystal Glass+Spray Color+T501 (cancel)</option><option value='1763'>5mm Crystal Glass + Solid Sticker(cancel)</option><option value='2006'>Frame Series 5mm Clear Tempered Normal Glass</option></select></li><li id='opt11'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Handle Position ---</option><option value='80'>None</option><option value='7'>Width</option><option value='8'>Height</option></select></li><li id='opt15'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart ---</option><option value='34'>EU 1 Meico Silver</option><option value='35'>EU 2 M.Silver</option><option value='36'>EU 3 Pearl White</option><option value='37'>EU 4 P.White/Rz0001-sp</option><option value='38'>EU 5 M.Brown</option><option value='39'>EU 6 M.Gold</option><option value='40'>EU 7 P.Blue</option><option value='41'>EU 8 Charcoal</option><option value='42'>EU 9 L.Grey</option><option value='43'>EU 10 Autumn</option><option value='44'>EU 11 Br.Red</option><option value='45'>EU 12 S.Orange</option><option value='46'>EU 13 P.Green</option><option value='48'>EU 14 Viva Red</option><option value='49'>EU 15 HG. Yellow</option><option value='50'>EU 16 Cream</option><option value='51'>EU 17 Beige</option><option value='52'>EU 18 Apple Green</option><option value='142'>EU 19 P.Black/Rz0012</option><option value='1871'>EU 19 P.Black/Rz0012 (W)</option><option value='144'>EU 19 P.Black (MT)</option><option value='135'>G2-402 (White)</option><option value='136'>G2-504 (L.Grey)</option><option value='137'>G2-266 (Orange)</option><option value='138'>G2-135 (Red)</option><option value='139'>G2-814 (Maroon)</option><option value='140'>G2-502 (Black)</option><option value='47'>Custom Colour</option><option value='143'>C1/Mirror (3mm) cancel</option><option value='120'>C2/Mirror (3mm) cancel</option><option value='121'>C1/Bronz/Black/Grey Mirror (5mm)</option><option value='141'>C2/Grey/Black/Bronz Mirror (5mm) +PlyWood</option><option value='1826'>C1/Mirror (3mm) (Winsco)</option><option value='1863'>Mirror (5mm)</option><option value='1865'>Customer Own Paint</option><option value='1877'>RZ0002-SP</option><option value='1878'>RZ0003-SP</option><option value='1879'>RZ0004-SP</option><option value='1880'>RZ0005-SP</option><option value='1881'>RZ0006-SP</option><option value='1882'>RZ0007-SP</option><option value='1883'>RZ0008-SP</option><option value='1884'>RZ0009-SP</option><option value='1885'>RZ0010-SP</option><option value='1886'>RZ0011-SP</option><option value='1887'>RZ8018-MP</option><option value='1888'>RZ6044-MP</option><option value='1889'>RZ0820-MP</option><option value='1890'>RZ3040-MP</option><option value='1891'>RZ5005-MP</option><option value='1892'>RZ6043-MP</option><option value='1893'>RZ1058-MP</option><option value='1894'>RZ1021-MP</option><option value='2005'>Xslim /Reflective Glass</option><option value='2008'>Xslim / 3mm Mirror (cancel)</option><option value='2023'>Xslim / 3mm Mirror (A/F) cancel</option><option value='2013'>Xslim / Brown Glass</option><option value='2014'>Xslim / Black Glass</option><option value='2024'>Xslim / Grey Mirror</option><option value='2025'>Xslim / Brown Mirror</option><option value='2031'>Xslim / Black Mirror</option><option value='2015'>Custom 0.50</option></select></li><li id='opt43'><select id='prodoptid' selected name='prodoptid'><option value=''>--- S/Blast Laminated ---</option><option value='146'>215 (Sandblast)</option><option value='147'>216 (Snow)</option><option value='148'>217 (Green)</option><option value='149'>218 (Pink)</option><option value='150'>219 (Brown)</option><option value='151'>220 (Blue)</option><option value='152'>T501 (White)</option><option value='153'>T505 ( Black)</option><option value='154'>T-RED (Red)</option><option value='155'>T-OREN85 (Orange)</option><option value='156'>T-YELLOW22F (Yellow)</option><option value='157'>T724 (Apple Lite Green)</option><option value='2032'>L.Film (Solid) Beige</option></select></li><li id='opt55'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 2 ---</option><option value='341'>EU1 Meico Silver</option><option value='342'>EU2 M.Silver</option><option value='343'>EU3 Pearl White</option><option value='344'>EU4 P.White/RZ0001</option><option value='345'>EU5 M.Brown</option><option value='346'>EU6 M.Gold</option><option value='347'>EU7 P.Blue</option><option value='348'>EU8 Charcoal</option><option value='349'>EU9 L.Grey</option><option value='350'>EU10 Autum</option><option value='351'>EU11 Br.Red</option><option value='352'>EU12 S.Orange</option><option value='353'>EU13 P.Green</option><option value='354'>EU14 Viva Red</option><option value='355'>EU15 HG.Yellow</option><option value='356'>EU16 Cream</option><option value='357'>EU17 Beige</option><option value='358'>EU18 Apple Green</option><option value='359'>EU19 P.Black/RZ0012</option><option value='360'>Custom Color</option><option value='1895'>RZ0002-SP</option><option value='1896'>RZ0003-SP</option><option value='1897'>RZ0004-SP</option><option value='1898'>RZ0005-SP</option><option value='1899'>RZ0006-SP</option><option value='1900'>RZ0007-SP</option><option value='1901'>RZ0008-SP</option><option value='1902'>RZ0009-SP</option><option value='1903'>RZ0010-SP</option><option value='1904'>RZ0011-SP</option><option value='1905'>RZ8018-MP</option><option value='1906'>RZ6044-MP</option><option value='1907'>RZ8020-MP</option><option value='1908'>RZ3040-MP</option><option value='1909'>RZ5005-MP</option><option value='1910'>RZ6043-MP</option><option value='1911'>RZ1058-MP</option><option value='1912'>RZ1021-MP</option></select></li><li id='opt56'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 3 ---</option><option value='363'>EU1 Meico Silver</option><option value='364'>EU2 M. Silver</option><option value='365'>EU3 Pearl White</option><option value='366'>EU4 P. White/Rz0001</option><option value='367'>EU5 M. Brown</option><option value='368'>EU6 M. Gold</option><option value='369'>EU7 P. Blue</option><option value='370'>EU8 Charcoal</option><option value='371'>EU9 L. Grey</option><option value='372'>EU10 Autumn</option><option value='373'>EU11 Br.Red</option><option value='374'>EU12 S. Orange</option><option value='375'>EU13 P. Green</option><option value='376'>EU14 Viva Red</option><option value='377'>EU15 HG. Yellow</option><option value='378'>EU16 Cream</option><option value='379'>EU17 Beige</option><option value='380'>EU18 Apple Green</option><option value='381'>EU19 P. Black/Rz0012</option><option value='382'>Custom Color</option><option value='1866'>Customer Own Paint</option><option value='1913'>RZ0002-SP</option><option value='1914'>RZ0003-SP</option><option value='1915'>RZ0004-SP</option><option value='1916'>RZ0005-SP</option><option value='1917'>RZ0006-SP</option><option value='1918'>RZ0007-SP</option><option value='1919'>RZ0008-SP</option><option value='1920'>RZ0009-SP</option><option value='1921'>RZ0010-SP</option><option value='1922'>RZ0011-SP</option><option value='1923'>RZ8018-MP</option><option value='1924'>RZ6044-MP</option><option value='1925'>RZ0820-MP</option><option value='1926'>RZ3040-MP</option><option value='1927'>RZ5005-MP</option><option value='1928'>RZ6043-MP</option><option value='1929'>RZ1058-MP</option><option value='1930'>RZ1021-MP</option><option value='2009'>G2-135</option><option value='2010'>G2-504</option><option value='2011'>G2-266</option><option value='2012'>G2-814</option><option value='2017'>Custom 0.50</option></select></li><li id='opt107'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Colour Chart ---</option><option value='1468'>EU1 Meico Silver</option><option value='1469'>EU2 M.Silver</option><option value='1470'>EU3 Pearl White</option><option value='1471'>EU4 P.White/Rz0001</option><option value='1472'>EU5 M.Brown</option><option value='1473'>EU6 M.Gold</option><option value='1474'>EU7 P.Blue</option><option value='1475'>EU8 Charcoal</option><option value='1476'>EU9 L.Grey</option><option value='1477'>EU10 Autumn</option><option value='1478'>EU11 Br.Red</option><option value='1479'>EU12 S.Orange</option><option value='1480'>EU13 P.Green</option><option value='1481'>EU14 Viva Red</option><option value='1482'>EU15 HG.Yellow</option><option value='1483'>EU16 Cream</option><option value='1484'>EU17 Beige</option><option value='1485'>EU18 Apple Green</option><option value='1487'>EU19 P.Black/RZ0012</option><option value='1486'>Customn</option><option value='1867'>Customer Own Paint</option><option value='1870'>EU19 P.Black/Rz0012 (w)</option><option value='1937'>G2 504 (L.Grey)</option><option value='1938'>G2 266 (Orange)</option><option value='1939'>G2 135 (Red)</option><option value='1940'>G2 814 (Maroon)</option><option value='1942'>RZ0002-SP</option><option value='1943'>RZ0003-SP</option><option value='1944'>RZ0004-SP</option><option value='1945'>RZ0005-SP</option><option value='1946'>RZ0006-SP</option><option value='1947'>RZ0007-SP</option><option value='1948'>RZ0008-SP</option><option value='1949'>RZ0009-SP</option><option value='1950'>RZ0010-SP</option><option value='1951'>RZ0011-SP</option><option value='1952'>RZ8018-MP</option><option value='1953'>RZ6044-MP</option><option value='1954'>RZ8020-MP</option><option value='1955'>RZ3040-MP</option><option value='1956'>RZ5005-MP</option><option value='1957'>RZ6043-MP</option><option value='1958'>RZ1058-MP</option><option value='1959'>RZ1021-MP</option><option value='2019'>Custom 0.50</option></select></li><li id='opt131'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Color Chart 2 ---</option><option value='1960'>EU1 Meico Silver</option><option value='1961'>EU2 M.Silver</option><option value='1962'>EU3 Pearl White</option><option value='1963'>EU4 P.White/RZ0001</option><option value='1964'>EU5 M.Brown</option><option value='1965'>EU6 M.Gold</option><option value='1966'>EU7 P.Blue</option><option value='1967'>EU8 Charcoal</option><option value='1968'>EU9 L.Grey</option><option value='1969'>EU10 Autumn</option><option value='1970'>EU11 Br. Red</option><option value='1971'>EU12 S.Orange</option><option value='1972'>EU13 P.Green</option><option value='1973'>EU14 Viva Red</option><option value='1974'>EU15 HG.Yellow</option><option value='1975'>EU16 Cream</option><option value='1976'>EU17 Beige</option><option value='1977'>EU18 Apple Green</option><option value='1978'>EU19 P.Black/RZ0012</option><option value='1979'>Customn</option><option value='1980'>Customer Own Paint</option><option value='1981'>G2 402 (White)</option><option value='1982'>G2 504 (L.Grey)</option><option value='1983'>G2 266 (Orange)</option><option value='1984'>G2 135 (Red)</option><option value='1985'>G2 814 (Maroon)</option><option value='1987'>RZ0002-SP</option><option value='1988'>RZ0003-SP</option><option value='1989'>RZ0004-SP</option><option value='1990'>RZ0005-SP</option><option value='1991'>RZ0006-SP</option><option value='1992'>RZ0007-SP</option><option value='1993'>RZ0008-SP</option><option value='1994'>RZ0009-SP</option><option value='1995'>RZ0010-SP</option><option value='1996'>RZ0011-SP</option><option value='1997'>RZ8018-MP</option><option value='1998'>RZ6044-MP</option><option value='1999'>RZ0820-MP</option><option value='2000'>RZ3040-MP</option><option value='2001'>RZ5005-MP</option><option value='2002'>RZ6043-MP</option><option value='2003'>RZ1058-MP</option><option value='2004'>RZ1021-MP</option><option value='2018'>Custom 0.50</option></select></li></ul><div id='entryDiv' style='display: none;overflow:scroll;'><div id='mfg_transactionModuleEntry' class='entryScreen'>
+<form id='entryForm' method='POST'><div class='tabs'><ul><li><a href='#tabs-1'>General</a></li><li><a href='#tabs-2'>Web Information</a></li><li><a href='#tabs-3'>Customer Information</a></li></ul><div id='tabs-1'><table width='100%' class='validateForm listTable'><tr><th>Transaction No.</th><td><input type='text' id='transno' name='transno' class='' size='20' maxlength='50' value=''  readonly='readonly' /></td><th>Job Code</th><td><input type='text' id='jobcode' name='jobcode' class='' size='20' maxlength='50' value='' readonly='readonly' /></td></tr><tr><th>Customer</th><td><input type='hidden' name='customerid'/><input type='text' id='customerid_value' name='customerid_value' class='validate[required] entryfocus customer-autosuggest' size='30' value=''/></td><th>Customer Type</th><td><select name='custtype' id='custtype' class=''><option value=''></option><option value='D'>Dealer</option><option value='C'>Client</option><option value='P'>Public</option></select></td></tr><tr><th>Customer Ref. No.</th><td><input type='text' id='custrefno' name='custrefno' class='' size='20' maxlength='50' value=''/></td><th>Attn.</th><td><input type='text' id='attn' name='attn' class='' size='40' maxlength='100' value=''/></td></tr><tr><th>Terms</th><td><select name='terms' id='terms' class='validate[required]'><option value=''></option><option value='0'>Cash</option><option value='30'>30 Days</option><option value='45'>45 Days</option><option value='60'>60 Days</option><option value='90'>90 Days</option></select></td><th> </th><td> </td></tr><tr><th>Delivery Detail</th><td><textarea id='comment' name='comment' class='' cols='35' rows='5' ></textarea></td><th>Sales Date</th><td><input type='text' id='salesdate' name='salesdate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>Salesperson</th><td><select class='validate[required]' id='salesby' selected name='salesby'><option value=''>--- Representative ---</option><option value='2'>adam</option><option value='13'>Ben Chiam</option><option value='34'>Ce Ce</option><option value='12'>KIM</option><option value='30'>Louis Yap</option><option value='31'>Mark Yap</option><option value='3'>Mei Yee</option><option value='29'>OFFICE</option><option value='38'>Wai</option></select></td><th>Delivery Date</th><td><input type='text' id='deliverydate' name='deliverydate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>GST Code</th><td><select name='gst_code' id='gst_code'><option value=''></option><option value='TX'>TX</option></select></td><th>GST Amount</th><td><input type='text' id='gst_amt' name='gst_amt' size='10' maxlength='10' value='' readonly='readonly'/></td></tr><tr><th>Status</th><td><select name='status' id='status' class='validate[required]'><option value=''></option><option value='1'>Quotation</option><option value='2'>Order Confirmation</option><option value='3'>Invoice</option><option value='4'>Delivery Order</option><option value='0'>Cancel Order</option></select></td><th nowrap> </th><td> </td></tr><tr><td colspan='4'>&nbsp;</td></tr><tr><th>Discount</th><td><input type='text' name='discount' id='discount'></td><th>Total</th><td><input type='hidden' name='grandtotal' id='grandtotalinput'><span id='grandtotal'></span></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='customerid_ori' name='customerid_ori' value=''/><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='transid' name='transid' value=''/><input type='hidden' id='shippingmethod' name='shippingmethod' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/></div><div id='tabs-2'><table width='100%' class='validateForm listTable'><tr><th>Web Client</th><td><input type='hidden' name='clientid'/><input type='text' id='clientid_value' name='clientid_value' class='clientuser-autosuggest' size='40' value=''/></td><th></th><td></td></tr><tr><th>Payment Method</th><td><select name='paymentmethod' id='paymentmethod' class=''><option value=''></option><option value='CC'>Credit Card</option><option value='OT'>Online Transfer</option><option value='COD'>Cash On Delivery</option></select></td><th>Shipping or Transportation Charge</th><td><input type='text' id='shippingcharge' name='shippingcharge' class='' size='10' maxlength='9' value=''/></td></tr></table></div><div id='tabs-3'><table width='100%' class='validateForm listTable'><tr><th>Notes</th><td><textarea id='note' name='note' cols='100' rows='30' readonly></textarea></td></tr></table></div></div><table id='mfgtdEntryTable' class='listTable sortable detail-listingTable'><thead><tr><td colspan='12' id='controlBar'><a href='#' class='paginate_button tip' title='Delete' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.clone.add.custom' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Measurement (w x h)</th><th>Sqft / Unit</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Sub Total</th><th>Option1</th><th>Option2</th><th>Option3</th><th>Remark</th></tr>
+<tr style='display: none' id='mfgtdClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfgtdrow-status' value='X' /><input type='hidden' id='mfgtdtransdetailid' name='mfgtdtransdetailid' value=''/><input type='hidden' id='mfgtdtransid' name='mfgtdtransid' value=''/><input type='hidden' id='mfgtdcustomisedata' name='mfgtdcustomisedata' value=''/><input type='hidden' id='mfgtdgrpcode' name='mfgtdgrpcode' value=''/><input type='hidden' id='mfgtdstatus' name='mfgtdstatus' value=''/><input type='hidden' id='mfgtdcusttransdetailid' name='mfgtdcusttransdetailid' value=''/><input type='hidden' id='mfgtdprodname' name='mfgtdprodname' value=''/><input type='hidden' id='mfgtdwidth' name='mfgtdwidth' value=''/><input type='hidden' id='mfgtddepth' name='mfgtddepth' value=''/><input type='hidden' id='mfgtdheight' name='mfgtdheight' value=''/><input type='hidden' id='mfgtdposition' name='mfgtdposition' value=''/></td><td><span name='mfgtdprodid' class='editlink'></span><input type='hidden' name='mfgtdprodid' value=''/></td>
+<td><span name='mfgtdmeasurement' class=''></span><input type='hidden' name='mfgtdmeasurement' value=''/></td>
+<td><span name='mfgtdunit' class=''></span><input type='hidden' name='mfgtdunit' value=''/></td>
+<td><span name='mfgtdqty'></span><input type='hidden' name='mfgtdqty' value=''/></td>
+<td><span name='mfgtdprice' class=''></span><input type='hidden' name='mfgtdprice' value=''/></td>
+<td><span name='mfgtddiscount' class=''></span><input type='hidden' name='mfgtddiscount' value=''/></td>
+<td><span name='mfgtdsellsubtotal' class=''></span><input type='hidden' name='mfgtdsellsubtotal' value=''/></td>
+<td><span name='mfgtdopt1' class=''></span><input type='hidden' name='mfgtdopt1' value=''/></td>
+<td><span name='mfgtdopt2' class=''></span><input type='hidden' name='mfgtdopt2' value=''/></td>
+<td><span name='mfgtdopt3' class=''></span><input type='hidden' name='mfgtdopt3' value=''/></td>
+<td><span name='mfgtdremark' class=''></span><input type='hidden' name='mfgtdremark' value=''/></td>
+</tr></thead><tbody id='mfgtdEntryTableBody' class='validateForm'></tbody></table><br></form></div>
+</div><script>var _companyid = 'eurotrend';
+var productMainjson = {"data":{"prod13":{"customformula":"funcS3","sellunittype":"sf","customise":"Y","minorder":"17.00*tcol","name":"S3","factory":"N","prodid":"13"},"prod436":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1@5mm Normal Glass","factory":"N","prodid":"436"},"prod504":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"iCon Edging 20ft","factory":"N","prodid":"504"},"prod592":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro X3","factory":"N","prodid":"592"},"prod569":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X slim 4@5mm Crystal Glass","factory":"N","prodid":"569"},"prod55":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"End Frame","factory":"N","prodid":"55"},"prod598":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CA Without Handle@ply","factory":"N","prodid":"598"},"prod49":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal 1","factory":"N","prodid":"49"},"prod43":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"F1/F2 Frame","factory":"N","prodid":"43"},"prod408":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Normal Glass (8mm)","factory":"N","prodid":"408"},"prod513":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2 Crystal Glass @ Metalic Sticker","factory":"N","prodid":"513"},"prod82":{"customformula":"","sellunittype":"ft","customise":"N","minorder":"2.00","name":"Glass Flat Edge","factory":"N","prodid":"82"},"prod407":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Icon c/w  Grey Mirror","factory":"N","prodid":"407"},"prod593":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(E) Xslim 3/4@Bronze / Grey Mirror","factory":"N","prodid":"593"},"prod503":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply C2/Handle 5meter (16.5 feet)","factory":"N","prodid":"503"},"prod67":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"Anti-Jump Soft-Close","factory":"N","prodid":"67"},"prod435":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.50","name":"F1 Powder Coat","factory":"N","prodid":"435"},"prod559":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Mirror (5mm) Cut Size@Polish","factory":"N","prodid":"559"},"prod530":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"6mm Normal Glass Tempered@Polish","factory":"N","prodid":"530"},"prod421":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal TX / 30 Degree","factory":"N","prodid":"421"},"prod552":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply i-Alfa /Handle 5meter (16.5feet)","factory":"N","prodid":"552"},"prod519":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"5mm Crystal Glass Tempered@Polish","factory":"N","prodid":"519"},"prod555":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply X-Slim3 /Edging 6meter","factory":"N","prodid":"555"},"prod443":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"LS C2A Handle (0.20)","factory":"N","prodid":"443"},"prod405":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Icon Brown Mirror","factory":"N","prodid":"405"},"prod558":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Supply Sibu Cut Size Only","factory":"N","prodid":"558"},"prod509":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"F1 Acrylic(2.0)","factory":"N","prodid":"509"},"prod473":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"F1 Handle 5meter","factory":"N","prodid":"473"},"prod2":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal 2","factory":"N","prodid":"2"},"prod46":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.50","name":"F1","factory":"N","prodid":"46"},"prod599":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C1 Powder Coat@Ply","factory":"N","prodid":"599"},"prod602":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal 2 Powder Coat@Ply","factory":"N","prodid":"602"},"prod15":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.50","name":"F2","factory":"N","prodid":"15"},"prod603":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3GS Normal Glass","factory":"N","prodid":"603"},"prod540":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"iCON Handle 6meter","factory":"N","prodid":"540"},"prod518":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"3mm Mirror Cut Size @ Polish","factory":"N","prodid":"518"},"prod38":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal TX","factory":"N","prodid":"38"},"prod554":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply X-Slim4 /Edging 5meter (16.5feet)","factory":"N","prodid":"554"},"prod442":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"LS C2A Handle (0.25) / C1A Handle","factory":"N","prodid":"442"},"prod59":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"S2/3/4 Divider (D2)","factory":"N","prodid":"59"},"prod406":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Icon c/w 5mm Mirror","factory":"N","prodid":"406"},"prod469":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal1 / Powder Coat","factory":"N","prodid":"469"},"prod483":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal Glass (6mm)","factory":"N","prodid":"483"},"prod641":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X Slim 4","factory":"N","prodid":"641"},"prod414":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCON@normal glass","factory":"N","prodid":"414"},"prod77":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1 @ Normal Glass (MT)","factory":"N","prodid":"77"},"prod484":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (6mm)","factory":"N","prodid":"484"},"prod462":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"i Alfa(Normal Glass)","factory":"N","prodid":"462"},"prod556":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"F3 Handle","factory":"N","prodid":"556"},"prod505":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2 Crystal Glass @ Sticker","factory":"N","prodid":"505"},"prod33":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"S.Track (Single) / 1set","factory":"N","prodid":"33"},"prod502":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply C2/Edging 5meter (16.5 feet)","factory":"N","prodid":"502"},"prod557":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"F3 Frame","factory":"N","prodid":"557"},"prod12":{"customformula":"funcS2","sellunittype":"sf","customise":"Y","minorder":"17.00*tcol","name":"S2","factory":"N","prodid":"12"},"prod561":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Black Glass 5mm Cut Size @ Polish","factory":"N","prodid":"561"},"prod437":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.oo","name":"Reflective Glass (5mm) Cut Size","factory":"N","prodid":"437"},"prod412":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal1 c/w 3mm Mirror (AMF) cancel","factory":"N","prodid":"412"},"prod92":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1 Grey/Brown/Black Mirror (AFM)","factory":"N","prodid":"92"},"prod426":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2@Crystal Glass+Plywood","factory":"N","prodid":"426"},"prod499":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X slim3/4 Powder Coat Only","factory":"N","prodid":"499"},"prod468":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X Slim 3 (Normal Glass)","factory":"N","prodid":"468"},"prod640":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X Slim 3","factory":"N","prodid":"640"},"prod533":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"5mm Normal Glass Tempered@Polish","factory":"N","prodid":"533"},"prod529":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Reflective Glass (5mm) Cut Size@Polish","factory":"N","prodid":"529"},"prod539":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCon@Ply+Powder Coat","factory":"N","prodid":"539"},"prod70":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"S/Blast Line Cutting","factory":"N","prodid":"70"},"prod451":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal TX@PlyWood","factory":"N","prodid":"451"},"prod14":{"customformula":"funcS4","sellunittype":"sf","customise":"Y","minorder":"17.00*tcol","name":"S4","factory":"N","prodid":"14"},"prod528":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (8mm)@Polish","factory":"N","prodid":"528"},"prod523":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal Glass (5mm)@Polish","factory":"N","prodid":"523"},"prod157":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"S2/S3/S4 Roller","factory":"N","prodid":"157"},"prod501":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply C1/Edging 5meter (16.5 feet)","factory":"N","prodid":"501"},"prod512":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"3mm Mirror Cut Size Only","factory":"N","prodid":"512"},"prod524":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal Glass (6mm)@Polish","factory":"N","prodid":"524"},"prod532":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"5mm Normal Glass Tempered","factory":"N","prodid":"532"},"prod562":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Brown Glass 5mm Cut Size @ Polish","factory":"N","prodid":"562"},"prod113":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"S2 Vertical Pole Supply","factory":"N","prodid":"113"},"prod79":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"Site Install Labor Charge","factory":"N","prodid":"79"},"prod403":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Icon c/w 3mm Mirror","factory":"N","prodid":"403"},"prod611":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"i Alfa Normal Glass/Powder Coat","factory":"N","prodid":"611"},"prod475":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CTX Champagne@Ply","factory":"N","prodid":"475"},"prod525":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (3mm)@Polish","factory":"N","prodid":"525"},"prod111":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"5.00","name":"Modify Labor Charge","factory":"N","prodid":"111"},"prod638":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2@Crystal Glass+Plywood","factory":"N","prodid":"638"},"prod389":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.50","name":"F3","factory":"N","prodid":"389"},"prod69":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal Glass (5mm)","factory":"N","prodid":"69"},"prod87":{"customformula":"","sellunittype":"in","customise":"N","minorder":"12.00","name":"C2 Frame Material Cut Size Supply","factory":"N","prodid":"87"},"prod534":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3GS@3mm Mirror","factory":"N","prodid":"534"},"prod461":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"i Alfa","factory":"N","prodid":"461"},"prod76":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C2 @ Normal Glass","factory":"N","prodid":"76"},"prod527":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (6mm)@Polish","factory":"N","prodid":"527"},"prod492":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"C1L / Laminate","factory":"N","prodid":"492"},"prod60":{"customformula":"","sellunittype":"in","customise":"N","minorder":"60.00","name":"C2 FrameTrimming + Labour","factory":"N","prodid":"60"},"prod493":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"C1L / Customer Own Laminate","factory":"N","prodid":"493"},"prod110":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Mirror (5mm) Cut Size","factory":"N","prodid":"110"},"prod537":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCon Champagne@Ply / Bronze Mirror","factory":"N","prodid":"537"},"prod446":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C1@Normal Glass+Ply","factory":"N","prodid":"446"},"prod500":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply C1/Handle 5meter (16.5 feet)","factory":"N","prodid":"500"},"prod91":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"S3 Vertical Pole Supply","factory":"N","prodid":"91"},"prod637":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C1 (M.Ply Backing)","factory":"N","prodid":"637"},"prod470":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal 2 / Powder Coat","factory":"N","prodid":"470"},"prod80":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"Frame Divider (D1)","factory":"N","prodid":"80"},"prod51":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"S/Blast Glass(5mm)","factory":"N","prodid":"51"},"prod566":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Add 9mm Board","factory":"N","prodid":"566"},"prod464":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X slim 4","factory":"N","prodid":"464"},"prod438":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Mirror (5mm) Cut Size + T501","factory":"N","prodid":"438"},"prod476":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCon Champagne@Ply","factory":"N","prodid":"476"},"prod608":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"8mm Normal Glass Tempered@Polish","factory":"N","prodid":"608"},"prod522":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal Glass (3mm)@Polish","factory":"N","prodid":"522"},"prod600":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CTX / Powder Coat","factory":"N","prodid":"600"},"prod645":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCon @ Ply","factory":"N","prodid":"645"},"prod73":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C1/C2/Icon Powder Coat","factory":"N","prodid":"73"},"prod449":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2 Normal Glass @ Sticker","factory":"N","prodid":"449"},"prod36":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"TX Handle","factory":"N","prodid":"36"},"prod81":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"C2 Handle Material Cut Size Supply","factory":"N","prodid":"81"},"prod480":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2 Normal Glass @ Metalic Sticker","factory":"N","prodid":"480"},"prod465":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X slim 4 (Normal Glass)","factory":"N","prodid":"465"},"prod610":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"i Alfa Powder Coat","factory":"N","prodid":"610"},"prod574":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CA/30 Normal Glass @ply","factory":"N","prodid":"574"},"prod90":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1.00","name":"Crystal Plywood Charge","factory":"N","prodid":"90"},"prod10":{"customformula":"funcS1","sellunittype":"sf","customise":"Y","minorder":"17.00*tcol","name":"S1","factory":"N","prodid":"10"},"prod422":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (3mm)","factory":"N","prodid":"422"},"prod61":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"C2 Handle Trimming + Labour","factory":"N","prodid":"61"},"prod486":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"5mm Crystal Glass Tempered","factory":"N","prodid":"486"},"prod467":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X Slim 3","factory":"N","prodid":"467"},"prod553":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply X-Slim4 /Handle 5meter (16.5feet)","factory":"N","prodid":"553"},"prod75":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1@ Normal Glass","factory":"N","prodid":"75"},"prod531":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"6mm Normal Glass Tempered","factory":"N","prodid":"531"},"prod474":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"F1 Frame 5meter","factory":"N","prodid":"474"},"prod521":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Bronze Mirror (5mm) Cut Size@Polish","factory":"N","prodid":"521"},"prod78":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C2 @ Normal Glass (CHW)","factory":"N","prodid":"78"},"prod526":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Normal Glass (5mm)@Polish","factory":"N","prodid":"526"},"prod439":{"customformula":"","sellunittype":"in","customise":"N","minorder":"60.00","name":"LS C2A Frame (0.25)  / C1A Frame","factory":"N","prodid":"439"},"prod8":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"Frame S.Track  (1set)","factory":"N","prodid":"8"},"prod644":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"17","name":"Anti Jump S6 (Aro) / 5mm Crystal Glass @ Spray Paint","factory":"N","prodid":"644"},"prod570":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"X slim 4@5mm Normal Glass","factory":"N","prodid":"570"},"prod616":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro X4@Powder Coat","factory":"N","prodid":"616"},"prod605":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal 2@Ply (MT)","factory":"N","prodid":"605"},"prod84":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal 2 (MT)","factory":"N","prodid":"84"},"prod497":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3GS","factory":"N","prodid":"497"},"prod613":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(E) Xslim4@9mm Board","factory":"N","prodid":"613"},"prod550":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Bronze Mirror (6mm) Cut Size","factory":"N","prodid":"550"},"prod520":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"6mm Crystal Glass Tempered@Polish","factory":"N","prodid":"520"},"prod441":{"customformula":"","sellunittype":"in","customise":"N","minorder":"60","name":"LS C2A Frame (0.20)","factory":"N","prodid":"441"},"prod538":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"F2 Soft Close Hinges","factory":"N","prodid":"538"},"prod564":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCON normal glass@Ply","factory":"N","prodid":"564"},"prod434":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1@5mm Crystal Glass","factory":"N","prodid":"434"},"prod643":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"17","name":"Anti Jump S6 (Aro) / 5mm Normal Glass @ Spray Paint","factory":"N","prodid":"643"},"prod549":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Bronze Mirror (6mm) Cut Size@Polish","factory":"N","prodid":"549"},"prod589":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro Elfa 2","factory":"N","prodid":"589"},"prod485":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"6mm Crystal Glass Tempered","factory":"N","prodid":"485"},"prod455":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CA/30 Degree Handle@ply","factory":"N","prodid":"455"},"prod614":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(E) i Alfa@9mm Board","factory":"N","prodid":"614"},"prod571":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"i Alfa Powder Coat Charge","factory":"N","prodid":"571"},"prod506":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Grand C1L @Ply","factory":"N","prodid":"506"},"prod604":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(E) i ALFA@Bronze / Grey Mirror","factory":"N","prodid":"604"},"prod551":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply X-Slim3 /Handle 6meter","factory":"N","prodid":"551"},"prod107":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"C1 (M.Ply Backing)","factory":"N","prodid":"107"},"prod74":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1.00","name":"Board Area","factory":"N","prodid":"74"},"prod156":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"S1 Roller","factory":"N","prodid":"156"},"prod44":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"F1/F2 Handle","factory":"N","prodid":"44"},"prod601":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"CTX Powder Coat @Ply","factory":"N","prodid":"601"},"prod159":{"customformula":"","sellunittype":"ft","customise":"N","minorder":"1.00","name":"Door Seal","factory":"N","prodid":"159"},"prod639":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"i Alfa","factory":"N","prodid":"639"},"prod567":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3mm Normal Glass@Polish (ARO)","factory":"N","prodid":"567"},"prod7":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"Frame Roller /per door","factory":"N","prodid":"7"},"prod591":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro X3/4 @ Bronze/Grey Mirror","factory":"N","prodid":"591"},"prod444":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"C2@Normal glass + Plywood","factory":"N","prodid":"444"},"prod588":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro X4","factory":"N","prodid":"588"},"prod205":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"iCON","factory":"N","prodid":"205"},"prod83":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"S1 Handle Pole (Homade)","factory":"N","prodid":"83"},"prod32":{"customformula":"","sellunittype":"in","customise":"N","minorder":"0.00","name":"S.Track (Twin) / 1set","factory":"N","prodid":"32"},"prod112":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Bronze Mirror (5mm) Only","factory":"N","prodid":"112"},"prod42":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"5.00","name":"Modify Panel Sizes","factory":"N","prodid":"42"},"prod445":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"ICON@Crystal+Ply","factory":"N","prodid":"445"},"prod590":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Aro Elfa 3","factory":"N","prodid":"590"},"prod496":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"iCon 5mm Crystal Glass","factory":"N","prodid":"496"},"prod86":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"F2 Bracket Set","factory":"N","prodid":"86"},"prod568":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3mm Normal Glass without Polish (Aro)","factory":"N","prodid":"568"},"prod612":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(E) Xslim3@9mm Board","factory":"N","prodid":"612"},"prod0":{"customformula":"","sellunittype":"","customise":"","minorder":"0","name":"[Custom Product]","prodid":"0"},"prod548":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal1@Ply / 3mm mirror (AFM) cancel","factory":"N","prodid":"548"},"prod85":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Crystal Glass (3mm)","factory":"N","prodid":"85"},"prod48":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Normal Glass (5mm)","factory":"N","prodid":"48"}}};
+var productOptionjson = {"data":{"prod436":"56,11","prod13":"10","prod592":"15,11","prod569":"15,11","prod49":"15,11","prod598":"15","prod408":"55","prod54":"44,45","prod513":"11","prod124":"44","prod407":"11","prod593":"15,11","prod435":"10,11","prod421":"15,11","prod530":"55","prod519":"55","prod405":"11","prod509":"56,11,43","prod2":"15,11","prod46":"10,11","prod602":"15,11","prod599":"15,11","prod15":"10,11","prod128":"44","prod603":"15,11","prod38":"15,11","prod518":"55","prod406":"11","prod114":"44","prod469":"15,11","prod483":"55","prod641":"15,11","prod414":"131,11","prod77":"56,11","prod484":"55","prod462":"56,11","prod505":"11","prod119":"45","prod12":"10","prod412":"11","prod426":"15,11","prod92":"11","prod468":"56,11","prod640":"15,11","prod102":"44","prod533":"55","prod539":"107,11","prod451":"15,11","prod70":"43","prod14":"10","prod528":"55","prod125":"44","prod523":"55","prod512":"55","prod524":"55","prod98":"44","prod53":"44,45","prod532":"55","prod611":"15,11","prod403":"11","prod475":"15,11","prod123":"54","prod525":"55","prod638":"15,11","prod69":"55","prod389":"10,11","prod534":"15,11","prod461":"15,11","prod76":"56,11","prod130":"45","prod527":"55","prod131":"44","prod99":"45","prod446":"56,11","prod537":"107,11","prod637":"15,11","prod470":"15,11","prod51":"43","prod464":"15,11","prod608":"55","prod476":"107,11","prod522":"55","prod600":"15,11","prod645":"15,11","prod449":"56,11","prod480":"56,11","prod610":"15,11","prod465":"56,11","prod574":"56,11","prod21":"15,11","prod422":"55","prod10":"10","prod104":"44","prod108":"44","prod486":"55","prod467":"15,11","prod75":"56,11","prod531":"55","prod20":"15,11","prod78":"56,11","prod526":"55","prod644":"10","prod570":"15,11","prod616":"15,11","prod605":"15,11","prod84":"15,11","prod9":"10","prod101":"54","prod613":"15,11","prod497":"15,11","prod520":"55","prod129":"44","prod71":"44","prod643":"10","prod434":"15,11","prod564":"131,11","prod455":"15,11","prod485":"55","prod589":"15,11","prod614":"15,11","prod604":"15,11","prod506":"15,11","prod107":"15,11","prod68":"44,45","prod601":"15,11","prod639":"15,11","prod567":"15","prod444":"56,11","prod591":"15,11","prod72":"54","prod588":"15,11","prod205":"107,11","prod445":"107,11","prod590":"15,11","prod496":"107,11","prod568":"15","prod612":"15,11","prod548":"11","prod85":"55","prod48":"55"}};
+var productOptionPriceJson = {"optdtl1936":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) Light Blue"},"optdtl1962":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"1.00","formula":"","cost":"0.00","name":"EU3 Pearl White"},"optdtl1981":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 402 (White)"},"optdtl49":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 15 HG. Yellow"},"optdtl1906":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ6044-MP"},"optdtl1984":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 135 (Red)"},"optdtl1933":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) Silver"},"optdtl373":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU11 Br.Red"},"optdtl1940":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 814 (Maroon)"},"optdtl1877":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0002-SP"},"optdtl1960":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU1 Meico Silver"},"optdtl143":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"-1.50","formula":"","cost":"0.00","name":"C1/Mirror (3mm) cancel"},"optdtl1907":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ8020-MP"},"optdtl1961":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU2 M.Silver"},"optdtl2006":{"publicprice":"0.00","dealerprice":"10.00","sellunittype":"sf","clientprice":"12.00","formula":"","cost":"0.00","name":"Frame Series 5mm Clear Tempered Normal Glass"},"optdtl353":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU13 P.Green"},"optdtl1980":{"publicprice":"0.00","dealerprice":"-1.50","sellunittype":"u","clientprice":"-1.00","formula":"","cost":"0.00","name":"Customer Own Paint"},"optdtl140":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-502 (Black)"},"optdtl375":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU13 P. Green"},"optdtl1764":{"publicprice":"0.00","dealerprice":"10.20","sellunittype":"sf","clientprice":"13.00","formula":"","cost":"0.00","name":"For Antijump Solid Acrylic c/w Board"},"optdtl1963":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU4 P.White/RZ0001"},"optdtl1486":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"1.00","formula":"","cost":"0.00","name":"Customn"},"optdtl1917":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0006-SP"},"optdtl352":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU12 S.Orange"},"optdtl2023":{"publicprice":"0.00","dealerprice":"-1.00","sellunittype":"sf","clientprice":"-1.50","formula":"","cost":"0.00","name":"Xslim / 3mm Mirror (A/F) cancel"},"optdtl1862":{"publicprice":"0.00","dealerprice":"12.50","sellunittype":"sf","clientprice":"16.50","formula":"","cost":"0.00","name":"Black Mirror+T501"},"optdtl50":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 16 Cream"},"optdtl1889":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0820-MP"},"optdtl1469":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU2 M.Silver"},"optdtl346":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU6 M.Gold"},"optdtl1683":{"publicprice":"0.00","dealerprice":"12.50","sellunittype":"sf","clientprice":"16.50","formula":"","cost":"0.00","name":"Grey Mirror + T501"},"optdtl1487":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"u","clientprice":"-2.00","formula":"","cost":"0.00","name":"EU19 P.Black/RZ0012"},"optdtl1935":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) Grey"},"optdtl127":{"publicprice":"0.00","dealerprice":"3.50","sellunittype":"sf","clientprice":"4.00","formula":"","cost":"0.00","name":"Brown Glass (5mm)"},"optdtl2013":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"1.50","formula":"","cost":"0.00","name":"Xslim / Brown Glass"},"optdtl1914":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0003-SP"},"optdtl1928":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6043-MP"},"optdtl1991":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0006-SP"},"optdtl2005":{"publicprice":"0.00","dealerprice":"8.00","sellunittype":"sf","clientprice":"10.00","formula":"","cost":"0.00","name":"Xslim /Reflective Glass"},"optdtl1992":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0007-SP"},"optdtl1969":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU10 Autumn"},"optdtl381":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU19 P. Black/Rz0012"},"optdtl1997":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ8018-MP"},"optdtl1827":{"publicprice":"0.00","dealerprice":"2.00","sellunittype":"sf","clientprice":"3.50","formula":"","cost":"0.00","name":"L.Film (Metalic Solid) Sticker"},"optdtl27":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T505(Black)"},"optdtl1982":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 504 (L.Grey)"},"optdtl47":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"Custom Colour"},"optdtl1766":{"publicprice":"0.00","dealerprice":"5.50","sellunittype":"sf","clientprice":"9.50","formula":"","cost":"0.00","name":"Custom Spray Colours + T501"},"optdtl1875":{"publicprice":"0.00","dealerprice":"13.00","sellunittype":"sf","clientprice":"15.00","formula":"","cost":"0.00","name":"For Antijump Spray Paint Acrylic c/w Board"},"optdtl1998":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6044-MP"},"optdtl51":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 17 Beige"},"optdtl1983":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 266 (Orange)"},"optdtl2003":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1058-MP"},"optdtl52":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 18 Apple Green"},"optdtl1910":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ6043-MP"},"optdtl2002":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6043-MP"},"optdtl1918":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0007-SP"},"optdtl2008":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"-1.50","formula":"","cost":"0.00","name":"Xslim / 3mm Mirror (cancel)"},"optdtl1952":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ8018-MP"},"optdtl1987":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0002-SP"},"optdtl1951":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0011-SP"},"optdtl26":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 220(Blue)"},"optdtl368":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU6 M. Gold"},"optdtl2014":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"1.50","formula":"","cost":"0.00","name":"Xslim / Black Glass"},"optdtl1950":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0010-SP"},"optdtl1994":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0009-SP"},"optdtl1484":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU17 Beige"},"optdtl371":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU9 L. Grey"},"optdtl1871":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 19 P.Black/Rz0012 (W)"},"optdtl1883":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0008-SP"},"optdtl2011":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-266"},"optdtl28":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T501(White)"},"optdtl157":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T724 (Apple Lite Green)"},"optdtl2009":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-135"},"optdtl1975":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU16 Cream"},"optdtl1911":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ1058-MP"},"optdtl1881":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0006-SP"},"optdtl380":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU18 Apple Green"},"optdtl2018":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"0.50","formula":"","cost":"0.00","name":"Custom 0.50"},"optdtl1916":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0005-SP"},"optdtl361":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"Clear Glass"},"optdtl1938":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 266 (Orange)"},"optdtl1976":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU17 Beige"},"optdtl80":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"None"},"optdtl1882":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0007-SP"},"optdtl30":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.50","formula":"","cost":"0.00","name":"Mirror (5mm) + T501"},"optdtl1999":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0820-MP"},"optdtl2028":{"publicprice":"0.00","dealerprice":"2.00","sellunittype":"sf","clientprice":"3.90","formula":"","cost":"0.00","name":"L.Film (Metalic Solid) Sticker (Amin)"},"optdtl1988":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0003-SP"},"optdtl31":{"publicprice":"0.00","dealerprice":"11.00","sellunittype":"sf","clientprice":"13.00","formula":"","cost":"0.00","name":"Reflective Glass (5mm)"},"optdtl1887":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ8018-MP"},"optdtl1480":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU13 P.Green"},"optdtl139":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-814 (Maroon)"},"optdtl341":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU1 Meico Silver"},"optdtl1900":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0007-SP"},"optdtl1915":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0004-SP"},"optdtl1884":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0009-SP"},"optdtl1929":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1058-MP"},"optdtl1968":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU9 L.Grey"},"optdtl2015":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"Custom 0.50"},"optdtl1912":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ1021-MP"},"optdtl32":{"publicprice":"0.00","dealerprice":"4.50","sellunittype":"sf","clientprice":"6.50","formula":"","cost":"0.00","name":"Spray Colours Glass Only"},"optdtl1902":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0009-SP"},"optdtl134":{"publicprice":"0.00","dealerprice":"1.50","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"S/Blast Line Cutting"},"optdtl1913":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0002-SP"},"optdtl156":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T-YELLOW22F (Yellow)"},"optdtl1953":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6044-MP"},"optdtl78":{"publicprice":"0.00","dealerprice":"1.60","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"Laminated Board 5mm (ICA/MAICA)"},"optdtl1970":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU11 Br. Red"},"optdtl1878":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0003-SP"},"optdtl356":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU16 Cream"},"optdtl154":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T-RED (Red)"},"optdtl1904":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0011-SP"},"optdtl2019":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"0.50","formula":"","cost":"0.00","name":"Custom 0.50"},"optdtl1967":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU8 Charcoal"},"optdtl1954":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ8020-MP"},"optdtl1897":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0004-SP"},"optdtl1989":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0004-SP"},"optdtl369":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU7 P. Blue"},"optdtl138":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-135 (Red)"},"optdtl2010":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-504"},"optdtl1903":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0010-SP"},"optdtl1966":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU7 P.Blue"},"optdtl1942":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0002-SP"},"optdtl363":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU1 Meico Silver"},"optdtl1485":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU18 Apple Green"},"optdtl1971":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU12 S.Orange"},"optdtl1937":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 504 (L.Grey)"},"optdtl59":{"publicprice":"0.00","dealerprice":"1.60","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"Melamine Board 16mm (Meico)"},"optdtl362":{"publicprice":"0.00","dealerprice":"12.50","sellunittype":"sf","clientprice":"16.50","formula":"","cost":"0.00","name":"Brown Mirror + T501"},"optdtl1934":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) Beige"},"optdtl1867":{"publicprice":"0.00","dealerprice":"-1.50","sellunittype":"u","clientprice":"-1.00","formula":"","cost":"0.00","name":"Customer Own Paint"},"optdtl1901":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0008-SP"},"optdtl1972":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU13 P.Green"},"optdtl1943":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0003-SP"},"optdtl1880":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0005-SP"},"optdtl151":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"220 (Blue)"},"optdtl1947":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0007-SP"},"optdtl7":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"Width"},"optdtl1481":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU14 Viva Red"},"optdtl1955":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ3040-MP"},"optdtl8":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"Height"},"optdtl1892":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6043-MP"},"optdtl153":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T505 ( Black)"},"optdtl364":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU2 M. Silver"},"optdtl1473":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU6 M.Gold"},"optdtl342":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU2 M.Silver"},"optdtl130":{"publicprice":"0.00","dealerprice":"4.50","sellunittype":"sf","clientprice":"7.50","formula":"","cost":"0.00","name":"Custom Spray Colours Only"},"optdtl5":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 216(Snow)"},"optdtl2031":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"Xslim / Black Mirror"},"optdtl136":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-504 (L.Grey)"},"optdtl2024":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"Xslim / Grey Mirror"},"optdtl1930":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1021-MP"},"optdtl1973":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU14 Viva Red"},"optdtl42":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 9 L.Grey"},"optdtl2012":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-814"},"optdtl1477":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU10 Autumn"},"optdtl150":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"219 (Brown)"},"optdtl1944":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0004-SP"},"optdtl1939":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 135 (Red)"},"optdtl1974":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU15 HG.Yellow"},"optdtl4":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 215"},"optdtl1896":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0003-SP"},"optdtl1949":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0009-SP"},"optdtl1956":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ5005-MP"},"optdtl1479":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU12 S.Orange"},"optdtl1946":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0006-SP"},"optdtl1893":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1058-MP"},"optdtl135":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-402 (White)"},"optdtl360":{"publicprice":"0.00","dealerprice":"5.50","sellunittype":"sf","clientprice":"8.00","formula":"","cost":"0.00","name":"Custom Color"},"optdtl1924":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6044-MP"},"optdtl18":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 217(Green)"},"optdtl149":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"218 (Pink)"},"optdtl1957":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6043-MP"},"optdtl1925":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0820-MP"},"optdtl1898":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0005-SP"},"optdtl1879":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0004-SP"},"optdtl1888":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ6044-MP"},"optdtl1958":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1058-MP"},"optdtl17":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 218(Pink)"},"optdtl39":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 6 M.Gold"},"optdtl1471":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU4 P.White/Rz0001"},"optdtl1899":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0006-SP"},"optdtl1948":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0008-SP"},"optdtl1472":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU5 M.Brown"},"optdtl37":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 4 P.White/Rz0001-sp"},"optdtl137":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-266 (Orange)"},"optdtl2032":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) Beige"},"optdtl2017":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"Custom 0.50"},"optdtl2025":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"Xslim / Brown Mirror"},"optdtl41":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 8 Charcoal"},"optdtl152":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T501 (White)"},"optdtl354":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU14 Viva Red"},"optdtl1920":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0009-SP"},"optdtl1819":{"publicprice":"0.00","dealerprice":"17.50","sellunittype":"sf","clientprice":"23.00","formula":"","cost":"0.00","name":"Crystal Glass+Spray Color+T501 (cancel)"},"optdtl355":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU15 HG.Yellow"},"optdtl349":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU9 L.Grey"},"optdtl1885":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0010-SP"},"optdtl38":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 5 M.Brown"},"optdtl2004":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1021-MP"},"optdtl40":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 7 P.Blue"},"optdtl357":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU17 Beige"},"optdtl1886":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0011-SP"},"optdtl29":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T-Red(Red)"},"optdtl155":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"T-OREN85 (Orange)"},"optdtl1921":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0010-SP"},"optdtl43":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 10 Autumn"},"optdtl1763":{"publicprice":"0.00","dealerprice":"15.00","sellunittype":"sf","clientprice":"18.50","formula":"","cost":"0.00","name":"5mm Crystal Glass + Solid Sticker(cancel)"},"optdtl382":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"Custom Color"},"optdtl365":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"EU3 Pearl White"},"optdtl1931":{"publicprice":"0.00","dealerprice":"17.00","sellunittype":"sf","clientprice":"21.50","formula":"","cost":"0.00","name":"5mm Crystal Glass+Spray Color+T501 (New)"},"optdtl359":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU19 P.Black/RZ0012"},"optdtl366":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU4 P. White/Rz0001"},"optdtl1977":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU18 Apple Green"},"optdtl1891":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ5005-MP"},"optdtl1866":{"publicprice":"0.00","dealerprice":"-1.50","sellunittype":"sf","clientprice":"-1.00","formula":"","cost":"0.00","name":"Customer Own Paint"},"optdtl121":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"C1/Bronz/Black/Grey Mirror (5mm)"},"optdtl370":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU8 Charcoal"},"optdtl367":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU5 M. Brown"},"optdtl1482":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU15 HG.Yellow"},"optdtl1474":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU7 P.Blue"},"optdtl1890":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ3040-MP"},"optdtl345":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU5 M.Brown"},"optdtl120":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"-1.50","formula":"","cost":"0.00","name":"C2/Mirror (3mm) cancel"},"optdtl1993":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0008-SP"},"optdtl1990":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0005-SP"},"optdtl1870":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU19 P.Black/Rz0012 (w)"},"optdtl1483":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU16 Cream"},"optdtl1932":{"publicprice":"0.00","dealerprice":"12.50","sellunittype":"sf","clientprice":"15.00","formula":"","cost":"0.00","name":"5mm Crystal Glass + Solid Sticker (New)"},"optdtl36":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"EU 3 Pearl White"},"optdtl347":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU7 P.Blue"},"optdtl46":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 13 P.Green"},"optdtl1865":{"publicprice":"0.00","dealerprice":"-1.50","sellunittype":"sf","clientprice":"-1.00","formula":"","cost":"0.00","name":"Customer Own Paint"},"optdtl376":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU14 Viva Red"},"optdtl124":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T-Yellow22F(Yellow)"},"optdtl348":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU8 Charcoal"},"optdtl2001":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ5005-MP"},"optdtl1475":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU8 Charcoal"},"optdtl146":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"215 (Sandblast)"},"optdtl2000":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ3040-MP"},"optdtl1959":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1021-MP"},"optdtl1478":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU11 Br.Red"},"optdtl125":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T724 (Apple Green"},"optdtl1863":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"Mirror (5mm)"},"optdtl1979":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"1.00","formula":"","cost":"0.00","name":"Customn"},"optdtl379":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU17 Beige"},"optdtl33":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"-2.00","formula":"","cost":"0.00","name":"Own Board/Class"},"optdtl1909":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ5005-MP"},"optdtl144":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 19 P.Black (MT)"},"optdtl358":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU18 Apple Green"},"optdtl1476":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU9 L.Grey"},"optdtl1468":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU1 Meico Silver"},"optdtl128":{"publicprice":"0.00","dealerprice":"12.00","sellunittype":"sf","clientprice":"13.50","formula":"","cost":"0.00","name":"Sibu"},"optdtl344":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU4 P.White/RZ0001"},"optdtl34":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 1 Meico Silver"},"optdtl1765":{"publicprice":"0.00","dealerprice":"5.50","sellunittype":"sf","clientprice":"8.50","formula":"","cost":"0.00","name":"Spray Colours Glass + T501"},"optdtl44":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 11 Br.Red"},"optdtl378":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU16 Cream"},"optdtl351":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU11 Br.Red"},"optdtl1926":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ3040-MP"},"optdtl1923":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ8018-MP"},"optdtl1945":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0005-SP"},"optdtl148":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"217 (Green)"},"optdtl126":{"publicprice":"0.00","dealerprice":"3.50","sellunittype":"sf","clientprice":"4.00","formula":"","cost":"0.00","name":"Black Glass (5mm)"},"optdtl142":{"publicprice":"0.00","dealerprice":"-2.00","sellunittype":"sf","clientprice":"-2.00","formula":"","cost":"0.00","name":"EU 19 P.Black/Rz0012"},"optdtl1908":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ3040-MP"},"optdtl123":{"publicprice":"0.00","dealerprice":"1.00","sellunittype":"sf","clientprice":"2.00","formula":"","cost":"0.00","name":"L.Film (Solid) T-Oren8S(Orange)"},"optdtl1919":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0008-SP"},"optdtl1905":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ8018-MP"},"optdtl1894":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ1021-MP"},"optdtl1995":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0010-SP"},"optdtl35":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 2 M.Silver"},"optdtl45":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 12 S.Orange"},"optdtl374":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU12 S. Orange"},"optdtl377":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU15 HG. Yellow"},"optdtl1922":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0011-SP"},"optdtl1895":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"RZ0002-SP"},"optdtl1996":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ0011-SP"},"optdtl1470":{"publicprice":"0.00","dealerprice":"0.50","sellunittype":"u","clientprice":"1.00","formula":"","cost":"0.00","name":"EU3 Pearl White"},"optdtl19":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"L.Film (S/Blast) 219(Brown)"},"optdtl147":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"216 (Snow)"},"optdtl1985":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 814 (Maroon)"},"optdtl1964":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU5 M.Brown"},"optdtl48":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 14 Viva Red"},"optdtl141":{"publicprice":"0.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"6.50","formula":"","cost":"0.00","name":"C2/Grey/Black/Bronz Mirror (5mm) +PlyWood"},"optdtl372":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU10 Autumn"},"optdtl1826":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"-2.20","formula":"","cost":"0.00","name":"C1/Mirror (3mm) (Winsco)"},"optdtl350":{"publicprice":"0.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"7.00","formula":"","cost":"0.00","name":"EU10 Autum"},"optdtl1965":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU6 M.Gold"},"optdtl1927":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ5005-MP"},"optdtl1978":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"EU19 P.Black/RZ0012"},"optdtl343":{"publicprice":"0.00","dealerprice":"6.00","sellunittype":"sf","clientprice":"8.00","formula":"","cost":"0.00","name":"EU3 Pearl White"}};
+</script></div>
+
+
+
+<div id='CustomiseDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<table width='100%' class='listTable'>
+		<thead>
+			<tr>
+				<th>
+					Panel:<input type='textbox' size='5' name='col' style='text-align: right;'>  &nbsp;&nbsp;&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id='customiseContent'></td></tr>
+		</tbody>
+	</table>
+</div>
+
+<div id='approvalDialog' class='dialogView' style='width: 500px; height:60px;display: none' title="Authorization">
+	<table id='customCloneAddTable' width='100%' class='listTable'>
+		<thead>
+		<tr><th colspan="2" id="authorizeMsg"></th></tr>
+		</thead>
+		<tr><th>User ID</th><td><input type="text" name="userid" id="userid" /></td></tr>
+		<tr><th>Password</th><td><input type="password" name="password" id="password" /></td></tr>
+	</table>
+</div>
+
+<div id='customCloneAddDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<form id="customCloneAddForm" class="validateForm">
+		<input type="hidden" id="mfgtdtransdetailid" name="mfgtdtransdetailid" value="">
+		<input type="hidden" id="mfgtdcustomisedata" name="mfgtdcustomisedata" value="">
+		<input type="hidden" id="mfgtdcost" name="mfgtdcost" value="">
+		<input type="hidden" id="mfgtdcostsubtotal" name="mfgtdcostsubtotal" value="">
+		<input type='hidden' id="mfgtdwidth" name='mfgtdwidth' value="">
+		<input type='hidden' id="mfgtdheight" name='mfgtdheight' value="">
+		<input type="hidden" id="mfgtdstatus" name='mfgtdstatus' value="A">
+
+		<table id='customCloneAddTable' width='100%' class='listTable'>
+			<col width="130">
+			<col width="250">
+			<col width="100">
+			<col width="250">
+			<tr>
+				<th>Product</th>
+				<td>
+					<select id='mfgtdprodid' selected name='mfgtdprodid'><option value=''>--- Product ---</option><OPTGROUP LABEL='Ant Jump Sliding Panel'><option value='67'>Anti-Jump Soft-Close</option><option value='55'>End Frame</option><option value='33'>S.Track (Single) / 1set</option><option value='32'>S.Track (Twin) / 1set</option><option value='10'>S1</option><option value='156'>S1 Roller</option><option value='12'>S2</option><option value='59'>S2/3/4 Divider (D2)</option><option value='13'>S3</option><option value='14'>S4</option></OPTGROUP><OPTGROUP LABEL='Chan Kitchen'><option value='637'>C1 (M.Ply Backing)</option><option value='638'>C2@Crystal Glass+Plywood</option><option value='639'>i Alfa</option><option value='645'>iCon @ Ply</option><option value='640'>X Slim 3</option><option value='641'>X Slim 4</option></OPTGROUP><OPTGROUP LABEL='Crystal Series C1'><option value='107'>C1 (M.Ply Backing)</option><option value='77'>C1 @ Normal Glass (MT)</option><option value='92'>C1 Grey/Brown/Black Mirror (AFM)</option><option value='599'>C1 Powder Coat@Ply</option><option value='73'>C1/C2/Icon Powder Coat</option><option value='75'>C1@ Normal Glass</option><option value='434'>C1@5mm Crystal Glass</option><option value='436'>C1@5mm Normal Glass</option><option value='446'>C1@Normal Glass+Ply</option><option value='493'>C1L / Customer Own Laminate</option><option value='492'>C1L / Laminate</option><option value='598'>CA Without Handle@ply</option><option value='455'>CA/30 Degree Handle@ply</option><option value='574'>CA/30 Normal Glass @ply</option><option value='49'>Crystal 1</option><option value='90'>Crystal Plywood Charge</option><option value='38'>Crystal TX</option><option value='421'>Crystal TX / 30 Degree</option><option value='451'>Crystal TX@PlyWood</option><option value='469'>Crystal1 / Powder Coat</option><option value='412'>Crystal1 c/w 3mm Mirror (AMF) cancel</option><option value='548'>Crystal1@Ply / 3mm mirror (AFM) cancel</option><option value='600'>CTX / Powder Coat</option><option value='475'>CTX Champagne@Ply</option><option value='601'>CTX Powder Coat @Ply</option><option value='506'>Grand C1L @Ply</option><option value='501'>Supply C1/Edging 5meter (16.5 feet)</option><option value='500'>Supply C1/Handle 5meter (16.5 feet)</option></OPTGROUP><OPTGROUP LABEL='Crystal Series C2'><option value='76'>C2 @ Normal Glass</option><option value='78'>C2 @ Normal Glass (CHW)</option><option value='513'>C2 Crystal Glass @ Metalic Sticker</option><option value='505'>C2 Crystal Glass @ Sticker</option><option value='60'>C2 FrameTrimming + Labour</option><option value='61'>C2 Handle Trimming + Labour</option><option value='480'>C2 Normal Glass @ Metalic Sticker</option><option value='449'>C2 Normal Glass @ Sticker</option><option value='426'>C2@Crystal Glass+Plywood</option><option value='444'>C2@Normal glass + Plywood</option><option value='2'>Crystal 2</option><option value='84'>Crystal 2 (MT)</option><option value='470'>Crystal 2 / Powder Coat</option><option value='602'>Crystal 2 Powder Coat@Ply</option><option value='605'>Crystal 2@Ply (MT)</option><option value='441'>LS C2A Frame (0.20)</option><option value='439'>LS C2A Frame (0.25)  / C1A Frame</option><option value='443'>LS C2A Handle (0.20)</option><option value='442'>LS C2A Handle (0.25) / C1A Handle</option><option value='502'>Supply C2/Edging 5meter (16.5 feet)</option><option value='503'>Supply C2/Handle 5meter (16.5 feet)</option></OPTGROUP><OPTGROUP LABEL='Crystal Series iCON'><option value='205'>iCON</option><option value='496'>iCon 5mm Crystal Glass</option><option value='405'>Icon Brown Mirror</option><option value='407'>Icon c/w  Grey Mirror</option><option value='403'>Icon c/w 3mm Mirror</option><option value='406'>Icon c/w 5mm Mirror</option><option value='476'>iCon Champagne@Ply</option><option value='537'>iCon Champagne@Ply / Bronze Mirror</option><option value='504'>iCon Edging 20ft</option><option value='540'>iCON Handle 6meter</option><option value='564'>iCON normal glass@Ply</option><option value='445'>ICON@Crystal+Ply</option><option value='414'>iCON@normal glass</option><option value='539'>iCon@Ply+Powder Coat</option></OPTGROUP><OPTGROUP LABEL='Crystal Series Xslim / iAlfa'><option value='566'>Add 9mm Board</option><option value='461'>i Alfa</option><option value='611'>i Alfa Normal Glass/Powder Coat</option><option value='610'>i Alfa Powder Coat</option><option value='571'>i Alfa Powder Coat Charge</option><option value='462'>i Alfa(Normal Glass)</option><option value='552'>Supply i-Alfa /Handle 5meter (16.5feet)</option><option value='555'>Supply X-Slim3 /Edging 6meter</option><option value='551'>Supply X-Slim3 /Handle 6meter</option><option value='554'>Supply X-Slim4 /Edging 5meter (16.5feet)</option><option value='553'>Supply X-Slim4 /Handle 5meter (16.5feet)</option><option value='467'>X Slim 3</option><option value='468'>X Slim 3 (Normal Glass)</option><option value='464'>X slim 4</option><option value='465'>X slim 4 (Normal Glass)</option><option value='569'>X slim 4@5mm Crystal Glass</option><option value='570'>X slim 4@5mm Normal Glass</option><option value='499'>X slim3/4 Powder Coat Only</option></OPTGROUP><OPTGROUP LABEL='DE ZEL'><option value='614'>(E) i Alfa@9mm Board</option><option value='604'>(E) i ALFA@Bronze / Grey Mirror</option><option value='593'>(E) Xslim 3/4@Bronze / Grey Mirror</option><option value='612'>(E) Xslim3@9mm Board</option><option value='613'>(E) Xslim4@9mm Board</option><option value='589'>Aro Elfa 2</option><option value='590'>Aro Elfa 3</option><option value='592'>Aro X3</option><option value='591'>Aro X3/4 @ Bronze/Grey Mirror</option><option value='588'>Aro X4</option><option value='616'>Aro X4@Powder Coat</option></OPTGROUP><OPTGROUP LABEL='Frame Series'><option value='497'>3GS</option><option value='603'>3GS Normal Glass</option><option value='534'>3GS@3mm Mirror</option><option value='46'>F1</option><option value='509'>F1 Acrylic(2.0)</option><option value='435'>F1 Powder Coat</option><option value='15'>F2</option><option value='538'>F2 Soft Close Hinges</option><option value='389'>F3</option><option value='80'>Frame Divider (D1)</option><option value='7'>Frame Roller /per door</option><option value='8'>Frame S.Track  (1set)</option><option value='70'>S/Blast Line Cutting</option></OPTGROUP><OPTGROUP LABEL='Material'><option value='518'>3mm Mirror Cut Size @ Polish</option><option value='512'>3mm Mirror Cut Size Only</option><option value='568'>3mm Normal Glass without Polish (Aro)</option><option value='567'>3mm Normal Glass@Polish (ARO)</option><option value='486'>5mm Crystal Glass Tempered</option><option value='519'>5mm Crystal Glass Tempered@Polish</option><option value='532'>5mm Normal Glass Tempered</option><option value='533'>5mm Normal Glass Tempered@Polish</option><option value='485'>6mm Crystal Glass Tempered</option><option value='520'>6mm Crystal Glass Tempered@Polish</option><option value='531'>6mm Normal Glass Tempered</option><option value='530'>6mm Normal Glass Tempered@Polish</option><option value='608'>8mm Normal Glass Tempered@Polish</option><option value='561'>Black Glass 5mm Cut Size @ Polish</option><option value='521'>Bronze Mirror (5mm) Cut Size@Polish</option><option value='112'>Bronze Mirror (5mm) Only</option><option value='550'>Bronze Mirror (6mm) Cut Size</option><option value='549'>Bronze Mirror (6mm) Cut Size@Polish</option><option value='562'>Brown Glass 5mm Cut Size @ Polish</option><option value='87'>C2 Frame Material Cut Size Supply</option><option value='81'>C2 Handle Material Cut Size Supply</option><option value='85'>Crystal Glass (3mm)</option><option value='522'>Crystal Glass (3mm)@Polish</option><option value='69'>Crystal Glass (5mm)</option><option value='523'>Crystal Glass (5mm)@Polish</option><option value='483'>Crystal Glass (6mm)</option><option value='524'>Crystal Glass (6mm)@Polish</option><option value='159'>Door Seal</option><option value='474'>F1 Frame 5meter</option><option value='473'>F1 Handle 5meter</option><option value='43'>F1/F2 Frame</option><option value='44'>F1/F2 Handle</option><option value='86'>F2 Bracket Set</option><option value='557'>F3 Frame</option><option value='556'>F3 Handle</option><option value='82'>Glass Flat Edge</option><option value='110'>Mirror (5mm) Cut Size</option><option value='438'>Mirror (5mm) Cut Size + T501</option><option value='559'>Mirror (5mm) Cut Size@Polish</option><option value='422'>Normal Glass (3mm)</option><option value='525'>Normal Glass (3mm)@Polish</option><option value='48'>Normal Glass (5mm)</option><option value='526'>Normal Glass (5mm)@Polish</option><option value='484'>Normal Glass (6mm)</option><option value='527'>Normal Glass (6mm)@Polish</option><option value='408'>Normal Glass (8mm)</option><option value='528'>Normal Glass (8mm)@Polish</option><option value='437'>Reflective Glass (5mm) Cut Size</option><option value='529'>Reflective Glass (5mm) Cut Size@Polish</option><option value='51'>S/Blast Glass(5mm)</option><option value='83'>S1 Handle Pole (Homade)</option><option value='113'>S2 Vertical Pole Supply</option><option value='157'>S2/S3/S4 Roller</option><option value='91'>S3 Vertical Pole Supply</option><option value='558'>Supply Sibu Cut Size Only</option><option value='36'>TX Handle</option></OPTGROUP><OPTGROUP LABEL='mega Trend'><option value='644'>Anti Jump S6 (Aro) / 5mm Crystal Glass @ Spray Paint</option><option value='643'>Anti Jump S6 (Aro) / 5mm Normal Glass @ Spray Paint</option></OPTGROUP><OPTGROUP LABEL='Others'><option value='74'>Board Area</option><option value='111'>Modify Labor Charge</option><option value='42'>Modify Panel Sizes</option><option value='79'>Site Install Labor Charge</option><option value='0'>[Custom Product]</option></select></OPTGROUP>
+					<div id='chargeProduct'></div>
+				</td>
+				<th>Custom Name</th>
+				<td><input type='text' id='mfgtdprodname' name='mfgtdprodname' class='' size='40' maxlength='200' value=''/></td>
+			</tr>
+			<tr>
+				<th>Measurement <br>(w x h)</th>
+				<td>
+					<input type='text' id='mfgtdmeasurement' name='mfgtdmeasurement' class='' size='30' maxlength='50' value=''/>
+					<a href="#" id="customizeLink" style="display:none;color:#000000;">Customize</a>
+				</td>
+				<th>Quantity</th>
+				<td><input type='text' id='mfgtdqty' name='mfgtdqty' class='validate[required]' size='8' maxlength='10' value=''/></td>
+			</tr>
+			<tr>
+				<th>Option 1</th>
+				<td id="mfgtdopt1"></td>
+				<th>Option 2</th>
+				<td id="mfgtdopt2"></td>
+			</tr>
+			<tr>
+				<th>Option 3</th>
+				<td id="mfgtdopt3"></td>
+				<th></th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>SqFt / Unit</th>
+				<td><input type='text' id='mfgtdunit' name='mfgtdunit' class='' size='8' maxlength='15' value=''/></td>
+				<th>Unit Price</th>
+				<td><input type='text' id='mfgtdprice' name='mfgtdprice' class='' size='8' maxlength='15' value=''/> <span id="customprice" style="display: none;font-weight: bold;"></span></td>
+			</tr>
+			<tr>
+				<th>Discount</th>
+				<td><input type='text' id='mfgtddiscount' name='mfgtddiscount' class='' size='8' maxlength='15' value=''/></td>
+				<th>Subtotal</th>
+				<td><input type='text' id='mfgtdsellsubtotal' name='mfgtdsellsubtotal' class='' size='10' maxlength='15' value=''/></td>
+			</tr>
+			<tr>
+				<th>Width (mm)</th>
+				<td>
+					<span id="mfgtdwidth"></span>
+
+				</td>
+				<th>Height (mm)</th>
+				<td>
+					<span id='mfgtdheight'></span>
+				</td>
+			</tr>
+			<tr>
+				<th>Remarks</th>
+				<td colspan="3">
+					<input type="text" id='mfgtdremark' name='mfgtdremark' size="70">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+	<!-- Box Content: End -->
+
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>.
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>
+
+	</div>
+	<!-- Footer: End -->
+
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->
+	<!-- jQuery libs - Rest are found in the head section (at top) -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+
+
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+
+	<!-- FWS -->
+
+
+<script type="text/javascript">
+	var customEntryButton = {};
+	var editTR;
+	var isEditing = false;
+	var productPricejsonArray = [];
+
+	function beforeAdd(){
+		productPricejsonArray = [];
+	}
+	function afterJson(json){
+		if(_companyid=='megatrend' && (json.rc=='0' || json.rc=='1')){
+			alert("Please remember to update this invoice at Eurotrend");
+		}
+	}
+
+	function calculateTotal(){
+		var price, discount;
+		var grandtotal = 0;
+		var globaldiscount = $("#entryForm").find("input[name=discount]").val().trim();
+		var gstCode = $("#entryForm").find("select[name=gst_code]").val();
+		var status = "";
+		// If Percentage
+		var perc = 0;
+		if(globaldiscount.indexOf("%")!=-1){
+			perc = parseFloat(globaldiscount.substring(0,globaldiscount.length-1));
+		}
+		if(globaldiscount==''){
+			globaldiscount=0;
+		}
+
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			status = $(this).find("input[name$=row-status]").val();
+			if(status!='D'){
+				price = parseFloat($(this).find("input[id$=sellsubtotal]").val());
+				grandtotal += price;
+			}
+		});
+
+		if(perc>0){
+			globaldiscount = grandtotal * (perc / 100);
+		}
+		globaldiscount = ajaxUtil.roundNumber(parseFloat(globaldiscount),2);
+
+		//alert("grandtotal = "+grandtotal+", globaldiscount="+globaldiscount);
+		var gstTotal = (grandtotal-globaldiscount) * 0.06;
+		if(gstCode==""){
+			gstTotal = 0;
+		}
+
+		var finalTotal = ajaxUtil.roundNumber(grandtotal-globaldiscount+gstTotal,2);
+		//alert("gstTotal = "+gstTotal);
+		$("#entryForm").find("#gst_amt").val(ajaxUtil.roundNumber(gstTotal, 2));
+		$("#entryForm").find("#grandtotal").html(finalTotal);
+		$("#entryForm").find("#grandtotalinput").val(finalTotal);
+		$("#entryForm").find("input[name=discount]").val(globaldiscount);
+	}
+
+	// Get new set of price list when change customer or type.
+	function reCalculatePrice(){
+		var mainForm = $("#entryForm");
+		var prodidArray = [];
+		var isFactoryArray = [];
+		var prodid, price, discount;
+		var reCalculate = false;
+
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			prodid = $(this).find("input[id$=prodid]").val();
+			price = parseFloat($(this).find("input[id$=price]").val());
+			discount = parseFloat($(this).find("input[id$=discount]").val());
+			if(prodid!='0' && price==0 && discount==0){
+				reCalculate = true;
+			}
+		});
+		if(reCalculate){
+			var prodJson;
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=prodid]").each(function(i){
+				if($(this).val()!='0'){
+					prodJson = eval('productMainjson.data.prod'+$(this).val());
+					prodidArray.push($(this).val());
+					isFactoryArray.push(prodJson.factory);
+				}
+			});
+		}else{
+		 	return;
+		}
+		ajaxUtil.showPanel("", "Recalculating...", null);
+		var query = "return=json&action1=priceenq";
+		query += "&customerid="+mainForm.find("input[name=customerid]").val();
+		query += "&custtype="+mainForm.find("select[name=custtype]").val();
+		query += "&prodid="+prodidArray;
+		query += "&factory="+isFactoryArray;
+
+		ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+			handleCheckPriceCallback(json);
+			mfgUtil.doCalculate($("#mfgtdEntryTableBody"));
+			calculateTotal();
+		}, adminUtil.handleFallback);
+	}
+
+	function showCustomPriceSpan(priceJson){
+		var unit = $("#customCloneAddForm #mfgtdunit").val();
+
+		if(priceJson){
+			for (p in priceJson) {
+				if(	priceJson[p].orderto >= unit){
+					if(priceJson[p].original!=priceJson[p].price){
+						//$("#customprice").html("Original Price ["+priceJson[p].original+"]");
+						$("#customprice").html("Custom Price");
+						$("#customprice").show();
+						$("#mfgtdprice").attr("style","background-color:#E1F5A9;font-weight:bold;");
+					}else{
+						$("#customprice").hide();
+						$("#mfgtdprice").attr("style","");
+					}
+				}
+				break;
+			}
+		}
+	}
+
+	function checkPrice(){
+		var form = $("#customCloneAddForm");
+		var mainForm = $("#entryForm");
+		var prodid = form.find("select[name$=prodid]").val();
+		var prodJson = eval('productMainjson.data.prod'+prodid);
+		if(!productPricejsonArray[prodid]){
+			ajaxUtil.showPanel("", $('#js-processing-request').html(), null);
+			var query = "return=json&action1=priceenq";
+			query += "&customerid="+mainForm.find("input[name=customerid]").val();
+			query += "&custtype="+mainForm.find("select[name=custtype]").val();
+			query += "&prodid="+prodid;
+			query += "&factory="+prodJson.factory;
+			form.find("input[id$=qty]").focus();
+			ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+				handleCheckPriceCallback(json);
+				mfgUtil.doCalculate($("#customCloneAddForm"));
+				showCustomPriceSpan(productPricejsonArray[prodid]);
+			}, adminUtil.handleFallback);
+		}else{
+			mfgUtil.doCalculate($("#customCloneAddForm"));
+			showCustomPriceSpan(productPricejsonArray[prodid]);
+		}
+	}
+
+	function handleCheckPriceCallback(json) {
+		//var prodid = $("#customCloneAddForm").find("select[name$=prodid]").val();
+
+		for (id in json.data) {
+			prodid = id.substr(4);
+			productPricejsonArray[prodid] = eval('json.data.'+id);
+		}
+
+		ajaxUtil.hidePanel();
+		/*
+		for(var i=0; i<len; i++){
+			prodid = json.prod[i].prodid;
+			productPricejsonArray[prodid] = json.prod[i];
+			productPricejson = json.prod[i];
+		}
+
+		mfgUtil.doCalculate($("#customCloneAddForm"));
+		*/
+	}
+
+	// For Customer
+	var lastCustomerEnter='';
+	function processAfterAutoComplete(json){
+		var form = $("#entryForm");
+		var customerid = form.find("input[name=customerid]").val();
+		var customerid_ori = form.find("input[name=customerid_ori]").val();
+		var custtype = form.find("select[name=custtype]").val();
+		form.find("input[name=attn]").val(json.contactperson);
+		form.find("select[name=salesby]").val(json.salesby);
+		form.find("select[name=terms]").val(json.terms);
+		form.find("select[name=custtype]").val(json.type);
+		$("textarea[name=note]").val(json.note);
+		customerid_ori = (customerid_ori=='')?lastCustomerEnter:customerid_ori;
+		if((customerid_ori!='' && customerid!=customerid_ori) || custtype!=json.type){
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){
+				$(this).val("0");
+			});
+			reCalculatePrice();
+		}
+
+		lastCustomerEnter = customerid;
+
+		var query = "return=json&action1=chkoutstanding";
+		query += "&customerid="+lastCustomerEnter;
+
+		ajaxUtil.postJsonQuery("customer.htm", query, function(json){
+			//var totalOutStanding = parseFloat(json.data.monththerest); Customer request to change to 61 Days. 4/2/2015
+			var totalOutStanding = parseFloat(json.data.minus3month) + parseFloat(json.data.monththerest);
+			if(totalOutStanding>0){
+				authorizationLogin(totalOutStanding);
+			}
+		}, adminUtil.handleFallback);
+	}
+
+	var authorizedFlag = false;
+
+	function authorizationLogin(totalOutStanding){
+		authorizedFlag = false;
+		$("#userid").val("");
+		$("#password").val("");
+
+		$("#authorizeMsg").html("More than 3 months overdue: RM "+totalOutStanding+", manager authorization required.");
+		var dialog_buttons = {};
+
+		dialog_buttons["Authorize"] = function(){
+			var loginQuery = "return=json&action1=authorization&usergroup=1&userid="+$("#userid").val()+"&password="+$("#password").val();
+			ajaxUtil.postJsonQuery("login.htm", loginQuery, function(json){
+				if(json.rc!="0"){
+					alert("Authorization Failed. Please check again.");
+				}else{
+					authorizedFlag = true;
+					$("#approvalDialog").dialog('close');
+				}
+			}, adminUtil.handleFallback);
+			return;
+		};
+		$("#approvalDialog").dialog({
+  			close: function( event, ui ) {
+  				if(authorizedFlag==false){
+  					adminUtil.hideEntryEvent();
+  				}
+  			}
+		});
+		if($("#entryForm").find("input[name=customerid_value]").val()!="cash"){
+			$("#approvalDialog").dialog({'buttons': dialog_buttons, 'height': 300});
+			$("#approvalDialog").dialog('open');
+		}
+	}
+
+	function processEdit(json){
+		productPricejsonArray = [];
+		mfgUtil.fieldDefault($('tbody[id=mfgtdEntryTableBody]').find("tr"), true);
+		mfgUtil.createGroup(json);
+		reCalculatePrice();
+		calculateTotal();
+	}
+
+	function beforeSave(){
+		mfgUtil.updateGroup();
+	}
+
+	function customCloneAdd(buttonName){
+		var dialog_buttons = {};
+		dialog_buttons[buttonName] = function(){
+			var newClone;
+			if(isEditing){
+				newClone = editTR;
+			}else{
+				newClone = adminUtil.rowClone($("#mfgtdEntryTableBody"),false);
+			}
+			var srcName, srcValue, srcType, trgtObj;
+
+			$("#customCloneAddForm").find("input, select").each(function(i){
+				srcName = $(this).attr("name");
+				srcType = $(this).attr("type");
+				srcValue = $(this).val();
+				trgtObj = newClone.find("input[name="+srcName+"]");
+				trgtObj.val(srcValue);
+
+				if(trgtObj.attr("type")=="hidden"){
+					if(srcType=='select-one' && srcValue!=""){
+						if("mfgtdprodid"==srcName && srcValue=="0"){
+							srcValue = $("#customCloneAddForm").find("#mfgtdprodname").val() + " " + $(this).find("option:selected").text();
+						}else{
+							srcValue = $(this).find("option:selected").text();
+						}
+					}
+					newClone.find("span[name="+srcName+"]").html(srcValue);
+				}
+			});
+
+			// Reset
+			resetField();
+
+	   		if("Update"==buttonName){
+	   			$("#customCloneAddDialog").dialog('close');
+	   		}
+
+	   		calculateTotal();
+		};
+
+		mfgUtil.fieldDefault($("#customCloneAddForm"), false);
+
+		$("#customCloneAddDialog").dialog('option', 'buttons', dialog_buttons);
+		$("#customCloneAddDialog").dialog('open');
+	}
+
+	function customCloneEdit(tr){
+		editTR = tr;
+		var srcName, srcType, srcValue, trgtObj;
+
+		isEditing = true;
+		srcValue = tr.find("input[name$=prodid]").val();
+		trgtObj = $("#customCloneAddForm").find("[name$=prodid]");
+		trgtObj.val(srcValue);
+		mfgUtil.loadProductOption(srcValue);
+
+		tr.find("input, select").each(function(i){
+			srcName = $(this).attr("name");
+			srcType = $(this).attr("type");
+			srcValue = $(this).val();
+			trgtObj = $("#customCloneAddForm").find("[name="+srcName+"]");
+			trgtObj.val(srcValue);
+			if("hidden"==trgtObj.attr("type")){
+				trgtObj = $("#customCloneAddForm").find("span[name="+srcName+"]");
+				if(trgtObj)	trgtObj.html(srcValue);
+			}
+		});
+		if($("#customCloneAddForm").find("[name$=price]").val()==0){
+			mfgUtil.calculate($("#customCloneAddForm"));
+		}
+		// Show customise link
+		if($("#customCloneAddForm").find("[name$=customisedata]").val()!=""){
+			$("#customizeLink").show();
+		}
+		customCloneAdd("Update");
+	}
+
+	function resetField(){
+		//$("#customizeLink").hide();
+		// Reset Fields
+   		$("#customCloneAddForm").find('input:not([name$=status])').val('');
+   		$("#customCloneAddForm").find('#mfgtdwidth').html('');
+   		$("#customCloneAddForm").find('#mfgtdheight').html('');
+   		$("#customprice").hide();
+   		$("#mfgtdprice").attr("style","");
+	}
+
+	function afterCloneDelete(){
+		calculateTotal();
+	}
+
+	function pageInit(){
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
+
+		$("#customizeLink").click(function(event){
+			mfgUtil.buildTableEntry($(event.target));
+			event.preventDefault();
+		});
+   		/*
+		customEntryButton['Calculate'] = function(){
+			calculateAll(); // custom.js
+			mfgUtil.updateGroup();
+		};
+		*/
+		$("tr[id$=Clone]").find("input[name*='opt']").each(function(i){
+			$(this).parent().attr("id", $(this).attr("id"));
+			//$(this).parent().empty();
+		});
+
+		$("#mfg_transactionModuleEntry").bind("click", function(event){
+			var element = event.target;
+			if(element.id=='action.clone.add.custom'){
+				// Reset Fields
+		   		resetField()
+		   		$("#customCloneAddForm").find("[name$=prodid]").change();
+		   		isEditing = false;
+				customCloneAdd("Add");
+				event.preventDefault();	return;
+			}
+		});
+
+		// Click to Edit
+		$('tbody[id=mfgtdEntryTableBody]').bind("click", function(event){
+			var element = event.target;
+			// Reset Fields
+			if($(element).attr("name")=="mfgtdprodid"){
+		   		resetField()
+		   		isEditing = true;
+				customCloneEdit($(element).parents("tr"));
+				event.preventDefault();	return;
+			}
+		});
+
+		$("#mfg_transactionModuleEntry").find("select[id=custtype]").bind("change", (function(event){
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){
+				$(this).val("0");
+			});
+
+			reCalculatePrice();
+		}));
+
+		$("#mfg_transactionModuleEntry").find("input[name=discount], select[name=gst_code]").bind("change", function(event){
+			calculateTotal();
+		});
+
+	}
+
+	$(document).ready(pageInit());
+</script>
+<style>
+	.customPanel{
+		border:double;
+	}
+	#optSpan{
+		 width: 100%;
+		 height: 100%;
+	}
+	#customContainer input{
+		 text-align: right;
+	}
+
+	.customSpan{
+		border-style: ridge;
+		border-width: 2px;
+		float:left;
+		background: #002233;
+		color: #fff;
+	}
+
+	.headerSpan{
+		border: none;
+		float:left;
+		background: #FFF;
+	}
+	#chargeOpt, #chargeProduct{
+		font-weight: bold;
+	}
+
+	#customCloneAddTable{font-size:1em;}
+
+	#CustomiseDialog{
+		font-size: 0.8em;
+	}
+</style>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

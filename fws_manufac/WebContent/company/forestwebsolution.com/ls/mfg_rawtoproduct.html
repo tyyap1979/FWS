@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li>LS RANGE</li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Job Sheet Setting - LS RANGE</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li><li><a href="#" id="btnPrint">Print</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id="mfg_rawtoproductModule" class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_rawtoproduct' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='5' id='controlBar'><a href='#' class='paginate_button tip' title='Remove Record' id='action.delete'>Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord'>Add</a><a href='#' class='paginate_button tip' title='Copy Record' id='action.retrieve.copy'>Copy</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Last Update </th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><div id='entryDiv' style='display: none;overflow:scroll;'><div id="mfg_rawtoproductModuleEntry" title='Job Sheet Setting - LS RANGE' class="entryScreen">
+<form id='entryForm' method='POST' autocomplete='off'><table id='entryFormTable' width='100%' class='validateForm listTable'><col width='15%'><col /><tr><th>Product</th><td><select id='prodid' selected name='prodid' class=''><option value=''>--- Product ---</option><OPTGROUP LABEL='404'><option value='579'>Galaxy Series c/w code 404</option><option value='582'>Galaxy Series c/w code 404- 25tmm</option><option value='583'>Galaxy Series c/w code 404- 25tmm (Full)</option><option value='580'>Galaxy Series c/w code 404- Both Sides</option><option value='581'>Galaxy Series c/w code 404- Expose</option><option value='618'>Galaxy Series c/w code RYS1002</option><option value='619'>Galaxy Series c/w code RYS1002- Both Sides</option><option value='620'>Galaxy Series c/w code RYS1002- Expose</option><option value='632'>Galaxy Series c/w code RYS1002- Expose New</option><option value='597'>Galaxy Series code 404</option></OPTGROUP><OPTGROUP LABEL='Acrylic Sheet Only'><option value='494'>2.0tmm Acrylic cut size c/w edging polish</option><option value='495'>3mm Acrylic Sheet (cut sizes)</option><option value='103'>Acrylic Sheet  Sprayed Paint Only (2.0mm CUT SIZE)</option><option value='104'>Acrylic Sheet (2.5mm CUT SIZE)</option><option value='164'>Acrylic Sheet (Clear) 2.0tmm</option><option value='384'>Supply Matt Acrylic c/w cut size only</option></OPTGROUP><OPTGROUP LABEL='Aino'><option value='166'>(Aino) Galaxy Series-Shelf Panel</option><option value='120'>(Aino)Acrylic Door c/w Galaxy Series</option><option value='122'>(Aino)Expose area at back of panel</option><option value='121'>(Aino)Galaxy Series c/w Both Sides</option><option value='450'>Door Panel c/w Both Side Acrylic</option><option value='472'>Galaxy Panel</option><option value='563'>Panel Over-Lap</option><option value='447'>Solid Panel c/w Both Sides</option></OPTGROUP><OPTGROUP LABEL='G2-402 (A)'><option value='646'>G2- 402 (A)  Solid White</option><option value='648'>G2-402 (A) Solid White / Both Side</option><option value='647'>G2-402 (A) Solid White / Expose</option></OPTGROUP><OPTGROUP LABEL='Galaxy Sense'><option value='200'>Expose Area at 2nd (2.5tmm)</option><option value='198'>Expose Area at 2nd side</option><option value='195'>Galaxy Sense</option><option value='207'>Galaxy Sense -BothSides</option><option value='211'>Galaxy Sense 2.5t (c)</option><option value='199'>Galaxy Sense 2.5tmm</option><option value='208'>Galaxy Sense2.5mm -BothSides</option></OPTGROUP><OPTGROUP LABEL='Galaxy Series'><option value='196'>2.0 Galaxy Series c/w 36tmm</option><option value='218'>2.0 Galaxy Series c/w 36tmm-Both Sides</option><option value='197'>2.5 Galaxy Series c/w 36tmm</option><option value='219'>2.5 Galaxy Series c/w 36tmm-Both Sides</option><option value='190'>Acrylic Door - 3G Series</option><option value='72'>Acrylic Door c/w Both Side (2.00mm)</option><option value='71'>Acrylic Door c/w Both Side (2.50mm)</option><option value='53'>Acrylic Door c/w Galaxy Series (2.00mm)</option><option value='478'>Acrylic Door c/w Galaxy Series (2.5mm)</option><option value='57'>Expose area at back panel (Min 1/Sqft) 2.0mm</option><option value='626'>Expose area at back panel (Min 1/Sqft) 2.0mm-new</option><option value='98'>Expose area at back panel (Min 1/Sqft) 2.5mm</option><option value='627'>Expose area at back panel (Min 1/Sqft) 2.5mm-new</option><option value='488'>Expose Area c/w 16mm thickness</option><option value='215'>Galaxy c/w 2tone ABS</option><option value='169'>Galaxy Door Panel Design</option><option value='481'>Galaxy Serier c/w Both sides</option><option value='229'>Galaxy Series 1.2</option><option value='288'>Galaxy Series 2.0t</option><option value='289'>Galaxy Series 2.5t</option><option value='232'>Galaxy Series wood Grain</option><option value='516'>Galaxy Series wood Grain (36mmt)</option><option value='517'>Galaxy Series wood Grain (36mmt-Bothsides)</option><option value='515'>Galaxy Series wood Grain (Expose Area)</option><option value='415'>Galaxy Wood Gain c/w Both Sides</option><option value='128'>L-Shape Corner Infill</option><option value='129'>L-Shape Corner Infill c/w AL.Handle</option></OPTGROUP><OPTGROUP LABEL='Handle'><option value='460'>30 degree Handle</option><option value='487'>AL. Built In Handle (Champagne)</option><option value='153'>AL. Handle - 5 meter</option><option value='214'>AL. Handle only</option><option value='162'>AL.Handle 17'00"</option><option value='119'>Aluminium Built In handle</option><option value='99'>Oblique Handle (45 degree)</option><option value='130'>Oblique Handle (45 degree)-(D)</option><option value='224'>Oblique Handle (F)</option></OPTGROUP><OPTGROUP LABEL='Others'><option value='413'>3G - Woodgain</option><option value='622'>402 Acrylic Laminate +Labour Charges ( Board supply by customer )Box</option><option value='385'>Acrylic + 6mm Plywood</option><option value='108'>Acrylic Laminate +Labour Charges  ( Board supply by customer )</option><option value='621'>Acrylic Laminate +Labour Charges ( Board supply by customer ) Box</option><option value='416'>Acrylic Panel c/w C1 Profile(3mm)</option><option value='227'>Acrylic Panel c/w C1 Profiles</option><option value='150'>Acrylic Panel w/o Edge</option><option value='477'>Acrylic Sheet 2.0tmm x 4' x 8'</option><option value='400'>Al. Handle EP-3405</option><option value='402'>Al.Edging EP-2800</option><option value='343'>Crystal 1</option><option value='471'>Galaxy Panel c/w 25tmm</option><option value='152'>Modify size + Labour Charge</option><option value='194'>Supply Acrylic & L.B only</option><option value='572'>Supply Acrylic Sheet & Labour Only (Woodgain)</option><option value='423'>Supply Paint Only</option><option value='230'>Supply Paint Works</option><option value='448'>Supply Panel Board c/w 30 degree</option><option value='221'>Trimx 1</option><option value='63'>Ventilation Hole c/w Acrylic Finishing</option><option value='106'>Ventilation Hole Only</option><option value='0'>[Custom Product]</option></OPTGROUP><OPTGROUP LABEL='PU Finishing'><option value='466'>Expose Area</option><option value='547'>PU Gloss c/w 36tmm</option><option value='420'>PU Gloss Colour</option><option value='633'>PU Gloss Colour -new</option><option value='419'>PU Gloss White</option><option value='565'>PU High Gloss White c/w customer board</option><option value='418'>PU Matt Colour</option><option value='634'>PU Matt Colour-new</option><option value='417'>PU Matt White</option><option value='615'>Supply Paint Works only (colour)</option></OPTGROUP><OPTGROUP LABEL='Winsco'><option value='126'>(W)Acrylic Door c/w Galaxy Series</option><option value='154'>(W)Acrylic Door c/w Galaxy Series - 36mmthk</option><option value='151'>(W)Acrylic Door c/w Galaxy Series -Both Sides</option><option value='453'>Acrylic Door c/w Both Sides</option><option value='383'>Food Waste Disposal</option><option value='233'>Galaxy 1.5</option><option value='217'>Galaxy Both Sides (Solid)</option><option value='225'>Galaxy Sense 2.0t</option><option value='606'>Galaxy Sense 2.0t ( Both Sides)</option><option value='226'>Galaxy Sense 2.5t</option><option value='607'>Galaxy Sense 2.5t ( Both Sides)</option><option value='228'>Galaxy Series c/w 36tmm (B)</option><option value='344'>Galaxy Wood Grain</option><option value='425'>Supply Acrylic & Labour Only (matt)</option><option value='191'>Winsco Galaxy Series-Solid</option></select></OPTGROUP></OPTGROUP></td></tr><tr><th>Status</th><td><select name='status' id='status' class=''><option value='A'>Active</option><option value='S'>Suspended</option></select></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='rtpid' name='rtpid' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/>
+<br><div style='width: auto; overflow:auto;'><fieldset><legend><b>Job Sheet Detail Setting</b></legend><table id='mfg_rawtoproduct_detailEntryTable' class='listTable sortable detail-listingTable'><thead><tr><td colspan='7' id='controlBar'><a href='#' class='paginate_button tip' title='Delete Record' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.clone.add' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Material</th><th>Qty</th><th>Width Formula</th><th>Height Formula</th><th>Perform By</th><th>Comment</th></tr>
+<tr style='display: none' id='mfg_rawtoproduct_detailClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfg_rawtoproduct_detailrow-status' value='X' /><input type='hidden' id='mfg_rawtoproduct_detailrtpdtlid' name='mfg_rawtoproduct_detailrtpdtlid' value=''/><input type='hidden' id='mfg_rawtoproduct_detailrtpid' name='mfg_rawtoproduct_detailrtpid' value=''/><input type='hidden' id='mfg_rawtoproduct_detailposition' name='mfg_rawtoproduct_detailposition' value=''/></td><td><select id='mfg_rawtoproduct_detailrawid' selected name='mfg_rawtoproduct_detailrawid' class=''><option value=''>--- Raw Material ---</option><option value='44'>Acrylic</option><option value='42'>Board</option><option value='43'>Handle</option><option value='opt1'>Option 1</option><option value='opt2'>Option 2</option><option value='opt3'>Option 3</option></select></td>
+<td><textarea id='mfg_rawtoproduct_detailqty' name='mfg_rawtoproduct_detailqty' class='' cols='30' rows='5' ></textarea></td>
+<td><textarea id='mfg_rawtoproduct_detailwidthformula' name='mfg_rawtoproduct_detailwidthformula' class='' cols='30' rows='5' ></textarea></td>
+<td><textarea id='mfg_rawtoproduct_detailheightformula' name='mfg_rawtoproduct_detailheightformula' class='' cols='30' rows='5' ></textarea></td>
+<td><select name='mfg_rawtoproduct_detailperform_by' id='mfg_rawtoproduct_detailperform_by' class=''><option value=''></option><option value='R'>By Row</option><option value='C'>By Col</option><option value='S'>By Span</option></select></td>
+<td><input type='text' id='mfg_rawtoproduct_detailcomment' name='mfg_rawtoproduct_detailcomment' class='' size='10' maxlength='100' value=''/></td>
+</tr></thead><tbody id='mfg_rawtoproduct_detailEntryTableBody' class='validateForm'></tbody></table></fieldset></div><br></form></div>
+</div></div>
+
+			
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

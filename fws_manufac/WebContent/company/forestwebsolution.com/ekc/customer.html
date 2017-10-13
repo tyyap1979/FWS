@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li>EK Concept</li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Customer Profile - EURO KINGSTON CONCEPT</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li><li><a href="#" id="btnPrint">Print</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id="customerprofileModule" class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='customerprofile' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='10' id='controlBar'><a href='#' class='paginate_button tip' title='Remove Record' id='action.delete'>Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord'>Add</a><a href='#' class='paginate_button tip' title='Copy Record' id='action.retrieve.copy'>Copy</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Type</th><th>Name</th><th>Terms</th><th>Credit Limit</th><th>Phone</th><th>Fax</th><th>Sales By</th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><div id='entryDiv' style='display: none;overflow:scroll;'><div id="customerprofileModuleEntry" title='Customer Profile - EURO KINGSTON CONCEPT' class="entryScreen">
+<form id='entryForm' method='POST' autocomplete='off'><table id='entryFormTable' width='100%' class='validateForm listTable'><col width='15%'><col width='35%'><col width='15%'><col width='35%'><tr><th>Code</th><td><input type='text' id='code' name='code' class='' size='10' maxlength='20' value=''/></td><th>Type</th><td><select name='type' id='type' class=''><option value=''></option><option value='D'>Dealer</option><option value='C'>Client</option><option value='P'>Public</option></select></td></tr><tr><th>Name</th><td><input type='text' id='name' name='name' class='' size='30' maxlength='50' value=''/></td><th>Contact Person</th><td><input type='text' id='contactperson' name='contactperson' class='' size='30' maxlength='100' value=''/></td></tr><tr><th>Terms</th><td><select name='terms' id='terms' class='validate[required]'><option value=''></option><option value='0'>Cash</option><option value='30'>30 Days</option><option value='45'>45 Days</option><option value='60'>60 Days</option><option value='90'>90 Days</option></select></td><th>Credit Limit</th><td><input type='text' id='creditlimit' name='creditlimit' class='' size='10' maxlength='15' value=''/></td></tr><tr><th>Address</th><td><input type='text' id='address' name='address' class='' size='30' maxlength='100' value=''/></td><th>City</th><td><input type='text' id='city' name='city' class='' size='20' maxlength='30' value=''/></td></tr><tr><th>Postcode</th><td><input type='text' id='postcode' name='postcode' class='' size='20' maxlength='10' value=''/></td><th>State</th><td><input type='text' id='state' name='state' class='' size='20' maxlength='30' value=''/></td></tr><tr><th>Country</th><td><Select name='country' selected class=''><option value=''></option><option value='AF'>Afghanistan</option><option value='AL'>Albania</option><option value='DZ'>Algeria</option><option value='AS'>American Samoa</option><option value='AD'>Andorra</option><option value='AO'>Angola</option><option value='AI'>Anguilla</option><option value='AQ'>Antarctica</option><option value='AG'>Antigua and Barbuda</option><option value='AR'>Argentina</option><option value='AM'>Armenia</option><option value='AW'>Aruba</option><option value='AU'>Australia</option><option value='AT'>Austria</option><option value='AZ'>Azerbaijan</option><option value='BS'>Bahamas</option><option value='BH'>Bahrain</option><option value='BD'>Bangladesh</option><option value='BB'>Barbados</option><option value='BY'>Belarus</option><option value='BE'>Belgium</option><option value='BZ'>Belize</option><option value='BJ'>Benin</option><option value='BM'>Bermuda</option><option value='BT'>Bhutan</option><option value='BO'>Bolivia</option><option value='BA'>Bosnia-Herzegovina</option><option value='BW'>Botswana</option><option value='BV'>Bouvet Island</option><option value='BR'>Brazil</option><option value='IO'>British Indian Ocean Territory</option><option value='BN'>Brunei Darussalam</option><option value='BG'>Bulgaria</option><option value='BF'>Burkina Faso</option><option value='BI'>Burundi</option><option value='KH'>Cambodia</option><option value='CM'>Cameroon</option><option value='CA'>Canada</option><option value='CV'>Cape Verde</option><option value='KY'>Cayman Islands</option><option value='CF'>Central African Republic</option><option value='TD'>Chad</option><option value='CL'>Chile</option><option value='CN'>China</option><option value='CX'>Christmas Island</option><option value='CC'>Cocos (Keeling) Islands</option><option value='CO'>Colombia</option><option value='KM'>Comoros</option><option value='CG'>Congo</option><option value='CK'>Cook Islands</option><option value='CR'>Costa Rica</option><option value='HR'>Croatia</option><option value='CU'>Cuba</option><option value='CY'>Cyprus</option><option value='CZ'>Czech Rep.</option><option value='DK'>Denmark</option><option value='DJ'>Djibouti</option><option value='DM'>Dominica</option><option value='DO'>Dominican Republic</option><option value='EC'>Ecuador</option><option value='EG'>Egypt</option><option value='SV'>El Salvador</option><option value='GQ'>Equatorial Guinea</option><option value='ER'>Eritrea</option><option value='EE'>Estonia</option><option value='ET'>Ethiopia</option><option value='FK'>Falkland Islands</option><option value='FO'>Faroe Islands</option><option value='FJ'>Fiji</option><option value='FI'>Finland</option><option value='FR'>France</option><option value='GF'>French Guiana</option><option value='TF'>French Southern Territories</option><option value='GA'>Gabon</option><option value='GM'>Gambia</option><option value='GE'>Georgia</option><option value='DE'>Germany</option><option value='GH'>Ghana</option><option value='GI'>Gibraltar</option><option value='GB'>Great Britain</option><option value='GR'>Greece</option><option value='GL'>Greenland</option><option value='GD'>Grenada</option><option value='GP'>Guadeloupe (French)</option><option value='GU'>Guam (USA)</option><option value='GT'>Guatemala</option><option value='GG'>Guernsey</option><option value='GN'>Guinea</option><option value='GW'>Guinea Bissau</option><option value='GY'>Guyana</option><option value='HT'>Haiti</option><option value='HM'>Heard Island and McDonald Islands</option><option value='HN'>Honduras</option><option value='HK'>Hong Kong</option><option value='HU'>Hungary</option><option value='IS'>Iceland</option><option value='IN'>India</option><option value='ID'>Indonesia</option><option value='IR'>Iran</option><option value='IQ'>Iraq</option><option value='IE'>Ireland</option><option value='IM'>Isle of Man</option><option value='IL'>Israel</option><option value='IT'>Italy</option><option value='CI'>Ivory Coast</option><option value='JM'>Jamaica</option><option value='JP'>Japan</option><option value='JE'>Jersey</option><option value='JO'>Jordan</option><option value='KZ'>Kazakhstan</option><option value='KE'>Kenya</option><option value='KI'>Kiribati</option><option value='KP'>Korea-North</option><option value='KR'>Korea-South</option><option value='KW'>Kuwait</option><option value='KG'>Kyrgyzstan</option><option value='LA'>Laos</option><option value='LV'>Latvia</option><option value='LB'>Lebanon</option><option value='LS'>Lesotho</option><option value='LR'>Liberia</option><option value='LY'>Libya</option><option value='LI'>Liechtenstein</option><option value='LT'>Lithuania</option><option value='LU'>Luxembourg</option><option value='MO'>Macau</option><option value='MK'>Macedonia</option><option value='MG'>Madagascar</option><option value='MW'>Malawi</option><option value='MY'>Malaysia</option><option value='MV'>Maldives</option><option value='ML'>Mali</option><option value='MT'>Malta</option><option value='MH'>Marshall Islands</option><option value='MQ'>Martinique (French)</option><option value='MR'>Mauritania</option><option value='MU'>Mauritius</option><option value='YT'>Mayotte</option><option value='MX'>Mexico</option><option value='FM'>Micronesia</option><option value='MD'>Moldova</option><option value='MC'>Monaco</option><option value='MN'>Mongolia</option><option value='ME'>Montenegro</option><option value='MS'>Montserrat</option><option value='MA'>Morocco</option><option value='MZ'>Mozambique</option><option value='MM'>Myanmar</option><option value='NA'>Namibia</option><option value='NR'>Nauru</option><option value='NP'>Nepal</option><option value='NL'>Netherlands</option><option value='AN'>Netherlands Antilles</option><option value='NC'>New Caledonia (French)</option><option value='NZ'>New Zealand</option><option value='NI'>Nicaragua</option><option value='NE'>Niger</option><option value='NG'>Nigeria</option><option value='NU'>Niue</option><option value='NF'>Norfolk Island</option><option value='MP'>Northern Mariana Islands</option><option value='NO'>Norway</option><option value='OM'>Oman</option><option value='PK'>Pakistan</option><option value='PW'>Palau</option><option value='PA'>Panama</option><option value='PG'>Papua New Guinea</option><option value='PY'>Paraguay</option><option value='PE'>Peru</option><option value='PH'>Philippines</option><option value='PN'>Pitcairn Island</option><option value='PL'>Poland</option><option value='PF'>Polynesia (French)</option><option value='PT'>Portugal</option><option value='PR'>Puerto Rico</option><option value='QA'>Qatar</option><option value='RE'>Reunion (French)</option><option value='RO'>Romania</option><option value='RU'>Russia</option><option value='RW'>Rwanda</option><option value='SH'>Saint Helena</option><option value='KN'>Saint Kitts & Nevis Anguilla</option><option value='LC'>Saint Lucia</option><option value='PM'>Saint Pierre and Miquelon</option><option value='VC'>Saint Vincent & Grenadines</option><option value='WS'>Samoa</option><option value='SM'>San Marino</option><option value='ST'>Sao Tome and Principe</option><option value='SA'>Saudi Arabia</option><option value='SN'>Senegal</option><option value='RS'>Serbia</option><option value='SC'>Seychelles</option><option value='SL'>Sierra Leone</option><option value='SG'>Singapore</option><option value='SK'>Slovakia</option><option value='SI'>Slovenia</option><option value='SB'>Solomon Islands</option><option value='SO'>Somalia</option><option value='ZA'>South Africa</option><option value='GS'>South Georgia & South Sandwich Islands</option><option value='ES'>Spain</option><option value='LK'>Sri Lanka</option><option value='SD'>Sudan</option><option value='SR'>Suriname</option><option value='SJ'>Svalbard and Jan Mayen Islands</option><option value='SZ'>Swaziland</option><option value='SE'>Sweden</option><option value='CH'>Switzerland</option><option value='SY'>Syria</option><option value='TW'>Taiwan</option><option value='TJ'>Tajikistan</option><option value='TZ'>Tanzania</option><option value='TH'>Thailand</option><option value='TG'>Togo</option><option value='TK'>Tokelau</option><option value='TO'>Tonga</option><option value='TT'>Trinidad and Tobago</option><option value='TN'>Tunisia</option><option value='TR'>Turkey</option><option value='TM'>Turkmenistan</option><option value='TC'>Turks and Caicos Islands</option><option value='TV'>Tuvalu</option><option value='UK'>U.K.</option><option value='UG'>Uganda</option><option value='UA'>Ukraine</option><option value='AE'>United Arab Emirates</option><option value='UY'>Uruguay</option><option value='US'>USA</option><option value='UM'>USA Minor Outlying Islands</option><option value='UZ'>Uzbekistan</option><option value='VU'>Vanuatu</option><option value='VA'>Vatican</option><option value='VE'>Venezuela</option><option value='VN'>Vietnam</option><option value='VG'>Virgin Islands (British)</option><option value='VI'>Virgin Islands (USA)</option><option value='WF'>Wallis and Futuna Islands</option><option value='EH'>Western Sahara</option><option value='YE'>Yemen</option><option value='ZM'>Zambia</option><option value='ZW'>Zimbabwe</option></select></td><th>Email</th><td><input type='text' id='email' name='email' class='' size='20' maxlength='40' value=''/></td></tr><tr><th>Phone</th><td><input type='text' id='phoneno' name='phoneno' class='' size='20' maxlength='30' value=''/></td><th>Mobile</th><td><input type='text' id='mobileno' name='mobileno' class='' size='20' maxlength='30' value=''/></td></tr><tr><th>Fax</th><td><input type='text' id='faxno' name='faxno' class='' size='20' maxlength='40' value=''/></td><th>Sales By</th><td><select id='salesby' selected name='salesby' class='validate[required]'><option value=''>--- Representative ---</option></select></td></tr><tr><th>Notes</th><td colspan='3'><textarea id='note' name='note' class='' cols='100' rows='12' ></textarea></td></tr><tr><th>Status</th><td><select name='status' id='status' class=''><option value='A'>Active</option><option value='S'>Suspended</option></select></td><th nowrap> </th><td> </td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='customerid' name='customerid' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/>
+<br><div style='width: auto; overflow:auto;'><fieldset><legend><b>Price By Customer</b></legend><table id='custPriceDetailEntryTable' class='listTable detail-listingTable'><thead><tr><td colspan='5' id='controlBar'><a href='#' class='paginate_button tip' title='Delete' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Refresh All Products' id='action.rtrv.product' >Refresh Product List</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Order From</th><th>Order To</th><th>Price</th></tr>
+<tr style='display: none' id='custPriceDetailClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='custPriceDetailrow-status' value='X' /><input type='hidden' id='custPriceDetailcustpriceid' name='custPriceDetailcustpriceid' value=''/><input type='hidden' id='custPriceDetailcompanyid' name='custPriceDetailcompanyid' value=''/><input type='hidden' id='custPriceDetailprodid' name='custPriceDetailprodid' value=''/><input type='hidden' id='custPriceDetailpriceid' name='custPriceDetailpriceid' value=''/><input type='hidden' id='custPriceDetailcustomerid' name='custPriceDetailcustomerid' value=''/></td><td><span name='custPriceDetailprodid_value' class=''></span><input type='hidden' name='custPriceDetailprodid_value' value=''/></td>
+<td><span name='custPriceDetailorderfrom' class=''></span><input type='hidden' name='custPriceDetailorderfrom' value=''/></td>
+<td><span name='custPriceDetailorderto' class=''></span><input type='hidden' name='custPriceDetailorderto' value=''/></td>
+<td><input type='text' id='custPriceDetailprice' name='custPriceDetailprice' class='' size='10' maxlength='14' value=''/></td>
+</tr></thead><tbody id='custPriceDetailEntryTableBody' class='validateForm'></tbody></table></fieldset></div><br></form></div>
+</div></div>
+
+			
+	<div id='approvalDialog' class='dialogView' style='width: 500px; height:60px;display: none' title="Authorization">
+		<table id='customCloneAddTable' width='100%' class='listTable'>
+			<thead>
+			<tr><th colspan="2" id="authorizeMsg"></th></tr>
+			</thead>
+			<tr><th>User ID</th><td><input type="text" name="userid" id="userid" /></td></tr>
+			<tr><th>Password</th><td><input type="password" name="password" id="password" /></td></tr>
+		</table>
+	</div>
+	
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+<style>
+	.editedField{background-color: #002233; color:#fff;}
+	.price_ori_minus{margin-left: 10px; font-weight: bold; color: red;}
+	.price_ori_plus{margin-left: 10px; font-weight: bold; color: green;}
+</style>
+<script type="text/javascript">
+	function processEdit(json){
+		var subJson = json.SUBR0;
+		var data = subJson.data;
+		var module = json.md;     
+		var mainArray;  
+		var priceid, price_ori, price; 
+		var moduleEntryTableBody = $("#custPriceDetailEntryTableBody");
+		var type;
+		var row, priceObj;		
+		
+		var moduleName = (json.md)?(json.md+'Module'):adminUtil.activeModuleId;	
+		
+		var form = $("#"+moduleName+"Entry").find("#entryForm");
+		type = form.find("select[name=type]").val();
+		
+		//alert("moduleName = "+moduleName+", type="+type);
+		
+		//alert("#"+module+"EntryTableBody");
+		for(var i=0; i<data.length; i++){
+	    	mainArray = data[i];	    	
+	        priceid = mainArray[0]["custPriceDetailpriceid"];
+	        price = mainArray[0]["custPriceDetailprice"];
+	        if(type=='P'){
+	        	price_ori = mainArray[0]["custPriceDetailpublicprice"];
+	        }else if(type=='C'){
+	        	price_ori = mainArray[0]["custPriceDetailclientprice"];
+	        }else if(type=='D'){
+	        	price_ori = mainArray[0]["custPriceDetaildealerprice"];
+	        }	      
+	        //alert("type: "+type+", price_ori:"+price_ori);
+	        price = parseFloat(price);
+	        price_ori = parseFloat(price_ori);
+	          
+	        if(price!=price_ori && price_ori>0){
+	        	row = moduleEntryTableBody.find("tr:eq("+i+")");	
+	        	priceObj = row.find("input[name$=price]");
+	        	priceObj.attr("style","background-color: #2EFE2E; color:#000;");	
+	        	//alert(row.find("input[name$=price]").val());       	        		        	
+	        	if(price > price_ori){
+	        		$("<span class='price_ori_plus'>"+ajaxUtil.roundNumber(price - price_ori, 2)+"</span>").appendTo(priceObj.parent("td"));
+	        	}else{
+	        		$("<span class='price_ori_minus'>"+ajaxUtil.roundNumber(price - price_ori, 2)+"</span>").appendTo(priceObj.parent("td"));
+	        	}	        	
+	        	//.after(priceObj);	        		        		        		
+	        }
+	    }	    
+	    
+	}
+	
+	var authorizedFlag = false;
+	function authorizationLogin(){			
+		$("#customerprofileModule").hide();
+		$("#userid").val("");
+		$("#password").val("");
+		
+		$("#authorizeMsg").html("Manager authorization required.");
+		var dialog_buttons = {};
+		
+		dialog_buttons["Authorize"] = function(){		
+			var loginQuery = "return=json&action1=authorization&usergroup=1&userid="+$("#userid").val()+"&password="+$("#password").val();	
+			ajaxUtil.postJsonQuery("login.htm", loginQuery, function(json){				
+				if(json.rc!="0"){
+					alert("Authorization Failed. Please check again.");	
+				}else{					
+					authorizedFlag = true;
+					$("#approvalDialog").dialog('close');
+					$("#customerprofileModule").show();
+				}								
+			}, adminUtil.handleFallback);			
+			return;																
+		}; 
+		$("#approvalDialog").dialog({
+  			close: function( event, ui ) {
+  				if(authorizedFlag==false){
+  					window.location.href = "dashboard.html";
+  				}
+  			}  			
+		});
+		
+		$("#approvalDialog").dialog({'buttons': dialog_buttons, 'height': 300});
+		$("#approvalDialog").dialog('open');
+	}
+	
+	function initPage(){
+		$("#customerprofileModuleEntry").bind("click", function(event){	
+			var element = event.target;
+			if(element.id=='action.rtrv.product'){
+				var customerid = $("#customerprofileModuleEntry").find("input#customerid").val();
+				var type = $("#customerprofileModuleEntry").find("select#type").val();
+				
+				var query = "return=json&action1="+element.id+"&customerid="+customerid+"&type="+type;
+				ajaxUtil.showPanel('', $('#js-processing-request').html(), null);
+				ajaxUtil.postJsonQuery(null,query,function(json){																			
+					adminUtil.processEditSubClass(eval('json.SUBR0'), true);		
+					ajaxUtil.hidePanel();									
+				}, null);
+				event.preventDefault();	return;
+			}	
+		});	
+		
+		authorizationLogin();
+	}
+
+	$(document).ready(initPage);
+</script>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

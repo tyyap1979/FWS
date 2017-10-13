@@ -1,0 +1,733 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li>EK Concept</li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Transaction - EURO KINGSTON CONCEPT</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id='mfg_transactionModule' class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_transaction' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='10' id='controlBar'><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Transaction No.</th><th>Job Code</th><th>Customer</th><th>Customer Ref. No.</th><th>Sales Date</th><th>Update By</th><th>Last Update</th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><ul id='preload' style='display:none'><li id='opt10'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Center Piece Material ---</option><option value='4'>L.Film (S/Blast) 215</option><option value='5'>L.Film (S/Blast) 216(Snow)</option><option value='18'>L.Film (S/Blast) 217(Green)</option><option value='17'>L.Film (S/Blast) 218(Pink)</option><option value='19'>L.Film (S/Blast) 219(Brown)</option><option value='26'>L.Film (S/Blast) 220(Blue)</option><option value='28'>L.Film (Solid) T501(White)</option><option value='27'>L.Film (Solid) T505(Black)</option><option value='29'>L.Film (Solid) T-Red(Red)</option><option value='123'>L.Film (Solid) T-Oren8S(Orange)</option><option value='124'>L.Film (Solid) T-Yellow22F(Yellow)</option><option value='125'>L.Film (Solid) T724 (Apple Green</option><option value='1933'>L.Film (Solid) Silver</option><option value='1934'>L.Film (Solid) Beige</option><option value='1935'>L.Film (Solid) Grey</option><option value='1936'>L.Film (Solid) Light Blue</option><option value='1827'>L.Film (Metalic Solid) Sticker</option><option value='2028'>L.Film (Metalic Solid) Sticker (Amin)</option><option value='32'>Spray Colours Glass Only</option><option value='130'>Custom Spray Colours Only</option><option value='1765'>Spray Colours Glass + T501</option><option value='1766'>Custom Spray Colours + T501</option><option value='1931'>5mm Crystal Glass+Spray Color+T501 (New)</option><option value='1932'>5mm Crystal Glass + Solid Sticker (New)</option><option value='31'>Reflective Glass (5mm)</option><option value='30'>Mirror (5mm) + T501</option><option value='33'>Own Board/Class</option><option value='59'>Melamine Board 16mm (Meico)</option><option value='78'>Laminated Board 5mm (ICA/MAICA)</option><option value='126'>Black Glass (5mm)</option><option value='127'>Brown Glass (5mm)</option><option value='362'>Brown Mirror + T501</option><option value='128'>Sibu</option><option value='134'>S/Blast Line Cutting</option><option value='361'>Clear Glass</option><option value='1683'>Grey Mirror + T501</option><option value='1764'>For Antijump Solid Acrylic c/w Board</option><option value='1862'>Black Mirror+T501</option><option value='1875'>For Antijump Spray Paint Acrylic c/w Board</option><option value='1819'>Crystal Glass+Spray Color+T501 (cancel)</option><option value='1763'>5mm Crystal Glass + Solid Sticker(cancel)</option><option value='2006'>Frame Series 5mm Clear Tempered Normal Glass</option></select></li><li id='opt11'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Handle Position ---</option><option value='80'>None</option><option value='7'>Width</option><option value='8'>Height</option></select></li><li id='opt15'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart ---</option><option value='34'>EU 1 Meico Silver</option><option value='35'>EU 2 M.Silver</option><option value='36'>EU 3 Pearl White</option><option value='37'>EU 4 P.White/Rz0001-sp</option><option value='38'>EU 5 M.Brown</option><option value='39'>EU 6 M.Gold</option><option value='40'>EU 7 P.Blue</option><option value='41'>EU 8 Charcoal</option><option value='42'>EU 9 L.Grey</option><option value='43'>EU 10 Autumn</option><option value='44'>EU 11 Br.Red</option><option value='45'>EU 12 S.Orange</option><option value='46'>EU 13 P.Green</option><option value='48'>EU 14 Viva Red</option><option value='49'>EU 15 HG. Yellow</option><option value='50'>EU 16 Cream</option><option value='51'>EU 17 Beige</option><option value='52'>EU 18 Apple Green</option><option value='142'>EU 19 P.Black/Rz0012</option><option value='1871'>EU 19 P.Black/Rz0012 (W)</option><option value='144'>EU 19 P.Black (MT)</option><option value='135'>G2-402 (White)</option><option value='136'>G2-504 (L.Grey)</option><option value='137'>G2-266 (Orange)</option><option value='138'>G2-135 (Red)</option><option value='139'>G2-814 (Maroon)</option><option value='140'>G2-502 (Black)</option><option value='47'>Custom Colour</option><option value='143'>C1/Mirror (3mm) cancel</option><option value='120'>C2/Mirror (3mm) cancel</option><option value='121'>C1/Bronz/Black/Grey Mirror (5mm)</option><option value='141'>C2/Grey/Black/Bronz Mirror (5mm) +PlyWood</option><option value='1826'>C1/Mirror (3mm) (Winsco)</option><option value='1863'>Mirror (5mm)</option><option value='1865'>Customer Own Paint</option><option value='1877'>RZ0002-SP</option><option value='1878'>RZ0003-SP</option><option value='1879'>RZ0004-SP</option><option value='1880'>RZ0005-SP</option><option value='1881'>RZ0006-SP</option><option value='1882'>RZ0007-SP</option><option value='1883'>RZ0008-SP</option><option value='1884'>RZ0009-SP</option><option value='1885'>RZ0010-SP</option><option value='1886'>RZ0011-SP</option><option value='1887'>RZ8018-MP</option><option value='1888'>RZ6044-MP</option><option value='1889'>RZ0820-MP</option><option value='1890'>RZ3040-MP</option><option value='1891'>RZ5005-MP</option><option value='1892'>RZ6043-MP</option><option value='1893'>RZ1058-MP</option><option value='1894'>RZ1021-MP</option><option value='2005'>Xslim /Reflective Glass</option><option value='2008'>Xslim / 3mm Mirror (cancel)</option><option value='2023'>Xslim / 3mm Mirror (A/F) cancel</option><option value='2013'>Xslim / Brown Glass</option><option value='2014'>Xslim / Black Glass</option><option value='2024'>Xslim / Grey Mirror</option><option value='2025'>Xslim / Brown Mirror</option><option value='2031'>Xslim / Black Mirror</option><option value='2015'>Custom 0.50</option></select></li><li id='opt43'><select id='prodoptid' selected name='prodoptid'><option value=''>--- S/Blast Laminated ---</option><option value='146'>215 (Sandblast)</option><option value='147'>216 (Snow)</option><option value='148'>217 (Green)</option><option value='149'>218 (Pink)</option><option value='150'>219 (Brown)</option><option value='151'>220 (Blue)</option><option value='152'>T501 (White)</option><option value='153'>T505 ( Black)</option><option value='154'>T-RED (Red)</option><option value='155'>T-OREN85 (Orange)</option><option value='156'>T-YELLOW22F (Yellow)</option><option value='157'>T724 (Apple Lite Green)</option><option value='2032'>L.Film (Solid) Beige</option></select></li><li id='opt55'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 2 ---</option><option value='341'>EU1 Meico Silver</option><option value='342'>EU2 M.Silver</option><option value='343'>EU3 Pearl White</option><option value='344'>EU4 P.White/RZ0001</option><option value='345'>EU5 M.Brown</option><option value='346'>EU6 M.Gold</option><option value='347'>EU7 P.Blue</option><option value='348'>EU8 Charcoal</option><option value='349'>EU9 L.Grey</option><option value='350'>EU10 Autum</option><option value='351'>EU11 Br.Red</option><option value='352'>EU12 S.Orange</option><option value='353'>EU13 P.Green</option><option value='354'>EU14 Viva Red</option><option value='355'>EU15 HG.Yellow</option><option value='356'>EU16 Cream</option><option value='357'>EU17 Beige</option><option value='358'>EU18 Apple Green</option><option value='359'>EU19 P.Black/RZ0012</option><option value='360'>Custom Color</option><option value='1895'>RZ0002-SP</option><option value='1896'>RZ0003-SP</option><option value='1897'>RZ0004-SP</option><option value='1898'>RZ0005-SP</option><option value='1899'>RZ0006-SP</option><option value='1900'>RZ0007-SP</option><option value='1901'>RZ0008-SP</option><option value='1902'>RZ0009-SP</option><option value='1903'>RZ0010-SP</option><option value='1904'>RZ0011-SP</option><option value='1905'>RZ8018-MP</option><option value='1906'>RZ6044-MP</option><option value='1907'>RZ8020-MP</option><option value='1908'>RZ3040-MP</option><option value='1909'>RZ5005-MP</option><option value='1910'>RZ6043-MP</option><option value='1911'>RZ1058-MP</option><option value='1912'>RZ1021-MP</option></select></li><li id='opt56'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 3 ---</option><option value='363'>EU1 Meico Silver</option><option value='364'>EU2 M. Silver</option><option value='365'>EU3 Pearl White</option><option value='366'>EU4 P. White/Rz0001</option><option value='367'>EU5 M. Brown</option><option value='368'>EU6 M. Gold</option><option value='369'>EU7 P. Blue</option><option value='370'>EU8 Charcoal</option><option value='371'>EU9 L. Grey</option><option value='372'>EU10 Autumn</option><option value='373'>EU11 Br.Red</option><option value='374'>EU12 S. Orange</option><option value='375'>EU13 P. Green</option><option value='376'>EU14 Viva Red</option><option value='377'>EU15 HG. Yellow</option><option value='378'>EU16 Cream</option><option value='379'>EU17 Beige</option><option value='380'>EU18 Apple Green</option><option value='381'>EU19 P. Black/Rz0012</option><option value='382'>Custom Color</option><option value='1866'>Customer Own Paint</option><option value='1913'>RZ0002-SP</option><option value='1914'>RZ0003-SP</option><option value='1915'>RZ0004-SP</option><option value='1916'>RZ0005-SP</option><option value='1917'>RZ0006-SP</option><option value='1918'>RZ0007-SP</option><option value='1919'>RZ0008-SP</option><option value='1920'>RZ0009-SP</option><option value='1921'>RZ0010-SP</option><option value='1922'>RZ0011-SP</option><option value='1923'>RZ8018-MP</option><option value='1924'>RZ6044-MP</option><option value='1925'>RZ0820-MP</option><option value='1926'>RZ3040-MP</option><option value='1927'>RZ5005-MP</option><option value='1928'>RZ6043-MP</option><option value='1929'>RZ1058-MP</option><option value='1930'>RZ1021-MP</option><option value='2009'>G2-135</option><option value='2010'>G2-504</option><option value='2011'>G2-266</option><option value='2012'>G2-814</option><option value='2017'>Custom 0.50</option></select></li><li id='opt107'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Colour Chart ---</option><option value='1468'>EU1 Meico Silver</option><option value='1469'>EU2 M.Silver</option><option value='1470'>EU3 Pearl White</option><option value='1471'>EU4 P.White/Rz0001</option><option value='1472'>EU5 M.Brown</option><option value='1473'>EU6 M.Gold</option><option value='1474'>EU7 P.Blue</option><option value='1475'>EU8 Charcoal</option><option value='1476'>EU9 L.Grey</option><option value='1477'>EU10 Autumn</option><option value='1478'>EU11 Br.Red</option><option value='1479'>EU12 S.Orange</option><option value='1480'>EU13 P.Green</option><option value='1481'>EU14 Viva Red</option><option value='1482'>EU15 HG.Yellow</option><option value='1483'>EU16 Cream</option><option value='1484'>EU17 Beige</option><option value='1485'>EU18 Apple Green</option><option value='1487'>EU19 P.Black/RZ0012</option><option value='1486'>Customn</option><option value='1867'>Customer Own Paint</option><option value='1870'>EU19 P.Black/Rz0012 (w)</option><option value='1937'>G2 504 (L.Grey)</option><option value='1938'>G2 266 (Orange)</option><option value='1939'>G2 135 (Red)</option><option value='1940'>G2 814 (Maroon)</option><option value='1942'>RZ0002-SP</option><option value='1943'>RZ0003-SP</option><option value='1944'>RZ0004-SP</option><option value='1945'>RZ0005-SP</option><option value='1946'>RZ0006-SP</option><option value='1947'>RZ0007-SP</option><option value='1948'>RZ0008-SP</option><option value='1949'>RZ0009-SP</option><option value='1950'>RZ0010-SP</option><option value='1951'>RZ0011-SP</option><option value='1952'>RZ8018-MP</option><option value='1953'>RZ6044-MP</option><option value='1954'>RZ8020-MP</option><option value='1955'>RZ3040-MP</option><option value='1956'>RZ5005-MP</option><option value='1957'>RZ6043-MP</option><option value='1958'>RZ1058-MP</option><option value='1959'>RZ1021-MP</option><option value='2019'>Custom 0.50</option></select></li><li id='opt131'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Color Chart 2 ---</option><option value='1960'>EU1 Meico Silver</option><option value='1961'>EU2 M.Silver</option><option value='1962'>EU3 Pearl White</option><option value='1963'>EU4 P.White/RZ0001</option><option value='1964'>EU5 M.Brown</option><option value='1965'>EU6 M.Gold</option><option value='1966'>EU7 P.Blue</option><option value='1967'>EU8 Charcoal</option><option value='1968'>EU9 L.Grey</option><option value='1969'>EU10 Autumn</option><option value='1970'>EU11 Br. Red</option><option value='1971'>EU12 S.Orange</option><option value='1972'>EU13 P.Green</option><option value='1973'>EU14 Viva Red</option><option value='1974'>EU15 HG.Yellow</option><option value='1975'>EU16 Cream</option><option value='1976'>EU17 Beige</option><option value='1977'>EU18 Apple Green</option><option value='1978'>EU19 P.Black/RZ0012</option><option value='1979'>Customn</option><option value='1980'>Customer Own Paint</option><option value='1981'>G2 402 (White)</option><option value='1982'>G2 504 (L.Grey)</option><option value='1983'>G2 266 (Orange)</option><option value='1984'>G2 135 (Red)</option><option value='1985'>G2 814 (Maroon)</option><option value='1987'>RZ0002-SP</option><option value='1988'>RZ0003-SP</option><option value='1989'>RZ0004-SP</option><option value='1990'>RZ0005-SP</option><option value='1991'>RZ0006-SP</option><option value='1992'>RZ0007-SP</option><option value='1993'>RZ0008-SP</option><option value='1994'>RZ0009-SP</option><option value='1995'>RZ0010-SP</option><option value='1996'>RZ0011-SP</option><option value='1997'>RZ8018-MP</option><option value='1998'>RZ6044-MP</option><option value='1999'>RZ0820-MP</option><option value='2000'>RZ3040-MP</option><option value='2001'>RZ5005-MP</option><option value='2002'>RZ6043-MP</option><option value='2003'>RZ1058-MP</option><option value='2004'>RZ1021-MP</option><option value='2018'>Custom 0.50</option></select></li></ul><div id='entryDiv' style='display: none;overflow:scroll;'><div id='mfg_transactionModuleEntry' class='entryScreen'>
+<form id='entryForm' method='POST'><div class='tabs'><ul><li><a href='#tabs-1'>General</a></li><li><a href='#tabs-2'>Web Information</a></li><li><a href='#tabs-3'>Customer Information</a></li></ul><div id='tabs-1'><table width='100%' class='validateForm listTable'><tr><th>Transaction No.</th><td><input type='text' id='transno' name='transno' class='' size='20' maxlength='50' value=''  readonly='readonly' /></td><th>Job Code</th><td><input type='text' id='jobcode' name='jobcode' class='' size='20' maxlength='50' value='' readonly='readonly' /></td></tr><tr><th>Customer</th><td><input type='hidden' name='customerid'/><input type='text' id='customerid_value' name='customerid_value' class='validate[required] entryfocus customer-autosuggest' size='30' value=''/></td><th>Customer Type</th><td><select name='custtype' id='custtype' class=''><option value=''></option><option value='D'>Dealer</option><option value='C'>Client</option><option value='P'>Public</option></select></td></tr><tr><th>Customer Ref. No.</th><td><input type='text' id='custrefno' name='custrefno' class='' size='20' maxlength='50' value=''/></td><th>Attn.</th><td><input type='text' id='attn' name='attn' class='' size='40' maxlength='100' value=''/></td></tr><tr><th>Terms</th><td><select name='terms' id='terms' class='validate[required]'><option value=''></option><option value='0'>Cash</option><option value='30'>30 Days</option><option value='45'>45 Days</option><option value='60'>60 Days</option><option value='90'>90 Days</option></select></td><th> </th><td> </td></tr><tr><th>Delivery Detail</th><td><textarea id='comment' name='comment' class='' cols='35' rows='5' ></textarea></td><th>Sales Date</th><td><input type='text' id='salesdate' name='salesdate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>Salesperson</th><td><select class='validate[required]' id='salesby' selected name='salesby'><option value=''>--- Representative ---</option></select></td><th>Delivery Date</th><td><input type='text' id='deliverydate' name='deliverydate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>GST Code</th><td><select name='gst_code' id='gst_code'><option value=''></option><option value='TX'>TX</option></select></td><th>GST Amount</th><td><input type='text' id='gst_amt' name='gst_amt' size='10' maxlength='10' value='' readonly='readonly'/></td></tr><tr><th>Status</th><td><select name='status' id='status' class='validate[required]'><option value=''></option><option value='1'>Quotation</option><option value='2'>Order Confirmation</option><option value='3'>Invoice</option><option value='4'>Delivery Order</option><option value='0'>Cancel Order</option></select></td><th nowrap> </th><td> </td></tr><tr><td colspan='4'>&nbsp;</td></tr><tr><th>Discount</th><td><input type='text' name='discount' id='discount'></td><th>Total</th><td><input type='hidden' name='grandtotal' id='grandtotalinput'><span id='grandtotal'></span></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='customerid_ori' name='customerid_ori' value=''/><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='transid' name='transid' value=''/><input type='hidden' id='shippingmethod' name='shippingmethod' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/></div><div id='tabs-2'><table width='100%' class='validateForm listTable'><tr><th>Web Client</th><td><input type='hidden' name='clientid'/><input type='text' id='clientid_value' name='clientid_value' class='clientuser-autosuggest' size='40' value=''/></td><th></th><td></td></tr><tr><th>Payment Method</th><td><select name='paymentmethod' id='paymentmethod' class=''><option value=''></option><option value='CC'>Credit Card</option><option value='OT'>Online Transfer</option><option value='COD'>Cash On Delivery</option></select></td><th>Shipping or Transportation Charge</th><td><input type='text' id='shippingcharge' name='shippingcharge' class='' size='10' maxlength='9' value=''/></td></tr></table></div><div id='tabs-3'><table width='100%' class='validateForm listTable'><tr><th>Notes</th><td><textarea id='note' name='note' cols='100' rows='30' readonly></textarea></td></tr></table></div></div><table id='mfgtdEntryTable' class='listTable sortable detail-listingTable'><thead><tr><td colspan='12' id='controlBar'><a href='#' class='paginate_button tip' title='Delete' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.clone.add.custom' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Measurement (w x h)</th><th>Sqft / Unit</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Sub Total</th><th>Option1</th><th>Option2</th><th>Option3</th><th>Remark</th></tr>
+<tr style='display: none' id='mfgtdClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfgtdrow-status' value='X' /><input type='hidden' id='mfgtdtransdetailid' name='mfgtdtransdetailid' value=''/><input type='hidden' id='mfgtdtransid' name='mfgtdtransid' value=''/><input type='hidden' id='mfgtdcustomisedata' name='mfgtdcustomisedata' value=''/><input type='hidden' id='mfgtdgrpcode' name='mfgtdgrpcode' value=''/><input type='hidden' id='mfgtdstatus' name='mfgtdstatus' value=''/><input type='hidden' id='mfgtdcusttransdetailid' name='mfgtdcusttransdetailid' value=''/><input type='hidden' id='mfgtdprodname' name='mfgtdprodname' value=''/><input type='hidden' id='mfgtdwidth' name='mfgtdwidth' value=''/><input type='hidden' id='mfgtddepth' name='mfgtddepth' value=''/><input type='hidden' id='mfgtdheight' name='mfgtdheight' value=''/><input type='hidden' id='mfgtdposition' name='mfgtdposition' value=''/></td><td><span name='mfgtdprodid' class='editlink'></span><input type='hidden' name='mfgtdprodid' value=''/></td>
+<td><span name='mfgtdmeasurement' class=''></span><input type='hidden' name='mfgtdmeasurement' value=''/></td>
+<td><span name='mfgtdunit' class=''></span><input type='hidden' name='mfgtdunit' value=''/></td>
+<td><span name='mfgtdqty'></span><input type='hidden' name='mfgtdqty' value=''/></td>
+<td><span name='mfgtdprice' class=''></span><input type='hidden' name='mfgtdprice' value=''/></td>
+<td><span name='mfgtddiscount' class=''></span><input type='hidden' name='mfgtddiscount' value=''/></td>
+<td><span name='mfgtdsellsubtotal' class=''></span><input type='hidden' name='mfgtdsellsubtotal' value=''/></td>
+<td><span name='mfgtdopt1' class=''></span><input type='hidden' name='mfgtdopt1' value=''/></td>
+<td><span name='mfgtdopt2' class=''></span><input type='hidden' name='mfgtdopt2' value=''/></td>
+<td><span name='mfgtdopt3' class=''></span><input type='hidden' name='mfgtdopt3' value=''/></td>
+<td><span name='mfgtdremark' class=''></span><input type='hidden' name='mfgtdremark' value=''/></td>
+</tr></thead><tbody id='mfgtdEntryTableBody' class='validateForm'></tbody></table><br></form></div>
+</div><script>var _companyid = 'ekc';
+var productMainjson = {"data":{"prod0":{"customformula":"","sellunittype":"","customise":"","minorder":"0","name":"[Custom Product]","prodid":"0"}}};
+var productOptionjson = {"data":{"prod13":"10","prod436":"56,11","prod592":"15,11","prod569":"15,11","prod598":"15","prod49":"15,11","prod408":"55","prod54":"44,45","prod513":"11","prod124":"44","prod407":"11","prod593":"15,11","prod435":"10,11","prod421":"15,11","prod530":"55","prod519":"55","prod405":"11","prod509":"56,11,43","prod2":"15,11","prod46":"10,11","prod602":"15,11","prod599":"15,11","prod15":"10,11","prod128":"44","prod603":"15,11","prod38":"15,11","prod518":"55","prod406":"11","prod114":"44","prod469":"15,11","prod483":"55","prod641":"15,11","prod414":"131,11","prod77":"56,11","prod484":"55","prod462":"56,11","prod505":"11","prod119":"45","prod12":"10","prod412":"11","prod92":"11","prod426":"15,11","prod468":"56,11","prod640":"15,11","prod102":"44","prod533":"55","prod539":"107,11","prod70":"43","prod451":"15,11","prod14":"10","prod528":"55","prod125":"44","prod523":"55","prod512":"55","prod524":"55","prod98":"44","prod53":"44,45","prod532":"55","prod611":"15,11","prod403":"11","prod475":"15,11","prod123":"54","prod525":"55","prod638":"15,11","prod389":"10,11","prod69":"55","prod534":"15,11","prod461":"15,11","prod76":"56,11","prod130":"45","prod527":"55","prod131":"44","prod99":"45","prod537":"107,11","prod446":"56,11","prod637":"15,11","prod470":"15,11","prod51":"43","prod464":"15,11","prod608":"55","prod476":"107,11","prod522":"55","prod600":"15,11","prod645":"15,11","prod449":"56,11","prod480":"56,11","prod610":"15,11","prod574":"56,11","prod465":"56,11","prod21":"15,11","prod10":"10","prod422":"55","prod104":"44","prod108":"44","prod486":"55","prod467":"15,11","prod531":"55","prod75":"56,11","prod20":"15,11","prod78":"56,11","prod526":"55","prod644":"10","prod570":"15,11","prod616":"15,11","prod605":"15,11","prod84":"15,11","prod101":"54","prod613":"15,11","prod497":"15,11","prod520":"55","prod129":"44","prod71":"44","prod643":"10","prod564":"131,11","prod434":"15,11","prod589":"15,11","prod455":"15,11","prod485":"55","prod614":"15,11","prod604":"15,11","prod506":"15,11","prod107":"15,11","prod68":"44,45","prod601":"15,11","prod639":"15,11","prod567":"15","prod591":"15,11","prod444":"56,11","prod588":"15,11","prod72":"54","prod205":"107,11","prod590":"15,11","prod445":"107,11","prod496":"107,11","prod568":"15","prod612":"15,11","prod548":"11","prod85":"55","prod48":"55"}};
+var productOptionPriceJson = {};
+</script></div>
+
+			
+
+<div id='CustomiseDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<table width='100%' class='listTable'>
+		<thead>
+			<tr>
+				<th>
+					Panel:<input type='textbox' size='5' name='col' style='text-align: right;'>  &nbsp;&nbsp;&nbsp;					
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id='customiseContent'></td></tr>
+		</tbody>
+	</table>
+</div>
+
+<div id='approvalDialog' class='dialogView' style='width: 500px; height:60px;display: none' title="Authorization">
+	<table id='customCloneAddTable' width='100%' class='listTable'>
+		<thead>
+		<tr><th colspan="2" id="authorizeMsg"></th></tr>
+		</thead>
+		<tr><th>User ID</th><td><input type="text" name="userid" id="userid" /></td></tr>
+		<tr><th>Password</th><td><input type="password" name="password" id="password" /></td></tr>
+	</table>
+</div>
+
+<div id='customCloneAddDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<form id="customCloneAddForm" class="validateForm">
+		<input type="hidden" id="mfgtdtransdetailid" name="mfgtdtransdetailid" value="">
+		<input type="hidden" id="mfgtdcustomisedata" name="mfgtdcustomisedata" value="">
+		<input type="hidden" id="mfgtdcost" name="mfgtdcost" value="">
+		<input type="hidden" id="mfgtdcostsubtotal" name="mfgtdcostsubtotal" value="">		
+		<input type='hidden' id="mfgtdwidth" name='mfgtdwidth' value="">
+		<input type='hidden' id="mfgtdheight" name='mfgtdheight' value="">
+		<input type="hidden" id="mfgtdstatus" name='mfgtdstatus' value="A">
+		
+		<table id='customCloneAddTable' width='100%' class='listTable'>
+			<col width="130">
+			<col width="250">
+			<col width="100">
+			<col width="250">
+			<tr>
+				<th>Product</th>
+				<td>
+					<select id='mfgtdprodid' selected name='mfgtdprodid'><option value=''>--- Product ---</option><OPTGROUP LABEL='Others'><option value='0'>[Custom Product]</option></select></OPTGROUP> 
+					<div id='chargeProduct'></div>
+				</td>
+				<th>Custom Name</th>
+				<td><input type='text' id='mfgtdprodname' name='mfgtdprodname' class='' size='40' maxlength='200' value=''/></td>
+			</tr>
+			<tr>
+				<th>Measurement <br>(w x h)</th>				
+				<td>
+					<input type='text' id='mfgtdmeasurement' name='mfgtdmeasurement' class='' size='30' maxlength='50' value=''/>
+					<a href="#" id="customizeLink" style="display:none;color:#000000;">Customize</a>
+				</td>
+				<th>Quantity</th>
+				<td><input type='text' id='mfgtdqty' name='mfgtdqty' class='validate[required]' size='8' maxlength='10' value=''/></td>
+			</tr>
+			<tr>
+				<th>Option 1</th>
+				<td id="mfgtdopt1"></td>
+				<th>Option 2</th>
+				<td id="mfgtdopt2"></td>
+			</tr>
+			<tr>
+				<th>Option 3</th>
+				<td id="mfgtdopt3"></td>
+				<th></th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>SqFt / Unit</th>
+				<td><input type='text' id='mfgtdunit' name='mfgtdunit' class='' size='8' maxlength='15' value=''/></td>
+				<th>Unit Price</th>
+				<td><input type='text' id='mfgtdprice' name='mfgtdprice' class='' size='8' maxlength='15' value=''/> <span id="customprice" style="display: none;font-weight: bold;"></span></td>
+			</tr>
+			<tr>
+				<th>Discount</th>
+				<td><input type='text' id='mfgtddiscount' name='mfgtddiscount' class='' size='8' maxlength='15' value=''/></td>
+				<th>Subtotal</th>
+				<td><input type='text' id='mfgtdsellsubtotal' name='mfgtdsellsubtotal' class='' size='10' maxlength='15' value=''/></td>
+			</tr>
+			<tr>
+				<th>Width (mm)</th>
+				<td>
+					<span id="mfgtdwidth"></span>
+					
+				</td>
+				<th>Height (mm)</th>
+				<td>
+					<span id='mfgtdheight'></span>					
+				</td>
+			</tr>
+			<tr>
+				<th>Remarks</th>
+				<td colspan="3">
+					<input type="text" id='mfgtdremark' name='mfgtdremark' size="70">
+				</td>				
+			</tr>			
+		</table>
+	</form>
+</div>
+	
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+
+<script type="text/javascript">
+	var customEntryButton = {};	
+	var editTR;
+	var isEditing = false;
+	var productPricejsonArray = [];
+	
+	function beforeAdd(){
+		productPricejsonArray = [];
+	}
+	function afterJson(json){
+		if(_companyid=='megatrend' && (json.rc=='0' || json.rc=='1')){
+			alert("Please remember to update this invoice at Eurotrend");
+		}
+	}
+	
+	function calculateTotal(){
+		var price, discount;
+		var grandtotal = 0;
+		var globaldiscount = $("#entryForm").find("input[name=discount]").val().trim();
+		var gstCode = $("#entryForm").find("select[name=gst_code]").val();
+		var status = "";
+		// If Percentage
+		var perc = 0;	
+		if(globaldiscount.indexOf("%")!=-1){
+			perc = parseFloat(globaldiscount.substring(0,globaldiscount.length-1));
+		}	
+		if(globaldiscount==''){
+			globaldiscount=0;
+		}	
+				
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			status = $(this).find("input[name$=row-status]").val();
+			if(status!='D'){
+				price = parseFloat($(this).find("input[id$=sellsubtotal]").val());			
+				grandtotal += price;
+			}			
+		});
+		
+		if(perc>0){
+			globaldiscount = grandtotal * (perc / 100);
+		}
+		globaldiscount = ajaxUtil.roundNumber(parseFloat(globaldiscount),2);
+				
+		//alert("grandtotal = "+grandtotal+", globaldiscount="+globaldiscount);
+		var gstTotal = (grandtotal-globaldiscount) * 0.06;
+		if(gstCode==""){
+			gstTotal = 0;
+		}
+		
+		var finalTotal = ajaxUtil.roundNumber(grandtotal-globaldiscount+gstTotal,2);
+		//alert("gstTotal = "+gstTotal);
+		$("#entryForm").find("#gst_amt").val(ajaxUtil.roundNumber(gstTotal, 2));
+		$("#entryForm").find("#grandtotal").html(finalTotal);
+		$("#entryForm").find("#grandtotalinput").val(finalTotal);
+		$("#entryForm").find("input[name=discount]").val(globaldiscount);
+	}
+	
+	// Get new set of price list when change customer or type.
+	function reCalculatePrice(){
+		var mainForm = $("#entryForm");
+		var prodidArray = [];
+		var isFactoryArray = [];
+		var prodid, price, discount;
+		var reCalculate = false;
+		
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			prodid = $(this).find("input[id$=prodid]").val();
+			price = parseFloat($(this).find("input[id$=price]").val());
+			discount = parseFloat($(this).find("input[id$=discount]").val()); 
+			if(prodid!='0' && price==0 && discount==0){
+				reCalculate = true;
+			}
+		});
+		if(reCalculate){
+			var prodJson;
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=prodid]").each(function(i){
+				if($(this).val()!='0'){
+					prodJson = eval('productMainjson.data.prod'+$(this).val());					
+					prodidArray.push($(this).val());
+					isFactoryArray.push(prodJson.factory);
+				}
+			});
+		}else{
+		 	return;
+		}		
+		ajaxUtil.showPanel("", "Recalculating...", null);	
+		var query = "return=json&action1=priceenq";
+		query += "&customerid="+mainForm.find("input[name=customerid]").val();
+		query += "&custtype="+mainForm.find("select[name=custtype]").val();
+		query += "&prodid="+prodidArray;		
+		query += "&factory="+isFactoryArray;
+		
+		ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+			handleCheckPriceCallback(json);
+			mfgUtil.doCalculate($("#mfgtdEntryTableBody"));
+			calculateTotal();
+		}, adminUtil.handleFallback);
+	}
+	
+	function showCustomPriceSpan(priceJson){
+		var unit = $("#customCloneAddForm #mfgtdunit").val();			
+		
+		if(priceJson){					
+			for (p in priceJson) {    
+				if(	priceJson[p].orderto >= unit){				
+					if(priceJson[p].original!=priceJson[p].price){
+						//$("#customprice").html("Original Price ["+priceJson[p].original+"]");
+						$("#customprice").html("Custom Price");
+						$("#customprice").show();
+						$("#mfgtdprice").attr("style","background-color:#E1F5A9;font-weight:bold;");
+					}else{
+						$("#customprice").hide();
+						$("#mfgtdprice").attr("style","");
+					}
+				}								
+				break;
+			}																										
+		}	
+	}
+	
+	function checkPrice(){
+		var form = $("#customCloneAddForm");
+		var mainForm = $("#entryForm");
+		var prodid = form.find("select[name$=prodid]").val();
+		var prodJson = eval('productMainjson.data.prod'+prodid);		
+		if(!productPricejsonArray[prodid]){
+			ajaxUtil.showPanel("", $('#js-processing-request').html(), null);
+			var query = "return=json&action1=priceenq";
+			query += "&customerid="+mainForm.find("input[name=customerid]").val();
+			query += "&custtype="+mainForm.find("select[name=custtype]").val();
+			query += "&prodid="+prodid;
+			query += "&factory="+prodJson.factory;
+			form.find("input[id$=qty]").focus();			
+			ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+				handleCheckPriceCallback(json);
+				mfgUtil.doCalculate($("#customCloneAddForm"));
+				showCustomPriceSpan(productPricejsonArray[prodid]);				
+			}, adminUtil.handleFallback);
+		}else{
+			mfgUtil.doCalculate($("#customCloneAddForm"));
+			showCustomPriceSpan(productPricejsonArray[prodid]);
+		}			
+	}
+	
+	function handleCheckPriceCallback(json) {										
+		//var prodid = $("#customCloneAddForm").find("select[name$=prodid]").val();
+				
+		for (id in json.data) {
+			prodid = id.substr(4);
+			productPricejsonArray[prodid] = eval('json.data.'+id);							
+		}
+		
+		ajaxUtil.hidePanel();
+		/*
+		for(var i=0; i<len; i++){
+			prodid = json.prod[i].prodid;			
+			productPricejsonArray[prodid] = json.prod[i];				
+			productPricejson = json.prod[i];
+		}
+		
+		mfgUtil.doCalculate($("#customCloneAddForm"));		
+		*/
+	}
+	
+	// For Customer
+	var lastCustomerEnter='';
+	function processAfterAutoComplete(json){	
+		var form = $("#entryForm");
+		var customerid = form.find("input[name=customerid]").val();
+		var customerid_ori = form.find("input[name=customerid_ori]").val();
+		var custtype = form.find("select[name=custtype]").val();
+		form.find("input[name=attn]").val(json.contactperson);				
+		form.find("select[name=salesby]").val(json.salesby);
+		form.find("select[name=terms]").val(json.terms);
+		form.find("select[name=custtype]").val(json.type);		
+		$("textarea[name=note]").val(json.note);					
+		customerid_ori = (customerid_ori=='')?lastCustomerEnter:customerid_ori;				
+		if((customerid_ori!='' && customerid!=customerid_ori) || custtype!=json.type){		
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){				
+				$(this).val("0");
+			});
+			reCalculatePrice();
+		}			
+		
+		lastCustomerEnter = customerid;
+		
+		var query = "return=json&action1=chkoutstanding";
+		query += "&customerid="+lastCustomerEnter;
+		
+		ajaxUtil.postJsonQuery("customer.htm", query, function(json){
+			//var totalOutStanding = parseFloat(json.data.monththerest); Customer request to change to 61 Days. 4/2/2015
+			var totalOutStanding = parseFloat(json.data.minus3month) + parseFloat(json.data.monththerest);			
+			if(totalOutStanding>0){
+				authorizationLogin(totalOutStanding);								
+			}			
+		}, adminUtil.handleFallback);		
+	}
+	
+	var authorizedFlag = false;
+	
+	function authorizationLogin(totalOutStanding){
+		authorizedFlag = false;
+		$("#userid").val("");
+		$("#password").val("");
+		
+		$("#authorizeMsg").html("More than 3 months overdue: RM "+totalOutStanding+", manager authorization required.");
+		var dialog_buttons = {};
+		
+		dialog_buttons["Authorize"] = function(){		
+			var loginQuery = "return=json&action1=authorization&usergroup=1&userid="+$("#userid").val()+"&password="+$("#password").val();	
+			ajaxUtil.postJsonQuery("login.htm", loginQuery, function(json){				
+				if(json.rc!="0"){
+					alert("Authorization Failed. Please check again.");	
+				}else{
+					authorizedFlag = true;
+					$("#approvalDialog").dialog('close');
+				}								
+			}, adminUtil.handleFallback);			
+			return;																
+		}; 
+		$("#approvalDialog").dialog({
+  			close: function( event, ui ) {
+  				if(authorizedFlag==false){
+  					adminUtil.hideEntryEvent();
+  				}
+  			}  			
+		});
+		if($("#entryForm").find("input[name=customerid_value]").val()!="cash"){
+			$("#approvalDialog").dialog({'buttons': dialog_buttons, 'height': 300});
+			$("#approvalDialog").dialog('open');
+		}
+	}
+	
+	function processEdit(json){
+		productPricejsonArray = [];
+		mfgUtil.fieldDefault($('tbody[id=mfgtdEntryTableBody]').find("tr"), true);		
+		mfgUtil.createGroup(json);
+		reCalculatePrice();
+		calculateTotal();
+	}
+	
+	function beforeSave(){		
+		mfgUtil.updateGroup();
+	}
+	
+	function customCloneAdd(buttonName){
+		var dialog_buttons = {};		
+		dialog_buttons[buttonName] = function(){
+			var newClone;			
+			if(isEditing){				
+				newClone = editTR;
+			}else{
+				newClone = adminUtil.rowClone($("#mfgtdEntryTableBody"),false);
+			}
+			var srcName, srcValue, srcType, trgtObj;
+		
+			$("#customCloneAddForm").find("input, select").each(function(i){
+				srcName = $(this).attr("name");
+				srcType = $(this).attr("type");
+				srcValue = $(this).val();				
+				trgtObj = newClone.find("input[name="+srcName+"]");				
+				trgtObj.val(srcValue);
+				
+				if(trgtObj.attr("type")=="hidden"){					
+					if(srcType=='select-one' && srcValue!=""){							
+						if("mfgtdprodid"==srcName && srcValue=="0"){
+							srcValue = $("#customCloneAddForm").find("#mfgtdprodname").val() + " " + $(this).find("option:selected").text();
+						}else{																
+							srcValue = $(this).find("option:selected").text();
+						}						
+					}										
+					newClone.find("span[name="+srcName+"]").html(srcValue);
+				}				
+			});
+			
+			// Reset			
+			resetField();
+	   		
+	   		if("Update"==buttonName){
+	   			$("#customCloneAddDialog").dialog('close');
+	   		}	   		
+	   		
+	   		calculateTotal();
+		};			
+		
+		mfgUtil.fieldDefault($("#customCloneAddForm"), false);		
+		
+		$("#customCloneAddDialog").dialog('option', 'buttons', dialog_buttons);		
+		$("#customCloneAddDialog").dialog('open');
+	}
+	
+	function customCloneEdit(tr){
+		editTR = tr;
+		var srcName, srcType, srcValue, trgtObj;
+
+		isEditing = true;
+		srcValue = tr.find("input[name$=prodid]").val();		
+		trgtObj = $("#customCloneAddForm").find("[name$=prodid]");		
+		trgtObj.val(srcValue);				
+		mfgUtil.loadProductOption(srcValue);
+		
+		tr.find("input, select").each(function(i){
+			srcName = $(this).attr("name");
+			srcType = $(this).attr("type");
+			srcValue = $(this).val();			
+			trgtObj = $("#customCloneAddForm").find("[name="+srcName+"]");
+			trgtObj.val(srcValue);						
+			if("hidden"==trgtObj.attr("type")){
+				trgtObj = $("#customCloneAddForm").find("span[name="+srcName+"]");
+				if(trgtObj)	trgtObj.html(srcValue);
+			}									
+		});			
+		if($("#customCloneAddForm").find("[name$=price]").val()==0){			
+			mfgUtil.calculate($("#customCloneAddForm"));
+		}
+		// Show customise link
+		if($("#customCloneAddForm").find("[name$=customisedata]").val()!=""){
+			$("#customizeLink").show();
+		}
+		customCloneAdd("Update");
+	}
+	
+	function resetField(){
+		//$("#customizeLink").hide();
+		// Reset Fields			   		  				   
+   		$("#customCloneAddForm").find('input:not([name$=status])').val('');
+   		$("#customCloneAddForm").find('#mfgtdwidth').html('');
+   		$("#customCloneAddForm").find('#mfgtdheight').html('');
+   		$("#customprice").hide();
+   		$("#mfgtdprice").attr("style","");
+	}
+	
+	function afterCloneDelete(){		
+		calculateTotal();
+	}
+	
+	function pageInit(){
+		$("#sortable").sortable();	
+		$("#sortable").disableSelection();	
+		
+		$("#customizeLink").click(function(event){
+			mfgUtil.buildTableEntry($(event.target));
+			event.preventDefault();
+		});
+   		/*
+		customEntryButton['Calculate'] = function(){
+			calculateAll(); // custom.js
+			mfgUtil.updateGroup();
+		};			
+		*/
+		$("tr[id$=Clone]").find("input[name*='opt']").each(function(i){						
+			$(this).parent().attr("id", $(this).attr("id"));		
+			//$(this).parent().empty();	
+		});		
+		
+		$("#mfg_transactionModuleEntry").bind("click", function(event){						
+			var element = event.target;
+			if(element.id=='action.clone.add.custom'){
+				// Reset Fields			   		  				   
+		   		resetField()
+		   		$("#customCloneAddForm").find("[name$=prodid]").change();		
+		   		isEditing = false;		
+				customCloneAdd("Add");	
+				event.preventDefault();	return;
+			}					
+		});
+		
+		// Click to Edit 
+		$('tbody[id=mfgtdEntryTableBody]').bind("click", function(event){						
+			var element = event.target;
+			// Reset Fields			   		  		
+			if($(element).attr("name")=="mfgtdprodid"){	   
+		   		resetField()
+		   		isEditing = true;
+				customCloneEdit($(element).parents("tr"));
+				event.preventDefault();	return;
+			}			
+		});
+		
+		$("#mfg_transactionModuleEntry").find("select[id=custtype]").bind("change", (function(event){
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){				
+				$(this).val("0");
+			});
+			
+			reCalculatePrice();
+		}));		
+		
+		$("#mfg_transactionModuleEntry").find("input[name=discount], select[name=gst_code]").bind("change", function(event){							
+			calculateTotal();		
+		});
+				
+	}
+	
+	$(document).ready(pageInit());
+</script>
+<style>
+	.customPanel{
+		border:double;		
+	}
+	#optSpan{		 
+		 width: 100%;
+		 height: 100%;
+	}
+	#customContainer input{
+		 text-align: right;  		  
+	}
+	
+	.customSpan{
+		border-style: ridge;
+		border-width: 2px;
+		float:left;
+		background: #002233;	
+		color: #fff;	
+	}
+	
+	.headerSpan{
+		border: none;
+		float:left;
+		background: #FFF;
+	}
+	#chargeOpt, #chargeProduct{
+		font-weight: bold;
+	}
+	
+	#customCloneAddTable{font-size:1em;}
+	
+	#CustomiseDialog{
+		font-size: 0.8em;
+	}
+</style>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

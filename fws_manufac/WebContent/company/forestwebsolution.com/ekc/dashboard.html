@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li>EK Concept</li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">DASHBOARD</h2>	
+		
+		
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+				
+	<!-- 100% Box Grid Container: Start -->
+	<div class="grid_24">
+	
+		<!-- Box Header: Start -->
+		<div class="box_top">		
+			<h2 class="icon graph">Monthly Sales Summary</h2>		
+		</div>
+		<!-- Box Header: End -->
+		<!-- Box Content: Start -->
+		<div id="SALESDAY" class="box_content">
+		</div>
+		<!-- Box Content: End -->
+		
+	</div>
+	<!-- 100% Box Grid Container: End -->
+	
+	
+	<!-- 100% Box Grid Container: Start -->
+	<div class="grid_24">
+	
+		<!-- Box Header: Start -->
+		<div class="box_top">		
+			<h2 class="icon graph">Yearly Sales Summary</h2>		
+		</div>
+		<!-- Box Header: End -->
+		<!-- Box Content: Start -->
+		<div id="SALESMONTH" class="box_content">
+		</div>
+		<!-- Box Content: End -->
+		
+	</div>
+	<!-- 100% Box Grid Container: End -->
+
+			
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+	<script type="text/javascript" src="http://www.forestwebsolution.com/components/charts/FusionCharts.js"></script>
+	<script type="text/javascript">
+	    function loadChartData(module, chartObj){
+	    	var query = "mod="+module+"&return=json";
+	    	
+	    	ajaxUtil.postJsonQuery("chart.htm", query, function(json){
+	    		//alert(module + " = "+ json.content);	    
+	    		chartObj.setDataXML(json.content);     
+		        chartObj.render(module);		    		
+	    	}, adminUtil.handleFallback);
+	    }
+
+	    function initChart(){
+	    	var chartArray = [["SALESMONTH","900","300"], ["SALESDAY","900","300"]];
+	    	var stackedChartArray = [];
+	    	var chartObj;
+	    	var stackedChartObj;
+	        
+/*
+			var data = "<chart caption='Monthly Sales Summary' subcaption='For the year 2012' xAxisName='Month' yAxisName='Sales' numberPrefix='RM' formatNumberScale='0'><set label='Jan' value='1000000.00' /><set label='Feb' value='1500000.00' /></chart>";	        	        
+	        chartObj = new FusionCharts("/components/charts/Column3D.swf", 
+	        	"chart"+chartArray[0][0], chartArray[0][1], chartArray[0][2], "0", "1");
+	    	chartObj.setDataXML(data);     
+		    chartObj.render(chartArray[0][0]);
+		    
+		    data = "<chart caption='Sales Summary for Feb 2012' subcaption='' xAxisName='Day' yAxisName='Sales' numberPrefix='RM' formatNumberScale='0'><set label='1' value='1000' /><set label='2' value='2000' /><set label='3' value='3000' /><set label='4' value='4000' /><set label='6' value='5000' /><set label='8' value='6000' /><set label='9' value='7000' /><set label='10' value='8000' /><set label='11' value='4000' /><set label='13' value='10000' /><set label='14' value='15000' /><set label='15' value='7000' /><set label='16' value='12000' /><set label='17' value='9000' /><set label='20' value='20000' /><set label='21' value='11000' /><set label='22' value='8200' /></chart>";
+			chartObj = new FusionCharts("/components/charts/Column3D.swf", 
+	        	"chart"+chartArray[1][0], chartArray[1][1], chartArray[1][2], "0", "1");
+	    	chartObj.setDataXML(data);     
+		    chartObj.render(chartArray[1][0]);
+*/		    
+		        
+	        // Normal 3D
+	        for(var i=0; i<chartArray.length; i++){	        	
+	        	chartObj = new FusionCharts("http://www.forestwebsolution.com/components/charts/Column3D.swf", 
+	        	"chart"+chartArray[i][0], chartArray[i][1], chartArray[i][2], "0", "1");	        	
+		        loadChartData(chartArray[i][0], chartObj);
+	        }	 
+	        
+	        // Stacked 3D
+	        for(var i=0; i<stackedChartArray.length; i++){	        	
+	        	stackedChartObj = new FusionCharts("http://www.forestwebsolution.com/components/charts/StackedColumn3D.swf", 
+	        	"chart"+stackedChartArray[i][0], stackedChartArray[i][1], stackedChartArray[i][2], "0", "1");
+	        	loadChartData(stackedChartArray[i][0], stackedChartObj);
+	        }      	       
+	        
+	    }
+
+    	function initDashBoard(){    
+						
+			initChart();
+			
+    	}    	    
+    	jQuery(document).ready(initDashBoard);	
+	</script>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

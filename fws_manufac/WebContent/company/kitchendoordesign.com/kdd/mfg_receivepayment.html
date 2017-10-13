@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/blue.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/blue.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_supplierproduct.html' class='icon list'>Supplier Product</a></li><li><a href='mfg_supplierprodoption.html' class='icon list'>Supplier Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/megaeuro/'>MEGA TREND</a></li><li>KDD</li><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li><li><a id='companygrplink' href='/xp/'>Panel Xpress</a></li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Receive Payment - Kitchen Door Design</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li><li><a href="#" id="btnPrint">Print</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id="mfg_receivepaymentModule" class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_receivepayment' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='10' id='controlBar'><a href='#' class='paginate_button tip' title='Remove Record' id='action.delete'>Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord'>Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Receipt No</th><th>Customer</th><th>Pay Type</th><th>Pay Date</th><th>Ref No</th><th>Amount</th><th>Last Update</th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><div id='entryDiv' style='display: none;overflow:scroll;'><div id="mfg_receivepaymentModuleEntry" title='Receive Payment - Kitchen Door Design' class="entryScreen">
+<form id='entryForm' method='POST' autocomplete='off'><table id='entryFormTable' width='100%' class='validateForm listTable'><col width='15%'><col /><tr><th>Receipt No</th><td><input type='text' id='rpayno' name='rpayno' class='' size='10' maxlength='12' value='' readonly='readonly' /></td></tr><tr><th>Customer</th><td><input type='hidden' name='customerid'/><input type='text' id='customerid_value' name='customerid_value' class='validate[required] customer-autosuggest' size='40' value=''/></td></tr><tr><th>Pay Type</th><td><select name='paytype' id='paytype' class=''><option value='1'>Cheque</option><option value='2'>Cash</option><option value='3'>Credit Card</option><option value='4'>Bank Transfer</option></select></td></tr><tr><th>Pay Date</th><td><input type='text' id='paydate' name='paydate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>Ref No</th><td><input type='text' id='payrefno' name='payrefno' class='' size='40' maxlength='50' value=''/></td></tr><tr><th>Amount</th><td><input type='text' id='payamount' name='payamount' class='' size='20' maxlength='15' value=''/></td></tr><tr><th>Note</th><td><textarea id='paynote' name='paynote' class='' cols='50' rows='5' ></textarea></td></tr><tr><th>Status</th><td><select name='status' id='status' class=''><option value='A'>Active</option><option value='S'>Suspended</option></select></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='rpayid' name='rpayid' value=''/><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/>
+<br><div style='width: auto; overflow:auto;'><fieldset><legend><b>Payment Detail</b></legend><table id='mfgReceivePaymentDtlEntryTable' class='listTable detail-listingTable'><thead><tr><td colspan='6' id='controlBar'></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Invoice No</th><th>Sales Date</th><th>Due Date</th><th>Amount</th><th>Pay Amount</th></tr>
+<tr style='display: none' id='mfgReceivePaymentDtlClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfgReceivePaymentDtlrow-status' value='X' /><input type='hidden' id='mfgReceivePaymentDtlrpayid' name='mfgReceivePaymentDtlrpayid' value=''/><input type='hidden' id='mfgReceivePaymentDtlrpaydtlid' name='mfgReceivePaymentDtlrpaydtlid' value=''/><input type='hidden' id='mfgReceivePaymentDtlstmtdtlid' name='mfgReceivePaymentDtlstmtdtlid' value=''/><input type='hidden' id='mfgReceivePaymentDtlcreditamount' name='mfgReceivePaymentDtlcreditamount' value=''/><input type='hidden' id='mfgReceivePaymentDtldebitamount' name='mfgReceivePaymentDtldebitamount' value=''/></td><td><input type='text' id='mfgReceivePaymentDtltransno' name='mfgReceivePaymentDtltransno' class='' size='50' maxlength='50' value='' readonly='readonly' /></td>
+<td><input type='text' id='mfgReceivePaymentDtlsalesdate' name='mfgReceivePaymentDtlsalesdate' class='' size='10' maxlength='10' value='' readonly='readonly' /></td>
+<td><input type='text' id='mfgReceivePaymentDtlduedate' name='mfgReceivePaymentDtlduedate' class='' size='10' maxlength='10' value='' readonly='readonly' /></td>
+<td><input type='text' id='mfgReceivePaymentDtlamount' name='mfgReceivePaymentDtlamount' class='' size='16' maxlength='15' value='' readonly='readonly' /></td>
+<td><input type='text' id='mfgReceivePaymentDtlpayamount' name='mfgReceivePaymentDtlpayamount' class='' size='10' maxlength='15' value='' readonly='readonly' /></td>
+</tr></thead><tbody id='mfgReceivePaymentDtlEntryTableBody' class='validateForm'></tbody></table></fieldset></div><br></form></div>
+</div></div>
+
+			
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+		
+<script type="text/javascript">
+	var suppcompanyid;
+	var _stmtTotal = 0;
+	function processAfterAutoComplete(json){		
+		var query;
+		query = "return=json" + "&" + AdminConfig.actionName + "=" + AdminConfig.actionRetrieveEdit;		
+		
+		suppcompanyid = json.companyid;
+		ajaxUtil.showPanel('', $('#js-processing-request').html(), null);
+		ajaxUtil.postJsonQuery("mfg_statement.htm", query+"&customerid="+json.key+"&status=0", callback, adminUtil.handleFallback);	
+	}		
+	
+	function callback(json){		
+		var subr = json.SUBR0.data;		
+		var md = json.SUBR0.md;
+		var toMd = "mfgReceivePaymentDtl";
+		
+		var status;
+		var mainArray;
+		var printString;
+		var cost, sell;
+		var prodoptid = "";
+		var toMainArray = new Array();
+		var rowMainArray = new Array();
+		var toSubR = new Array();
+		var fieldName = "";
+		
+		
+		for(var i=0;i<subr.length; i++){
+			mainArray = subr[i];
+			printString = "";
+			toMainArray = new Array();
+      		for (key in mainArray[0]) {     	
+      			fieldName = key.replace(md,toMd); 	
+      			toMainArray[fieldName] = mainArray[0][key];		
+			}			
+			toMainArray[toMd+"row-status"] = "N";
+			mainArray[0] = toMainArray;
+			/*
+			for (key in mainArray[0]) {     	      				
+       			printString += (key +":"+mainArray[0][key]) + '\n';   	        			 			  	       				       			 			        	
+			}
+			alert(printString);
+			*/         	
+		}		
+		json.SUBR0.md = toMd;
+		json.md = null;
+		adminUtil.handleCallback(json);
+		
+		var activeEntry = $("#"+adminUtil.activeModuleId+"Entry");
+		activeEntry.find("input[name='action1']").val(AdminConfig.actionCreate);				
+	}
+	
+	function calculateStmtTotal(){
+		var stmtTotal = 0;
+		$(".detail-listingTable tbody").find("tr").each(function(i){			
+			var payAmount = $(this).find("input[name=mfgReceivePaymentDtlpayamount]");			
+					
+			if($(this).find("[name=chkDetail]").attr("checked")){
+				stmtTotal += parseFloat(payAmount.val());
+			}
+		});
+		stmtTotal = ajaxUtil.roundNumber(stmtTotal,2);
+		_stmtTotal = stmtTotal;
+		$("#entryForm").find("input[name=payamount]").val(stmtTotal);		
+	}
+	
+	function beforeSave(){
+		$(".detail-listingTable tbody").find("tr").each(function(i){						
+			if($(this).find("[name=chkDetail]").attr("checked")==false){				
+				$(this).remove();
+			}
+		});
+	}
+	
+	function processEdit(){		
+		var subStmtAmount = 0;
+		var payAmt = 0;
+		var balAmount = 0;
+		$(".detail-listingTable tbody").find("tr").each(function(i){
+			var payAmount = $(this).find("input[name=mfgReceivePaymentDtlpayamount]");	
+			var stmtAmount = $(this).find("input[name=mfgReceivePaymentDtlamount]");
+			var rpaydtlid = $(this).find("input[name=mfgReceivePaymentDtlrpaydtlid]").val();
+			var creditAmount = $(this).find("input[name=mfgReceivePaymentDtlcreditamount]").val();
+			var debitAmount = $(this).find("input[name=mfgReceivePaymentDtldebitamount]").val();
+						
+			creditAmount = (creditAmount=='')?"0":creditAmount;
+			debitAmount = (debitAmount=='')?"0":debitAmount;
+			payAmt = payAmount.val();
+			payAmt = (payAmt=='')?"0":payAmt;
+			
+			// alert("payAmt="+payAmt+"\n"+"creditAmount="+creditAmount+"\n"+"debitAmount="+debitAmount+"\n");
+
+			if(parseFloat(payAmount.val())>0 && rpaydtlid==''){
+				// Partial Payment made
+				subStmtAmount = ajaxUtil.roundNumber(parseFloat(stmtAmount.val())-parseFloat(payAmount.val())+parseFloat(debitAmount)-parseFloat(creditAmount),2);				
+				$("<br><span><b>Original:</b> "+stmtAmount.val()+"</span>").appendTo(stmtAmount.parents("td"));
+				if(debitAmount>0){
+					$("<br><span><span><b>DN:</b> "+debitAmount+"</span>").appendTo(stmtAmount.parents("td"));
+				}
+				if(creditAmount>0){
+					$("<br><span><span><b>CN:</b> "+creditAmount+"</span>").appendTo(stmtAmount.parents("td"));
+				}
+				
+				stmtAmount.val(subStmtAmount);
+				payAmount.val("");
+				//$(this).find("[name=chkDetail]").attr("checked", "true");
+			}else{							
+				if(creditAmount>0 || debitAmount>0){
+					if(rpaydtlid==''){
+						// New payment
+						subStmtAmount = ajaxUtil.roundNumber(parseFloat(stmtAmount.val())-parseFloat(payAmt)+parseFloat(debitAmount)-parseFloat(creditAmount),2);				
+						$("<br><span><b>Original:</b> "+stmtAmount.val()+"</span><br><span><b>CN:</b> "+creditAmount+"</span><br><span><b>DN:</b> "+debitAmount+"</span>").appendTo(stmtAmount.parents("td"));
+						stmtAmount.val(subStmtAmount);
+					}else{
+						stmtAmount.val(payAmount.val());
+						$("<br><span><b>Invoice Amt:</b> "+stmtAmount.val()+"</span><br><span><b>CN:</b> "+creditAmount+"</span><br><span><b>DN:</b> "+debitAmount+"</span>").appendTo(stmtAmount.parents("td"));						
+						
+						
+//						$("<br><span><b>DN:</b> "+debitAmount+"</span>").appendTo(stmtAmount.parents("td"));
+//						$("<br><span><b>CN:</b> "+creditAmount+"</span>").appendTo(stmtAmount.parents("td"));						
+					}
+				}
+			}				
+		});		
+	}
+	
+	function pageInit(){		
+		$(".detail-listingTable").bind("click", function(event){
+		    var element = event.target;
+			
+			if(element.name=='chkDetail'){
+				var trEle = $(element).parents("tr"); 
+				var stmtAmount = trEle.find("input[name=mfgReceivePaymentDtlamount]");
+				var payAmount = trEle.find("input[name=mfgReceivePaymentDtlpayamount]");
+				//var creditAmount = trEle.find("input[name=mfgReceivePaymentDtlcreditamount]").val();
+				//var debitAmount = trEle.find("input[name=mfgReceivePaymentDtldebitamount]").val();
+
+				if($(element).attr("checked")){					
+					//creditAmount = (creditAmount=='')?"0":creditAmount;
+					//debitAmount = (debitAmount=='')?"0":debitAmount;
+					payAmount.val(ajaxUtil.roundNumber(parseFloat(stmtAmount.val()),2));
+				}else{
+					payAmount.val("0.00");
+				}
+				payAmount.attr("class","");
+				trEle.find("#partialSpan").remove();
+				calculateStmtTotal();
+			}
+        });
+        
+        $(document).find("input[name=payamount]").bind("focusout", function(event){
+        	var stmtTotal = $("#entryForm").find("input[name=payamount]").val();
+        	var payAmount;        	
+        	var parentTr;
+        	stmtTotal = (stmtTotal=='')?"0":stmtTotal;
+        	var difAmount = ajaxUtil.roundNumber(parseFloat(_stmtTotal) - parseFloat(stmtTotal),2);
+        	var balAmount = 0;        	
+        	
+        	//alert(_stmtTotal + " - " + stmtTotal + " = " + difAmount);
+        	if(parseFloat(_stmtTotal) > parseFloat(stmtTotal)){        		        	
+        		parentTr = $(".detail-listingTable tbody").find("[name=chkDetail]:checked").last().parents("tr");	
+				payAmount = parentTr.find("input[name=mfgReceivePaymentDtlpayamount]");							
+				payAmount.val(ajaxUtil.roundNumber(parseFloat(payAmount.val())-difAmount,2));
+				
+				balAmount = parseFloat(parentTr.find("input[name=mfgReceivePaymentDtlamount]").val()) - parseFloat(payAmount.val());				
+				balAmount = ajaxUtil.roundNumber(balAmount,2);
+				payAmount.attr("class","tb2");				
+				if(parentTr.find("#partialSpan").size()==0){
+					$("<span id='partialSpan'><br><b>Balance Amount:</b>"+balAmount+"</span>").appendTo(payAmount.parents("td"));
+				}
+        	}         	
+        	calculateStmtTotal();        	
+        });
+	}
+	
+	$(document).ready(pageInit());	
+</script>
+
+<style>
+.tb2 {
+	border: 2px solid #002233;	
+}
+</style>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

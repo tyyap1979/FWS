@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/brown.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li>EURO KINGSTON</li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li><a id='companygrplink' href='/ls/'>LS RANGE</a></li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Job Sheet Setting - EURO KINGSTON</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li><li><a href="#" id="btnPrint">Print</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id="mfg_rawtoproductModule" class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_rawtoproduct' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='5' id='controlBar'><a href='#' class='paginate_button tip' title='Remove Record' id='action.delete'>Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord'>Add</a><a href='#' class='paginate_button tip' title='Copy Record' id='action.retrieve.copy'>Copy</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Last Update </th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><div id='entryDiv' style='display: none;overflow:scroll;'><div id="mfg_rawtoproductModuleEntry" title='Job Sheet Setting - EURO KINGSTON' class="entryScreen">
+<form id='entryForm' method='POST' autocomplete='off'><table id='entryFormTable' width='100%' class='validateForm listTable'><col width='15%'><col /><tr><th>Product</th><td><select id='prodid' selected name='prodid' class=''><option value=''>--- Product ---</option><OPTGROUP LABEL='Ant Jump Sliding Panel'><option value='67'>Anti-Jump Soft-Close</option><option value='55'>End Frame</option><option value='33'>S.Track (Single) / 1set</option><option value='32'>S.Track (Twin) / 1set</option><option value='10'>S1</option><option value='156'>S1 Roller</option><option value='12'>S2</option><option value='59'>S2/3/4 Divider (D2)</option><option value='13'>S3</option><option value='14'>S4</option></OPTGROUP><OPTGROUP LABEL='Chan Kitchen'><option value='637'>C1 (M.Ply Backing)</option><option value='638'>C2@Crystal Glass+Plywood</option><option value='639'>i Alfa</option><option value='645'>iCon @ Ply</option><option value='640'>X Slim 3</option><option value='641'>X Slim 4</option></OPTGROUP><OPTGROUP LABEL='Crystal Series C1'><option value='107'>C1 (M.Ply Backing)</option><option value='77'>C1 @ Normal Glass (MT)</option><option value='92'>C1 Grey/Brown/Black Mirror (AFM)</option><option value='599'>C1 Powder Coat@Ply</option><option value='73'>C1/C2/Icon Powder Coat</option><option value='75'>C1@ Normal Glass</option><option value='434'>C1@5mm Crystal Glass</option><option value='436'>C1@5mm Normal Glass</option><option value='446'>C1@Normal Glass+Ply</option><option value='493'>C1L / Customer Own Laminate</option><option value='492'>C1L / Laminate</option><option value='598'>CA Without Handle@ply</option><option value='455'>CA/30 Degree Handle@ply</option><option value='574'>CA/30 Normal Glass @ply</option><option value='49'>Crystal 1</option><option value='90'>Crystal Plywood Charge</option><option value='38'>Crystal TX</option><option value='421'>Crystal TX / 30 Degree</option><option value='451'>Crystal TX@PlyWood</option><option value='469'>Crystal1 / Powder Coat</option><option value='412'>Crystal1 c/w 3mm Mirror (AMF) cancel</option><option value='548'>Crystal1@Ply / 3mm mirror (AFM) cancel</option><option value='600'>CTX / Powder Coat</option><option value='475'>CTX Champagne@Ply</option><option value='601'>CTX Powder Coat @Ply</option><option value='506'>Grand C1L @Ply</option><option value='501'>Supply C1/Edging 5meter (16.5 feet)</option><option value='500'>Supply C1/Handle 5meter (16.5 feet)</option></OPTGROUP><OPTGROUP LABEL='Crystal Series C2'><option value='76'>C2 @ Normal Glass</option><option value='78'>C2 @ Normal Glass (CHW)</option><option value='513'>C2 Crystal Glass @ Metalic Sticker</option><option value='505'>C2 Crystal Glass @ Sticker</option><option value='60'>C2 FrameTrimming + Labour</option><option value='61'>C2 Handle Trimming + Labour</option><option value='480'>C2 Normal Glass @ Metalic Sticker</option><option value='449'>C2 Normal Glass @ Sticker</option><option value='426'>C2@Crystal Glass+Plywood</option><option value='444'>C2@Normal glass + Plywood</option><option value='2'>Crystal 2</option><option value='84'>Crystal 2 (MT)</option><option value='470'>Crystal 2 / Powder Coat</option><option value='602'>Crystal 2 Powder Coat@Ply</option><option value='605'>Crystal 2@Ply (MT)</option><option value='441'>LS C2A Frame (0.20)</option><option value='439'>LS C2A Frame (0.25)  / C1A Frame</option><option value='443'>LS C2A Handle (0.20)</option><option value='442'>LS C2A Handle (0.25) / C1A Handle</option><option value='502'>Supply C2/Edging 5meter (16.5 feet)</option><option value='503'>Supply C2/Handle 5meter (16.5 feet)</option></OPTGROUP><OPTGROUP LABEL='Crystal Series iCON'><option value='205'>iCON</option><option value='496'>iCon 5mm Crystal Glass</option><option value='405'>Icon Brown Mirror</option><option value='407'>Icon c/w  Grey Mirror</option><option value='403'>Icon c/w 3mm Mirror</option><option value='406'>Icon c/w 5mm Mirror</option><option value='476'>iCon Champagne@Ply</option><option value='537'>iCon Champagne@Ply / Bronze Mirror</option><option value='504'>iCon Edging 20ft</option><option value='540'>iCON Handle 6meter</option><option value='564'>iCON normal glass@Ply</option><option value='445'>ICON@Crystal+Ply</option><option value='414'>iCON@normal glass</option><option value='539'>iCon@Ply+Powder Coat</option></OPTGROUP><OPTGROUP LABEL='Crystal Series Xslim / iAlfa'><option value='566'>Add 9mm Board</option><option value='461'>i Alfa</option><option value='611'>i Alfa Normal Glass/Powder Coat</option><option value='610'>i Alfa Powder Coat</option><option value='571'>i Alfa Powder Coat Charge</option><option value='462'>i Alfa(Normal Glass)</option><option value='552'>Supply i-Alfa /Handle 5meter (16.5feet)</option><option value='555'>Supply X-Slim3 /Edging 6meter</option><option value='551'>Supply X-Slim3 /Handle 6meter</option><option value='554'>Supply X-Slim4 /Edging 5meter (16.5feet)</option><option value='553'>Supply X-Slim4 /Handle 5meter (16.5feet)</option><option value='467'>X Slim 3</option><option value='468'>X Slim 3 (Normal Glass)</option><option value='464'>X slim 4</option><option value='465'>X slim 4 (Normal Glass)</option><option value='569'>X slim 4@5mm Crystal Glass</option><option value='570'>X slim 4@5mm Normal Glass</option><option value='499'>X slim3/4 Powder Coat Only</option></OPTGROUP><OPTGROUP LABEL='DE ZEL'><option value='614'>(E) i Alfa@9mm Board</option><option value='604'>(E) i ALFA@Bronze / Grey Mirror</option><option value='593'>(E) Xslim 3/4@Bronze / Grey Mirror</option><option value='612'>(E) Xslim3@9mm Board</option><option value='613'>(E) Xslim4@9mm Board</option><option value='589'>Aro Elfa 2</option><option value='590'>Aro Elfa 3</option><option value='592'>Aro X3</option><option value='591'>Aro X3/4 @ Bronze/Grey Mirror</option><option value='588'>Aro X4</option><option value='616'>Aro X4@Powder Coat</option></OPTGROUP><OPTGROUP LABEL='Frame Series'><option value='497'>3GS</option><option value='603'>3GS Normal Glass</option><option value='534'>3GS@3mm Mirror</option><option value='46'>F1</option><option value='509'>F1 Acrylic(2.0)</option><option value='435'>F1 Powder Coat</option><option value='15'>F2</option><option value='538'>F2 Soft Close Hinges</option><option value='389'>F3</option><option value='80'>Frame Divider (D1)</option><option value='7'>Frame Roller /per door</option><option value='8'>Frame S.Track  (1set)</option><option value='70'>S/Blast Line Cutting</option></OPTGROUP><OPTGROUP LABEL='Material'><option value='518'>3mm Mirror Cut Size @ Polish</option><option value='512'>3mm Mirror Cut Size Only</option><option value='568'>3mm Normal Glass without Polish (Aro)</option><option value='567'>3mm Normal Glass@Polish (ARO)</option><option value='486'>5mm Crystal Glass Tempered</option><option value='519'>5mm Crystal Glass Tempered@Polish</option><option value='532'>5mm Normal Glass Tempered</option><option value='533'>5mm Normal Glass Tempered@Polish</option><option value='485'>6mm Crystal Glass Tempered</option><option value='520'>6mm Crystal Glass Tempered@Polish</option><option value='531'>6mm Normal Glass Tempered</option><option value='530'>6mm Normal Glass Tempered@Polish</option><option value='608'>8mm Normal Glass Tempered@Polish</option><option value='561'>Black Glass 5mm Cut Size @ Polish</option><option value='521'>Bronze Mirror (5mm) Cut Size@Polish</option><option value='112'>Bronze Mirror (5mm) Only</option><option value='550'>Bronze Mirror (6mm) Cut Size</option><option value='549'>Bronze Mirror (6mm) Cut Size@Polish</option><option value='562'>Brown Glass 5mm Cut Size @ Polish</option><option value='87'>C2 Frame Material Cut Size Supply</option><option value='81'>C2 Handle Material Cut Size Supply</option><option value='85'>Crystal Glass (3mm)</option><option value='522'>Crystal Glass (3mm)@Polish</option><option value='69'>Crystal Glass (5mm)</option><option value='523'>Crystal Glass (5mm)@Polish</option><option value='483'>Crystal Glass (6mm)</option><option value='524'>Crystal Glass (6mm)@Polish</option><option value='159'>Door Seal</option><option value='474'>F1 Frame 5meter</option><option value='473'>F1 Handle 5meter</option><option value='43'>F1/F2 Frame</option><option value='44'>F1/F2 Handle</option><option value='86'>F2 Bracket Set</option><option value='557'>F3 Frame</option><option value='556'>F3 Handle</option><option value='82'>Glass Flat Edge</option><option value='110'>Mirror (5mm) Cut Size</option><option value='438'>Mirror (5mm) Cut Size + T501</option><option value='559'>Mirror (5mm) Cut Size@Polish</option><option value='422'>Normal Glass (3mm)</option><option value='525'>Normal Glass (3mm)@Polish</option><option value='48'>Normal Glass (5mm)</option><option value='526'>Normal Glass (5mm)@Polish</option><option value='484'>Normal Glass (6mm)</option><option value='527'>Normal Glass (6mm)@Polish</option><option value='408'>Normal Glass (8mm)</option><option value='528'>Normal Glass (8mm)@Polish</option><option value='437'>Reflective Glass (5mm) Cut Size</option><option value='529'>Reflective Glass (5mm) Cut Size@Polish</option><option value='51'>S/Blast Glass(5mm)</option><option value='83'>S1 Handle Pole (Homade)</option><option value='113'>S2 Vertical Pole Supply</option><option value='157'>S2/S3/S4 Roller</option><option value='91'>S3 Vertical Pole Supply</option><option value='558'>Supply Sibu Cut Size Only</option><option value='36'>TX Handle</option></OPTGROUP><OPTGROUP LABEL='mega Trend'><option value='644'>Anti Jump S6 (Aro) / 5mm Crystal Glass @ Spray Paint</option><option value='643'>Anti Jump S6 (Aro) / 5mm Normal Glass @ Spray Paint</option></OPTGROUP><OPTGROUP LABEL='Others'><option value='74'>Board Area</option><option value='111'>Modify Labor Charge</option><option value='42'>Modify Panel Sizes</option><option value='79'>Site Install Labor Charge</option><option value='0'>[Custom Product]</option></select></OPTGROUP></OPTGROUP></td></tr><tr><th>Status</th><td><select name='status' id='status' class=''><option value='A'>Active</option><option value='S'>Suspended</option></select></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='rtpid' name='rtpid' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/>
+<br><div style='width: auto; overflow:auto;'><fieldset><legend><b>Job Sheet Detail Setting</b></legend><table id='mfg_rawtoproduct_detailEntryTable' class='listTable sortable detail-listingTable'><thead><tr><td colspan='7' id='controlBar'><a href='#' class='paginate_button tip' title='Delete Record' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.clone.add' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Material</th><th>Qty</th><th>Width Formula</th><th>Height Formula</th><th>Perform By</th><th>Comment</th></tr>
+<tr style='display: none' id='mfg_rawtoproduct_detailClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfg_rawtoproduct_detailrow-status' value='X' /><input type='hidden' id='mfg_rawtoproduct_detailrtpdtlid' name='mfg_rawtoproduct_detailrtpdtlid' value=''/><input type='hidden' id='mfg_rawtoproduct_detailrtpid' name='mfg_rawtoproduct_detailrtpid' value=''/><input type='hidden' id='mfg_rawtoproduct_detailposition' name='mfg_rawtoproduct_detailposition' value=''/></td><td><select id='mfg_rawtoproduct_detailrawid' selected name='mfg_rawtoproduct_detailrawid' class=''><option value=''>--- Raw Material ---</option><option value='49'>Aluminum</option><option value='38'>Board (9mm)</option><option value='45'>Bottom Rail</option><option value='10'>C1</option><option value='1'>C1H</option><option value='4'>C2</option><option value='33'>C2H</option><option value='18'>Crystal Glass</option><option value='47'>CTX</option><option value='48'>CTXH</option><option value='20'>Divider (D1)</option><option value='46'>Divider (D2)</option><option value='21'>F1</option><option value='34'>F1H</option><option value='32'>F2</option><option value='35'>F2H</option><option value='7'>Glass</option><option value='77'>i Alfa</option><option value='76'>i Alfa Handle</option><option value='50'>ICON</option><option value='51'>ICONH</option><option value='37'>Laminated Board (5mm)</option><option value='9'>Melamine Board</option><option value='39'>Melamine Board (16mm)</option><option value='30'>Mirror</option><option value='31'>Own Board / Glass</option><option value='29'>Reflective Glass</option><option value='11'>S1 Handle Pole</option><option value='12'>S2 Handle Pole</option><option value='13'>S3 Handle Pole</option><option value='36'>S4 Handle Pole</option><option value='40'>Track</option><option value='41'>TX Handle</option><option value='78'>X slim</option><option value='75'>X slim Handle</option><option value='opt1'>Option 1</option><option value='opt2'>Option 2</option><option value='opt3'>Option 3</option></select></td>
+<td><textarea id='mfg_rawtoproduct_detailqty' name='mfg_rawtoproduct_detailqty' class='' cols='30' rows='5' ></textarea></td>
+<td><textarea id='mfg_rawtoproduct_detailwidthformula' name='mfg_rawtoproduct_detailwidthformula' class='' cols='30' rows='5' ></textarea></td>
+<td><textarea id='mfg_rawtoproduct_detailheightformula' name='mfg_rawtoproduct_detailheightformula' class='' cols='30' rows='5' ></textarea></td>
+<td><select name='mfg_rawtoproduct_detailperform_by' id='mfg_rawtoproduct_detailperform_by' class=''><option value=''></option><option value='R'>By Row</option><option value='C'>By Col</option><option value='S'>By Span</option></select></td>
+<td><input type='text' id='mfg_rawtoproduct_detailcomment' name='mfg_rawtoproduct_detailcomment' class='' size='10' maxlength='100' value=''/></td>
+</tr></thead><tbody id='mfg_rawtoproduct_detailEntryTableBody' class='validateForm'></tbody></table></fieldset></div><br></form></div>
+</div></div>
+
+			
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>

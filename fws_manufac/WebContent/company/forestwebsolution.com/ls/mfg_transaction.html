@@ -1,0 +1,733 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FWS (Manufacturing) - Admin Panel</title>
+	
+	<!-- Imports General CSS and jQuery CSS -->
+	<link href="/themes/admin/simplplan/css/screen.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<link href="/themes/admin/simplplan/css/print.css" rel="stylesheet" media="print" type="text/css" />
+	
+	<!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width" />
+	
+	<!-- IE Stylesheet ie7 - Added in 1.2 -->
+	<!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+	
+	<!-- IE Stylesheet ie8 - Added in 1.1 -->
+	<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+	
+	<!-- CSS for Theme Styles - Double to prevent flickering on change -->
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/themes/admin/simplplan/css/theme/green.css" rel="stylesheet" media="screen" type="text/css" class="theme" />
+			
+	<!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+	<!--[if IE]><script type="text/javascript" src="/themes/admin/simplplan/js/excanvas.js"></script><![endif]-->
+	
+	<!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.styleswitcher.js"></script>	
+	
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/components/jquery/formvalidator/jquery.validationEngine.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/validationEngine.jquery.css">
+	<link rel="stylesheet" type="text/css" href="/components/jquery/formvalidator/template.css">	
+	
+	<script type="text/javascript" src="/components/ajax-min.js?v=5"></script>	
+	<script type="text/javascript" src="/components/admin-min.js?v=5"></script>
+	<script type="text/javascript" src="/pages/admin/mfg/js/mfg_custom.js?v=8"></script>		
+</head>
+
+<body>
+
+<!-- Start: Page Wrap -->
+<div id="wrap" class="container_24">
+	
+	
+	<!-- Header Grid Container: Start -->
+	<div class="grid_24">
+		
+		<!-- User Panel: Start -->
+		<div id="userpanel">
+			
+			<!-- User: Start -->
+			<ul id="user" class="dropdown right">
+				<li class="topnav">
+					<!-- User Name -->
+					<a href="#" class="top icon user">My Account</a>
+					
+					<!-- User Dropdown Content: Start -->
+					<ul class="subnav">  
+			            <!-- <li><a href="forms.html" class="icon settings">Settings</a></li> -->  			            
+			            <li><a href="logout.htm" class="icon lock">Log out</a></li>  
+			        </ul>  
+			        <!-- User Dropdown Content: End -->
+				</li>
+			</ul>
+			<!-- User: End -->
+				
+			
+			<!-- Width Switcher: Start -->
+			<ul id="width" class="dropdown right">
+				<li class="topnav">
+					<a href="#" class="top icon coverflow">Width</a>
+					
+					<!-- Width Switcher Content: Start -->
+					<ul class="subnav">  
+			            <li><a href="#fluid" class="icon coverflow">Fluid</a></li>  
+			            <li><a href="#fixed" class="icon coverflow">Fixed</a></li> 
+			        </ul>  
+			        <!-- Width Switcher Content: End -->
+				</li>
+			</ul>
+			<!-- Width Switcher: End -->
+			
+		</div>
+		<!-- User Panel: End -->
+		
+		<!-- Header: Start -->
+		<div id="header">
+				
+			<!-- Logo: Start -->
+			<a href="dashboard.html" id="logo"></a>
+			<!-- Logo: End -->
+			
+			<!-- Navigation: Start -->
+			<ul id='navigation' class='dropdown'><li class='topnav'><a href='mfg_transaction.html' class='frames'>Transaction</a><ul class='subnav'><li><a href='mfg_transaction.html' class='icon edit'>Invoice</a></li><li><a href='mfg_po.html' class='icon edit'>P.O.</a></li></ul></li><li class='topnav'><a href='#' class='dashboard'>Account</a><ul class='subnav'><li><a href='mfg_receivepayment.html' class='icon book2'>Receive Payment</a></li><li><a href='mfg_statement.html' class='icon book2'>Statement</a></li><li><a href='mfg_debitnote.html' class='icon book2'>Debit Notes</a></li><li><a href='mfg_creditnote.html' class='icon book2'>Credit Notes</a></li><li><a href='mfg_supplierinvoice.html' class='icon book2'>Supplier Invoice</a></li><li><a href='mfg_paymentvoucher.html' class='icon book2'>Payment Voucher</a></li><li><a href='mfg_report.html' class='icon cabin'>Reports</a></li></ul></li><li class='topnav'><a href='mfg_custproduct.html' class='pictures'>Product</a><ul class='subnav'><li><a href='mfg_custproduct.html' class='icon list'>Product</a></li><li><a href='mfg_prodoption.html' class='icon list'>Product Option</a></li><li><a href='mfg_raw.html' class='icon settings'>Material</a></li><li><a href='mfg_grouping.html' class='icon settings'>Grouping</a></li></ul></li><li class='topnav'><a href='#' class='settings'>Administration</a><ul class='subnav'><li><a href='supplier.html' class='icon house2'>Supplier Profile</a></li><li><a href='customer.html' class='icon house2'>Customer Profile</a></li><li><a href='agentprofile.html' class='icon users'>Agent Profile</a></li><li><a href='adminuser.html' class='icon users'>Admin User</a></li><li><a href='autonumber.html' class='icon settings'>Auto Number</a></li><li><a href='mfg_rawtoproduct.html' class='icon settings'>Job Sheet Setting</a></li><li><a href='shopprofile.html' class='icon house2'>Company Setting</a></li><li><a href='smstemplate.html' class='icon house2'>SMS Template</a></li><li><a href='sms.html' class='icon house2'>SMS</a></li></ul></li></ul>
+			<!-- Navigation: End -->
+			
+		</div>
+		<!-- Header: End -->
+		
+		<!-- Breadcrumb Bar: Start -->
+		<div id="breadcrumb">			
+			<!-- Breadcrumb Icon Links: Start -->
+			
+			<ul class='companybar'><li><a id='companygrplink' href='/eurotrend/'>EURO KINGSTON</a></li><li><a id='companygrplink' href='/ekc/'>EK Concept</a></li><li>LS RANGE</li></ul>
+			
+			<ul class="right">				
+				<li><a href="dashboard.html" class="icon home tip" title="Dashboard">Home</a></li>
+			</ul>
+			<!-- Breadcrumb Icon Links: End -->
+			
+		</div>
+		<!-- Breadcrumb Bar: End -->
+		
+	</div>
+	<!-- Header Grid Container: End -->
+
+
+<!-- 100% Box Grid Container: Start -->
+<div id="MainContent" class="grid_24">
+	  
+	<!-- Box Header: Start -->
+	<div class="box_top">		
+		<h2 class="icon pages">Transaction - LS RANGE</h2>	
+		
+		<ul id="entryButtonBar" class="sorting" style="display: none;"><li><a href="#" id="btnCancel">Cancel</a></li><li><a href="#" id="btnSave">Save</a></li></ul>
+	</div>
+	<!-- Box Header: End -->
+	
+	<!-- Box Content: Start -->		
+		
+<div id='mfg_transactionModule' class='box_content'>
+<div id='searchDiv'><form id='listingForm' method='POST'><table id='mfg_transaction' class='sorting listingTable' border='0'><col width='10'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='null'><col width='70'><thead><tr><td colspan='10' id='controlBar'><a href='#' class='paginate_button tip' title='Add New Record' id='action.addrecord' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Transaction No.</th><th>Job Code</th><th>Customer</th><th>Customer Ref. No.</th><th>Sales Date</th><th>Update By</th><th>Last Update</th><th>Status</th><th class='align_left center tools'>Tools</th></tr></tr></thead><tbody id='paginationData'></tbody></table><input type='hidden' id='action1' name='action1' value='' />
+</form></div><ul id='preload' style='display:none'><li id='opt44'><select id='prodoptid' selected name='prodoptid'><option value=''>--- LS Color Chart ---</option><option value='1761'>EU 22 Magic White</option><option value='158'>EU 1 Meico Silver</option><option value='159'>EU 2 M.Silver</option><option value='160'>EU 3 Pearl White</option><option value='161'>EU 4 P.White</option><option value='162'>EU 5 M.Brown</option><option value='163'>EU 6 M.Gold</option><option value='164'>EU 7 P.Blue</option><option value='165'>EU 8 Charcoal</option><option value='166'>EU 9 L.Grey</option><option value='167'>EU 10 Autumn</option><option value='168'>EU 11 Br.Red</option><option value='169'>EU 12 S.Orange</option><option value='170'>EU 13 P.Green</option><option value='172'>EU 14 Viva Red</option><option value='173'>EU 15 HG. Yellow</option><option value='174'>EU 16 Cream</option><option value='175'>EU 17 Beige</option><option value='176'>EU 18 Apple Green</option><option value='186'>EU 19 P.Black</option><option value='188'>RZ 0012-SP</option><option value='179'>G2-402 (White)</option><option value='180'>G2-504 (L.Grey)</option><option value='181'>G2-266 (Orange)</option><option value='182'>G2-135 (Red)</option><option value='183'>G2-814 (Maroon)</option><option value='184'>G2-502 (Black)</option><option value='171'>Custom Colour</option><option value='563'>RZ 0002-SP</option><option value='564'>RZ 0003-SP</option><option value='565'>RZ 0004-SP</option><option value='566'>RZ 0005-SP</option><option value='567'>RZ 0006-SP</option><option value='568'>RZ 0007-SP</option><option value='569'>RZ 0008-SP</option><option value='570'>RZ 0009-SP</option><option value='571'>RZ 00010-SP</option><option value='572'>RZ 00011-SP</option><option value='584'>RZ 8018 MP</option><option value='585'>RZ 5005 MP</option><option value='586'>RZ 6044 MP</option><option value='587'>RZ 6043 MP</option><option value='588'>RZ 0820MP</option><option value='589'>RZ 1058 MP</option><option value='590'>RZ 3040 MP</option><option value='591'>RZ 1021 MP</option></select></li><li id='opt45'><select id='prodoptid' selected name='prodoptid'><option value=''>--- LS Handle Position ---</option><option value='189'>None</option><option value='190'>Width</option><option value='383'>Oblique Handle(Dealer)</option><option value='384'>Oblique Handle(F)</option><option value='592'>Oblique Handle(w)</option><option value='2026'>Oblique</option><option value='2036'>Powder Coat</option></select></li><li id='opt54'><select id='prodoptid' selected name='prodoptid'><option value=''>--- LS Color Chart (2.0mm) ---</option><option value='1762'>EU 22 Magic White</option><option value='323'>EU1 Meico Silver</option><option value='324'>EU2 M.Silver</option><option value='325'>EU3 Pearl White</option><option value='326'>EU4 P.White</option><option value='327'>EU5 M.Brown</option><option value='328'>EU6 M.Gold</option><option value='329'>EU7 P.Blue</option><option value='330'>EU8 Charcoal</option><option value='331'>EU9 L.Grey</option><option value='332'>EU10 Autum</option><option value='333'>EU11 Br.Red</option><option value='334'>EU12 S.Orange</option><option value='335'>EU13 P.Green</option><option value='336'>EU14 Viva Red</option><option value='337'>EU15 HG.Yellow</option><option value='338'>EU16 Cream</option><option value='339'>EU17 Beige</option><option value='340'>EU18 Apple Green</option><option value='385'>G2 502</option><option value='573'>RZ 0002-SP LS LEMON</option><option value='574'>RZ 0003-SP CREAMY GREEN</option><option value='575'>RZ 0004-SP LIGHT ORANGE</option><option value='576'>RZ 0005-SP WILD IRIS</option><option value='577'>RZ 0006-SP LS RED</option><option value='578'>RZ 0007-SP MET GREY</option><option value='579'>RZ 0008-SP LIGHT BROWN</option><option value='580'>RZ 0009-SP LS COMET</option><option value='581'>RZ 00010-SPGREY MS 87</option><option value='582'>RZ 00011-SP DARK BROWN</option><option value='583'>RZ 00012-SP P. BLACK</option></select></li><li id='opt57'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Winsco Design ---</option><option value='386'>MP3001 Silver Metalic</option><option value='387'>MP3002 Star Silver</option><option value='388'>MP3003 Pear White</option><option value='389'>MP3004 Everest White</option><option value='390'>MP3005 Metalic Brown</option><option value='391'>MP3006 Metalic Gold</option><option value='392'>MP3007 Solic Black</option><option value='393'>MP3008 Charcoal Vios</option><option value='394'>MP3009 Light Grey</option><option value='395'>MP3010 Summer Red</option><option value='396'>MP3011 Powder Green</option><option value='397'>MP3012 Viva Red</option><option value='398'>MP3013 Champagne Cream</option><option value='399'>MP3014 Lily Beige</option><option value='400'>MP3015 Apple Green</option><option value='401'>MP3016 Powder Blue</option><option value='402'>MP3017 Chocolate Metalic</option><option value='403'>MP3018 Comet Grey</option><option value='404'>MP3019 Black Metalic</option><option value='405'>MP3020 Green Metalic</option><option value='406'>MPW-801 White ASH Wood</option><option value='407'>MPW-802 Light OAK Wood</option><option value='408'>MPW-803 Light Zebrano Wood</option><option value='409'>MPW-804 Talisa Plum Wood</option><option value='410'>Custom Colour</option></select></li><li id='opt64'><select id='prodoptid' selected name='prodoptid'><option value=''>--- RZ Series-2.0mm ---</option><option value='547'>RZ 0001-SPP.White</option><option value='536'>RZ 0002-SPLs Lemon</option><option value='537'>RZ 0003-SPCreamy Green</option><option value='538'>RZ 0004-SPLight Orange</option><option value='539'>RZ 0005-SPWild Iris</option><option value='540'>RZ 0006-SPLS Red</option><option value='541'>RZ 0007-SPMet Grey</option><option value='542'>RZ 0008-SPLight Brown</option><option value='543'>RZ 0009-SPLS Comet</option><option value='544'>RZ 00010-SPBrown Grey</option><option value='545'>RZ 00011-SPDark Brown</option><option value='546'>RZ 00012-SPP. Black</option><option value='548'>RZ 8018-MP</option><option value='549'>RZ 5005-MP</option><option value='550'>RZ 6044-MP</option><option value='551'>RZ 6043-MP</option><option value='552'>RZ 0820-MP</option><option value='553'>RZ 1058-MP</option><option value='554'>RZ 3040-MP</option><option value='555'>RZ 1021-MP</option></select></li><li id='opt65'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Galaxy 1.2 Colour Chart ---</option><option value='593'>GS 1002</option><option value='594'>GS 1003</option><option value='595'>GS 1004</option><option value='596'>GS 1005</option><option value='597'>GS 1006</option><option value='598'>GS 1007</option><option value='599'>GS 1008</option><option value='600'>GS 1009</option><option value='601'>GS 1010</option></select></li><li id='opt66'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Galaxy 1.5 Colour Chart ---</option><option value='602'>GW8001</option><option value='603'>GW8002</option><option value='604'>GW8003</option><option value='605'>GW8004</option><option value='606'>GW3001</option><option value='607'>GW3002</option></select></li><li id='opt76'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Galaxy Series ---</option><option value='674'>Galaxy Series 17.50</option><option value='675'>Galaxy Series18.00</option><option value='676'>Galaxy Series 18.50</option><option value='747'>Galaxy Series 19.00</option><option value='677'>Galaxy Series 19.50</option><option value='678'>Galaxy Series 20.00</option><option value='679'>Galaxy Series 20.50</option><option value='680'>Galaxy Series 21.00</option><option value='1868'>Galaxy Series 21.50</option><option value='1869'>Galaxy Series 22.00</option><option value='2038'>Galaxy Series 23.00</option><option value='1874'>Galaxy Series 15.00</option><option value='1876'>Galaxy Series</option><option value='2007'>Galaxy Series 17.00</option><option value='2027'>Galaxy Series 15.50</option><option value='2030'>Galaxy Series 16.80</option><option value='2035'>Galaxy Series 16.50</option><option value='2037'>Galaxy Series 16.00</option><option value='2039'>Galaxy Series 11.00</option><option value='2040'>Galaxy Series  22.50</option></select></li><li id='opt126'><select id='prodoptid' selected name='prodoptid'><option value=''>--- PU Handle ---</option><option value='1822'>Handle (m)</option><option value='1821'>Handle (G)</option></select></li><li id='opt127'><select id='prodoptid' selected name='prodoptid'><option value=''>--- PU c/w Both Side ---</option><option value='1823'>Matt White</option><option value='1824'>Matt Colour</option><option value='1825'>Gloss</option></select></li><li id='opt129'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Board ---</option><option value='1872'>Multiboard</option></select></li><li id='opt132'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Both sides ---</option><option value='2020'>Both sides</option></select></li><li id='opt133'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Both Side/customer board ---</option><option value='2021'>Gloss</option><option value='2022'>Colour</option></select></li><li id='opt134'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Both sides (404) ---</option><option value='2029'>Both sides (404)</option></select></li><li id='opt10'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Center Piece Material ---</option><option value='4'>L.Film (S/Blast) 215</option><option value='5'>L.Film (S/Blast) 216(Snow)</option><option value='18'>L.Film (S/Blast) 217(Green)</option><option value='17'>L.Film (S/Blast) 218(Pink)</option><option value='19'>L.Film (S/Blast) 219(Brown)</option><option value='26'>L.Film (S/Blast) 220(Blue)</option><option value='28'>L.Film (Solid) T501(White)</option><option value='27'>L.Film (Solid) T505(Black)</option><option value='29'>L.Film (Solid) T-Red(Red)</option><option value='123'>L.Film (Solid) T-Oren8S(Orange)</option><option value='124'>L.Film (Solid) T-Yellow22F(Yellow)</option><option value='125'>L.Film (Solid) T724 (Apple Green</option><option value='1933'>L.Film (Solid) Silver</option><option value='1934'>L.Film (Solid) Beige</option><option value='1935'>L.Film (Solid) Grey</option><option value='1936'>L.Film (Solid) Light Blue</option><option value='1827'>L.Film (Metalic Solid) Sticker</option><option value='2028'>L.Film (Metalic Solid) Sticker (Amin)</option><option value='32'>Spray Colours Glass Only</option><option value='130'>Custom Spray Colours Only</option><option value='1765'>Spray Colours Glass + T501</option><option value='1766'>Custom Spray Colours + T501</option><option value='1931'>5mm Crystal Glass+Spray Color+T501 (New)</option><option value='1932'>5mm Crystal Glass + Solid Sticker (New)</option><option value='31'>Reflective Glass (5mm)</option><option value='30'>Mirror (5mm) + T501</option><option value='33'>Own Board/Class</option><option value='59'>Melamine Board 16mm (Meico)</option><option value='78'>Laminated Board 5mm (ICA/MAICA)</option><option value='126'>Black Glass (5mm)</option><option value='127'>Brown Glass (5mm)</option><option value='362'>Brown Mirror + T501</option><option value='128'>Sibu</option><option value='134'>S/Blast Line Cutting</option><option value='361'>Clear Glass</option><option value='1683'>Grey Mirror + T501</option><option value='1764'>For Antijump Solid Acrylic c/w Board</option><option value='1862'>Black Mirror+T501</option><option value='1875'>For Antijump Spray Paint Acrylic c/w Board</option><option value='1819'>Crystal Glass+Spray Color+T501 (cancel)</option><option value='1763'>5mm Crystal Glass + Solid Sticker(cancel)</option><option value='2006'>Frame Series 5mm Clear Tempered Normal Glass</option></select></li><li id='opt11'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Handle Position ---</option><option value='80'>None</option><option value='7'>Width</option><option value='8'>Height</option></select></li><li id='opt15'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart ---</option><option value='34'>EU 1 Meico Silver</option><option value='35'>EU 2 M.Silver</option><option value='36'>EU 3 Pearl White</option><option value='37'>EU 4 P.White/Rz0001-sp</option><option value='38'>EU 5 M.Brown</option><option value='39'>EU 6 M.Gold</option><option value='40'>EU 7 P.Blue</option><option value='41'>EU 8 Charcoal</option><option value='42'>EU 9 L.Grey</option><option value='43'>EU 10 Autumn</option><option value='44'>EU 11 Br.Red</option><option value='45'>EU 12 S.Orange</option><option value='46'>EU 13 P.Green</option><option value='48'>EU 14 Viva Red</option><option value='49'>EU 15 HG. Yellow</option><option value='50'>EU 16 Cream</option><option value='51'>EU 17 Beige</option><option value='52'>EU 18 Apple Green</option><option value='142'>EU 19 P.Black/Rz0012</option><option value='1871'>EU 19 P.Black/Rz0012 (W)</option><option value='144'>EU 19 P.Black (MT)</option><option value='135'>G2-402 (White)</option><option value='136'>G2-504 (L.Grey)</option><option value='137'>G2-266 (Orange)</option><option value='138'>G2-135 (Red)</option><option value='139'>G2-814 (Maroon)</option><option value='140'>G2-502 (Black)</option><option value='47'>Custom Colour</option><option value='143'>C1/Mirror (3mm) cancel</option><option value='120'>C2/Mirror (3mm) cancel</option><option value='121'>C1/Bronz/Black/Grey Mirror (5mm)</option><option value='141'>C2/Grey/Black/Bronz Mirror (5mm) +PlyWood</option><option value='1826'>C1/Mirror (3mm) (Winsco)</option><option value='1863'>Mirror (5mm)</option><option value='1865'>Customer Own Paint</option><option value='1877'>RZ0002-SP</option><option value='1878'>RZ0003-SP</option><option value='1879'>RZ0004-SP</option><option value='1880'>RZ0005-SP</option><option value='1881'>RZ0006-SP</option><option value='1882'>RZ0007-SP</option><option value='1883'>RZ0008-SP</option><option value='1884'>RZ0009-SP</option><option value='1885'>RZ0010-SP</option><option value='1886'>RZ0011-SP</option><option value='1887'>RZ8018-MP</option><option value='1888'>RZ6044-MP</option><option value='1889'>RZ0820-MP</option><option value='1890'>RZ3040-MP</option><option value='1891'>RZ5005-MP</option><option value='1892'>RZ6043-MP</option><option value='1893'>RZ1058-MP</option><option value='1894'>RZ1021-MP</option><option value='2005'>Xslim /Reflective Glass</option><option value='2008'>Xslim / 3mm Mirror (cancel)</option><option value='2023'>Xslim / 3mm Mirror (A/F) cancel</option><option value='2013'>Xslim / Brown Glass</option><option value='2014'>Xslim / Black Glass</option><option value='2024'>Xslim / Grey Mirror</option><option value='2025'>Xslim / Brown Mirror</option><option value='2031'>Xslim / Black Mirror</option><option value='2015'>Custom 0.50</option></select></li><li id='opt43'><select id='prodoptid' selected name='prodoptid'><option value=''>--- S/Blast Laminated ---</option><option value='146'>215 (Sandblast)</option><option value='147'>216 (Snow)</option><option value='148'>217 (Green)</option><option value='149'>218 (Pink)</option><option value='150'>219 (Brown)</option><option value='151'>220 (Blue)</option><option value='152'>T501 (White)</option><option value='153'>T505 ( Black)</option><option value='154'>T-RED (Red)</option><option value='155'>T-OREN85 (Orange)</option><option value='156'>T-YELLOW22F (Yellow)</option><option value='157'>T724 (Apple Lite Green)</option><option value='2032'>L.Film (Solid) Beige</option></select></li><li id='opt55'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 2 ---</option><option value='341'>EU1 Meico Silver</option><option value='342'>EU2 M.Silver</option><option value='343'>EU3 Pearl White</option><option value='344'>EU4 P.White/RZ0001</option><option value='345'>EU5 M.Brown</option><option value='346'>EU6 M.Gold</option><option value='347'>EU7 P.Blue</option><option value='348'>EU8 Charcoal</option><option value='349'>EU9 L.Grey</option><option value='350'>EU10 Autum</option><option value='351'>EU11 Br.Red</option><option value='352'>EU12 S.Orange</option><option value='353'>EU13 P.Green</option><option value='354'>EU14 Viva Red</option><option value='355'>EU15 HG.Yellow</option><option value='356'>EU16 Cream</option><option value='357'>EU17 Beige</option><option value='358'>EU18 Apple Green</option><option value='359'>EU19 P.Black/RZ0012</option><option value='360'>Custom Color</option><option value='1895'>RZ0002-SP</option><option value='1896'>RZ0003-SP</option><option value='1897'>RZ0004-SP</option><option value='1898'>RZ0005-SP</option><option value='1899'>RZ0006-SP</option><option value='1900'>RZ0007-SP</option><option value='1901'>RZ0008-SP</option><option value='1902'>RZ0009-SP</option><option value='1903'>RZ0010-SP</option><option value='1904'>RZ0011-SP</option><option value='1905'>RZ8018-MP</option><option value='1906'>RZ6044-MP</option><option value='1907'>RZ8020-MP</option><option value='1908'>RZ3040-MP</option><option value='1909'>RZ5005-MP</option><option value='1910'>RZ6043-MP</option><option value='1911'>RZ1058-MP</option><option value='1912'>RZ1021-MP</option></select></li><li id='opt56'><select id='prodoptid' selected name='prodoptid'><option value=''>--- Color Chart 3 ---</option><option value='363'>EU1 Meico Silver</option><option value='364'>EU2 M. Silver</option><option value='365'>EU3 Pearl White</option><option value='366'>EU4 P. White/Rz0001</option><option value='367'>EU5 M. Brown</option><option value='368'>EU6 M. Gold</option><option value='369'>EU7 P. Blue</option><option value='370'>EU8 Charcoal</option><option value='371'>EU9 L. Grey</option><option value='372'>EU10 Autumn</option><option value='373'>EU11 Br.Red</option><option value='374'>EU12 S. Orange</option><option value='375'>EU13 P. Green</option><option value='376'>EU14 Viva Red</option><option value='377'>EU15 HG. Yellow</option><option value='378'>EU16 Cream</option><option value='379'>EU17 Beige</option><option value='380'>EU18 Apple Green</option><option value='381'>EU19 P. Black/Rz0012</option><option value='382'>Custom Color</option><option value='1866'>Customer Own Paint</option><option value='1913'>RZ0002-SP</option><option value='1914'>RZ0003-SP</option><option value='1915'>RZ0004-SP</option><option value='1916'>RZ0005-SP</option><option value='1917'>RZ0006-SP</option><option value='1918'>RZ0007-SP</option><option value='1919'>RZ0008-SP</option><option value='1920'>RZ0009-SP</option><option value='1921'>RZ0010-SP</option><option value='1922'>RZ0011-SP</option><option value='1923'>RZ8018-MP</option><option value='1924'>RZ6044-MP</option><option value='1925'>RZ0820-MP</option><option value='1926'>RZ3040-MP</option><option value='1927'>RZ5005-MP</option><option value='1928'>RZ6043-MP</option><option value='1929'>RZ1058-MP</option><option value='1930'>RZ1021-MP</option><option value='2009'>G2-135</option><option value='2010'>G2-504</option><option value='2011'>G2-266</option><option value='2012'>G2-814</option><option value='2017'>Custom 0.50</option></select></li><li id='opt107'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Colour Chart ---</option><option value='1468'>EU1 Meico Silver</option><option value='1469'>EU2 M.Silver</option><option value='1470'>EU3 Pearl White</option><option value='1471'>EU4 P.White/Rz0001</option><option value='1472'>EU5 M.Brown</option><option value='1473'>EU6 M.Gold</option><option value='1474'>EU7 P.Blue</option><option value='1475'>EU8 Charcoal</option><option value='1476'>EU9 L.Grey</option><option value='1477'>EU10 Autumn</option><option value='1478'>EU11 Br.Red</option><option value='1479'>EU12 S.Orange</option><option value='1480'>EU13 P.Green</option><option value='1481'>EU14 Viva Red</option><option value='1482'>EU15 HG.Yellow</option><option value='1483'>EU16 Cream</option><option value='1484'>EU17 Beige</option><option value='1485'>EU18 Apple Green</option><option value='1487'>EU19 P.Black/RZ0012</option><option value='1486'>Customn</option><option value='1867'>Customer Own Paint</option><option value='1870'>EU19 P.Black/Rz0012 (w)</option><option value='1937'>G2 504 (L.Grey)</option><option value='1938'>G2 266 (Orange)</option><option value='1939'>G2 135 (Red)</option><option value='1940'>G2 814 (Maroon)</option><option value='1942'>RZ0002-SP</option><option value='1943'>RZ0003-SP</option><option value='1944'>RZ0004-SP</option><option value='1945'>RZ0005-SP</option><option value='1946'>RZ0006-SP</option><option value='1947'>RZ0007-SP</option><option value='1948'>RZ0008-SP</option><option value='1949'>RZ0009-SP</option><option value='1950'>RZ0010-SP</option><option value='1951'>RZ0011-SP</option><option value='1952'>RZ8018-MP</option><option value='1953'>RZ6044-MP</option><option value='1954'>RZ8020-MP</option><option value='1955'>RZ3040-MP</option><option value='1956'>RZ5005-MP</option><option value='1957'>RZ6043-MP</option><option value='1958'>RZ1058-MP</option><option value='1959'>RZ1021-MP</option><option value='2019'>Custom 0.50</option></select></li><li id='opt131'><select id='prodoptid' selected name='prodoptid'><option value=''>--- ICON Color Chart 2 ---</option><option value='1960'>EU1 Meico Silver</option><option value='1961'>EU2 M.Silver</option><option value='1962'>EU3 Pearl White</option><option value='1963'>EU4 P.White/RZ0001</option><option value='1964'>EU5 M.Brown</option><option value='1965'>EU6 M.Gold</option><option value='1966'>EU7 P.Blue</option><option value='1967'>EU8 Charcoal</option><option value='1968'>EU9 L.Grey</option><option value='1969'>EU10 Autumn</option><option value='1970'>EU11 Br. Red</option><option value='1971'>EU12 S.Orange</option><option value='1972'>EU13 P.Green</option><option value='1973'>EU14 Viva Red</option><option value='1974'>EU15 HG.Yellow</option><option value='1975'>EU16 Cream</option><option value='1976'>EU17 Beige</option><option value='1977'>EU18 Apple Green</option><option value='1978'>EU19 P.Black/RZ0012</option><option value='1979'>Customn</option><option value='1980'>Customer Own Paint</option><option value='1981'>G2 402 (White)</option><option value='1982'>G2 504 (L.Grey)</option><option value='1983'>G2 266 (Orange)</option><option value='1984'>G2 135 (Red)</option><option value='1985'>G2 814 (Maroon)</option><option value='1987'>RZ0002-SP</option><option value='1988'>RZ0003-SP</option><option value='1989'>RZ0004-SP</option><option value='1990'>RZ0005-SP</option><option value='1991'>RZ0006-SP</option><option value='1992'>RZ0007-SP</option><option value='1993'>RZ0008-SP</option><option value='1994'>RZ0009-SP</option><option value='1995'>RZ0010-SP</option><option value='1996'>RZ0011-SP</option><option value='1997'>RZ8018-MP</option><option value='1998'>RZ6044-MP</option><option value='1999'>RZ0820-MP</option><option value='2000'>RZ3040-MP</option><option value='2001'>RZ5005-MP</option><option value='2002'>RZ6043-MP</option><option value='2003'>RZ1058-MP</option><option value='2004'>RZ1021-MP</option><option value='2018'>Custom 0.50</option></select></li></ul><div id='entryDiv' style='display: none;overflow:scroll;'><div id='mfg_transactionModuleEntry' class='entryScreen'>
+<form id='entryForm' method='POST'><div class='tabs'><ul><li><a href='#tabs-1'>General</a></li><li><a href='#tabs-2'>Web Information</a></li><li><a href='#tabs-3'>Customer Information</a></li></ul><div id='tabs-1'><table width='100%' class='validateForm listTable'><tr><th>Transaction No.</th><td><input type='text' id='transno' name='transno' class='' size='20' maxlength='50' value=''  readonly='readonly' /></td><th>Job Code</th><td><input type='text' id='jobcode' name='jobcode' class='' size='20' maxlength='50' value='' readonly='readonly' /></td></tr><tr><th>Customer</th><td><input type='hidden' name='customerid'/><input type='text' id='customerid_value' name='customerid_value' class='validate[required] entryfocus customer-autosuggest' size='30' value=''/></td><th>Customer Type</th><td><select name='custtype' id='custtype' class=''><option value=''></option><option value='D'>Dealer</option><option value='C'>Client</option><option value='P'>Public</option></select></td></tr><tr><th>Customer Ref. No.</th><td><input type='text' id='custrefno' name='custrefno' class='' size='20' maxlength='50' value=''/></td><th>Attn.</th><td><input type='text' id='attn' name='attn' class='' size='40' maxlength='100' value=''/></td></tr><tr><th>Terms</th><td><select name='terms' id='terms' class='validate[required]'><option value=''></option><option value='0'>Cash</option><option value='30'>30 Days</option><option value='45'>45 Days</option><option value='60'>60 Days</option><option value='90'>90 Days</option></select></td><th> </th><td> </td></tr><tr><th>Delivery Detail</th><td><textarea id='comment' name='comment' class='' cols='35' rows='5' ></textarea></td><th>Sales Date</th><td><input type='text' id='salesdate' name='salesdate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>Salesperson</th><td><select class='validate[required]' id='salesby' selected name='salesby'><option value=''>--- Representative ---</option><option value='16'>Mei Yee</option><option value='35'>Office</option><option value='17'>Wai</option></select></td><th>Delivery Date</th><td><input type='text' id='deliverydate' name='deliverydate' class='datepicker' size='10' maxlength='10' value=''/></td></tr><tr><th>GST Code</th><td><select name='gst_code' id='gst_code'><option value=''></option><option value='TX'>TX</option></select></td><th>GST Amount</th><td><input type='text' id='gst_amt' name='gst_amt' size='10' maxlength='10' value='' readonly='readonly'/></td></tr><tr><th>Status</th><td><select name='status' id='status' class='validate[required]'><option value=''></option><option value='1'>Quotation</option><option value='2'>Order Confirmation</option><option value='3'>Invoice</option><option value='4'>Delivery Order</option><option value='0'>Cancel Order</option></select></td><th nowrap> </th><td> </td></tr><tr><td colspan='4'>&nbsp;</td></tr><tr><th>Discount</th><td><input type='text' name='discount' id='discount'></td><th>Total</th><td><input type='hidden' name='grandtotal' id='grandtotalinput'><span id='grandtotal'></span></td></tr></table><input type='hidden' id='action1' name='action1' value='' /><input type='hidden' id='customerid_ori' name='customerid_ori' value=''/><input type='hidden' id='companyid' name='companyid' value=''/><input type='hidden' id='transid' name='transid' value=''/><input type='hidden' id='shippingmethod' name='shippingmethod' value=''/><input type='hidden' id='updateby' name='updateby' value=''/><input type='hidden' id='updatedate' name='updatedate' value=''/></div><div id='tabs-2'><table width='100%' class='validateForm listTable'><tr><th>Web Client</th><td><input type='hidden' name='clientid'/><input type='text' id='clientid_value' name='clientid_value' class='clientuser-autosuggest' size='40' value=''/></td><th></th><td></td></tr><tr><th>Payment Method</th><td><select name='paymentmethod' id='paymentmethod' class=''><option value=''></option><option value='CC'>Credit Card</option><option value='OT'>Online Transfer</option><option value='COD'>Cash On Delivery</option></select></td><th>Shipping or Transportation Charge</th><td><input type='text' id='shippingcharge' name='shippingcharge' class='' size='10' maxlength='9' value=''/></td></tr></table></div><div id='tabs-3'><table width='100%' class='validateForm listTable'><tr><th>Notes</th><td><textarea id='note' name='note' cols='100' rows='30' readonly></textarea></td></tr></table></div></div><table id='mfgtdEntryTable' class='listTable sortable detail-listingTable'><thead><tr><td colspan='12' id='controlBar'><a href='#' class='paginate_button tip' title='Delete' id='action.clone.delete' >Delete</a><a href='#' class='paginate_button tip' title='Add New Record' id='action.clone.add.custom' >Add</a></td></tr><tr><th class='checkers'><input type='checkbox' class='checkall' /></th><th>Product</th><th>Measurement (w x h)</th><th>Sqft / Unit</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Sub Total</th><th>Option1</th><th>Option2</th><th>Option3</th><th>Remark</th></tr>
+<tr style='display: none' id='mfgtdClone'><td><input type='checkbox' name='chkDetail'><input type='hidden' name='mfgtdrow-status' value='X' /><input type='hidden' id='mfgtdtransdetailid' name='mfgtdtransdetailid' value=''/><input type='hidden' id='mfgtdtransid' name='mfgtdtransid' value=''/><input type='hidden' id='mfgtdcustomisedata' name='mfgtdcustomisedata' value=''/><input type='hidden' id='mfgtdgrpcode' name='mfgtdgrpcode' value=''/><input type='hidden' id='mfgtdstatus' name='mfgtdstatus' value=''/><input type='hidden' id='mfgtdcusttransdetailid' name='mfgtdcusttransdetailid' value=''/><input type='hidden' id='mfgtdprodname' name='mfgtdprodname' value=''/><input type='hidden' id='mfgtdwidth' name='mfgtdwidth' value=''/><input type='hidden' id='mfgtddepth' name='mfgtddepth' value=''/><input type='hidden' id='mfgtdheight' name='mfgtdheight' value=''/><input type='hidden' id='mfgtdposition' name='mfgtdposition' value=''/></td><td><span name='mfgtdprodid' class='editlink'></span><input type='hidden' name='mfgtdprodid' value=''/></td>
+<td><span name='mfgtdmeasurement' class=''></span><input type='hidden' name='mfgtdmeasurement' value=''/></td>
+<td><span name='mfgtdunit' class=''></span><input type='hidden' name='mfgtdunit' value=''/></td>
+<td><span name='mfgtdqty'></span><input type='hidden' name='mfgtdqty' value=''/></td>
+<td><span name='mfgtdprice' class=''></span><input type='hidden' name='mfgtdprice' value=''/></td>
+<td><span name='mfgtddiscount' class=''></span><input type='hidden' name='mfgtddiscount' value=''/></td>
+<td><span name='mfgtdsellsubtotal' class=''></span><input type='hidden' name='mfgtdsellsubtotal' value=''/></td>
+<td><span name='mfgtdopt1' class=''></span><input type='hidden' name='mfgtdopt1' value=''/></td>
+<td><span name='mfgtdopt2' class=''></span><input type='hidden' name='mfgtdopt2' value=''/></td>
+<td><span name='mfgtdopt3' class=''></span><input type='hidden' name='mfgtdopt3' value=''/></td>
+<td><span name='mfgtdremark' class=''></span><input type='hidden' name='mfgtdremark' value=''/></td>
+</tr></thead><tbody id='mfgtdEntryTableBody' class='validateForm'></tbody></table><br></form></div>
+</div><script>var _companyid = 'ls';
+var productMainjson = {"data":{"prod207":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense -BothSides","factory":"N","prodid":"207"},"prod289":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series 2.5t","factory":"N","prodid":"289"},"prod194":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Acrylic & L.B only","factory":"N","prodid":"194"},"prod150":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Acrylic Panel w/o Edge","factory":"N","prodid":"150"},"prod166":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"(Aino) Galaxy Series-Shelf Panel","factory":"N","prodid":"166"},"prod547":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Gloss c/w 36tmm","factory":"N","prodid":"547"},"prod288":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series 2.0t","factory":"N","prodid":"288"},"prod224":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"Oblique Handle (F)","factory":"N","prodid":"224"},"prod57":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1.00","name":"Expose area at back panel (Min 1/Sqft) 2.0mm","factory":"N","prodid":"57"},"prod208":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense2.5mm -BothSides","factory":"N","prodid":"208"},"prod384":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Matt Acrylic c/w cut size only","factory":"N","prodid":"384"},"prod219":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"2.5 Galaxy Series c/w 36tmm-Both Sides","factory":"N","prodid":"219"},"prod200":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Expose Area at 2nd (2.5tmm)","factory":"N","prodid":"200"},"prod581":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Galaxy Series c/w code 404- Expose","factory":"N","prodid":"581"},"prod230":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Paint Works","factory":"N","prodid":"230"},"prod195":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense","factory":"N","prodid":"195"},"prod580":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code 404- Both Sides","factory":"N","prodid":"580"},"prod151":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"(W)Acrylic Door c/w Galaxy Series -Both Sides","factory":"N","prodid":"151"},"prod128":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"L-Shape Corner Infill","factory":"N","prodid":"128"},"prod517":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series wood Grain (36mmt-Bothsides)","factory":"N","prodid":"517"},"prod597":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series code 404","factory":"N","prodid":"597"},"prod420":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Gloss Colour","factory":"N","prodid":"420"},"prod582":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code 404- 25tmm","factory":"N","prodid":"582"},"prod417":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Matt White","factory":"N","prodid":"417"},"prod515":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Galaxy Series wood Grain (Expose Area)","factory":"N","prodid":"515"},"prod563":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Panel Over-Lap","factory":"N","prodid":"563"},"prod477":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Acrylic Sheet 2.0tmm x 4' x 8'","factory":"N","prodid":"477"},"prod606":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.0t ( Both Sides)","factory":"N","prodid":"606"},"prod472":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Panel","factory":"N","prodid":"472"},"prod119":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"Aluminium Built In handle","factory":"N","prodid":"119"},"prod478":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Door c/w Galaxy Series (2.5mm)","factory":"N","prodid":"478"},"prod152":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"Modify size + Labour Charge","factory":"N","prodid":"152"},"prod471":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Panel c/w 25tmm","factory":"N","prodid":"471"},"prod415":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Wood Gain c/w Both Sides","factory":"N","prodid":"415"},"prod448":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Panel Board c/w 30 degree","factory":"N","prodid":"448"},"prod572":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Acrylic Sheet & Labour Only (Woodgain)","factory":"N","prodid":"572"},"prod153":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"AL. Handle - 5 meter","factory":"N","prodid":"153"},"prod620":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Galaxy Series c/w code RYS1002- Expose","factory":"N","prodid":"620"},"prod413":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3G - Woodgain","factory":"N","prodid":"413"},"prod583":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code 404- 25tmm (Full)","factory":"N","prodid":"583"},"prod495":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"3mm Acrylic Sheet (cut sizes)","factory":"N","prodid":"495"},"prod488":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose Area c/w 16mm thickness","factory":"N","prodid":"488"},"prod126":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"(W)Acrylic Door c/w Galaxy Series","factory":"N","prodid":"126"},"prod400":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Al. Handle EP-3405","factory":"N","prodid":"400"},"prod419":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Gloss White","factory":"N","prodid":"419"},"prod98":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose area at back panel (Min 1/Sqft) 2.5mm","factory":"N","prodid":"98"},"prod53":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Acrylic Door c/w Galaxy Series (2.00mm)","factory":"N","prodid":"53"},"prod120":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1.50","name":"(Aino)Acrylic Door c/w Galaxy Series","factory":"N","prodid":"120"},"prod215":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy c/w 2tone ABS","factory":"N","prodid":"215"},"prod199":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.5tmm","factory":"N","prodid":"199"},"prod229":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series 1.2","factory":"N","prodid":"229"},"prod494":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"2.0tmm Acrylic cut size c/w edging polish","factory":"N","prodid":"494"},"prod627":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose area at back panel (Min 1/Sqft) 2.5mm-new","factory":"N","prodid":"627"},"prod619":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code RYS1002- Both Sides","factory":"N","prodid":"619"},"prod447":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Solid Panel c/w Both Sides","factory":"N","prodid":"447"},"prod122":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"0.01","name":"(Aino)Expose area at back of panel","factory":"N","prodid":"122"},"prod228":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w 36tmm (B)","factory":"N","prodid":"228"},"prod450":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Door Panel c/w Both Side Acrylic","factory":"N","prodid":"450"},"prod383":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Food Waste Disposal","factory":"N","prodid":"383"},"prod121":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1.5","name":"(Aino)Galaxy Series c/w Both Sides","factory":"N","prodid":"121"},"prod130":{"customformula":"","sellunittype":"ft","customise":"N","minorder":"1.00","name":"Oblique Handle (45 degree)-(D)","factory":"N","prodid":"130"},"prod460":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"30 degree Handle","factory":"N","prodid":"460"},"prod402":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Al.Edging EP-2800","factory":"N","prodid":"402"},"prod225":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.0t","factory":"N","prodid":"225"},"prod99":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1.00","name":"Oblique Handle (45 degree)","factory":"N","prodid":"99"},"prod233":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy 1.5","factory":"N","prodid":"233"},"prod579":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code 404","factory":"N","prodid":"579"},"prod626":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose area at back panel (Min 1/Sqft) 2.0mm-new","factory":"N","prodid":"626"},"prod103":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Sheet  Sprayed Paint Only (2.0mm CUT SIZE)","factory":"N","prodid":"103"},"prod622":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"402 Acrylic Laminate +Labour Charges ( Board supply by customer )Box","factory":"N","prodid":"622"},"prod466":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose Area","factory":"N","prodid":"466"},"prod516":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series wood Grain (36mmt)","factory":"N","prodid":"516"},"prod487":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"AL. Built In Handle (Champagne)","factory":"N","prodid":"487"},"prod162":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"AL.Handle 17'00\"","factory":"N","prodid":"162"},"prod104":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Sheet (2.5mm CUT SIZE)","factory":"N","prodid":"104"},"prod481":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Serier c/w Both sides","factory":"N","prodid":"481"},"prod108":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Acrylic Laminate +Labour Charges  ( Board supply by customer )","factory":"N","prodid":"108"},"prod418":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Matt Colour","factory":"N","prodid":"418"},"prod423":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Supply Paint Only","factory":"N","prodid":"423"},"prod646":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"G2- 402 (A)  Solid White","factory":"N","prodid":"646"},"prod221":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Trimx 1","factory":"N","prodid":"221"},"prod565":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU High Gloss White c/w customer board","factory":"N","prodid":"565"},"prod214":{"customformula":"","sellunittype":"in","customise":"N","minorder":"1","name":"AL. Handle only","factory":"N","prodid":"214"},"prod106":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Ventilation Hole Only","factory":"N","prodid":"106"},"prod618":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series c/w code RYS1002","factory":"N","prodid":"618"},"prod633":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Gloss Colour -new","factory":"N","prodid":"633"},"prod453":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Door c/w Both Sides","factory":"N","prodid":"453"},"prod218":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"2.0 Galaxy Series c/w 36tmm-Both Sides","factory":"N","prodid":"218"},"prod648":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"G2-402 (A) Solid White / Both Side","factory":"N","prodid":"648"},"prod425":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Supply Acrylic & Labour Only (matt)","factory":"N","prodid":"425"},"prod191":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Winsco Galaxy Series-Solid","factory":"N","prodid":"191"},"prod647":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"G2-402 (A) Solid White / Expose","factory":"N","prodid":"647"},"prod343":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Crystal 1","factory":"N","prodid":"343"},"prod71":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Acrylic Door c/w Both Side (2.50mm)","factory":"N","prodid":"71"},"prod129":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"L-Shape Corner Infill c/w AL.Handle","factory":"N","prodid":"129"},"prod196":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"2.0 Galaxy Series c/w 36tmm","factory":"N","prodid":"196"},"prod232":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Series wood Grain","factory":"N","prodid":"232"},"prod615":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"Supply Paint Works only (colour)","factory":"N","prodid":"615"},"prod197":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"2.5 Galaxy Series c/w 36tmm","factory":"N","prodid":"197"},"prod607":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.5t ( Both Sides)","factory":"N","prodid":"607"},"prod211":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.5t (c)","factory":"N","prodid":"211"},"prod190":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Door - 3G Series","factory":"N","prodid":"190"},"prod226":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Sense 2.5t","factory":"N","prodid":"226"},"prod416":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Panel c/w C1 Profile(3mm)","factory":"N","prodid":"416"},"prod217":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Both Sides (Solid)","factory":"N","prodid":"217"},"prod169":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1","name":"Galaxy Door Panel Design","factory":"N","prodid":"169"},"prod198":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Expose Area at 2nd side","factory":"N","prodid":"198"},"prod621":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Laminate +Labour Charges ( Board supply by customer ) Box","factory":"N","prodid":"621"},"prod632":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Galaxy Series c/w code RYS1002- Expose New","factory":"N","prodid":"632"},"prod154":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"(W)Acrylic Door c/w Galaxy Series - 36mmthk","factory":"N","prodid":"154"},"prod227":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic Panel c/w C1 Profiles","factory":"N","prodid":"227"},"prod72":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.00","name":"Acrylic Door c/w Both Side (2.00mm)","factory":"N","prodid":"72"},"prod385":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Acrylic + 6mm Plywood","factory":"N","prodid":"385"},"prod344":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2","name":"Galaxy Wood Grain","factory":"N","prodid":"344"},"prod0":{"customformula":"","sellunittype":"","customise":"","minorder":"0","name":"[Custom Product]","prodid":"0"},"prod634":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"2.5","name":"PU Matt Colour-new","factory":"N","prodid":"634"},"prod63":{"customformula":"","sellunittype":"u","customise":"N","minorder":"1.00","name":"Ventilation Hole c/w Acrylic Finishing","factory":"N","prodid":"63"},"prod164":{"customformula":"","sellunittype":"sf","customise":"N","minorder":"1","name":"Acrylic Sheet (Clear) 2.0tmm","factory":"N","prodid":"164"}}};
+var productOptionjson = {"data":{"prod13":"10","prod207":"44","prod436":"56,11","prod592":"15,11","prod569":"15,11","prod49":"15,11","prod408":"55","prod513":"11","prod407":"11","prod208":"44","prod384":"76","prod593":"15,11","prod435":"10,11","prod519":"55","prod405":"11","prod230":"44","prod2":"15,11","prod46":"10,11","prod15":"10,11","prod517":"66","prod38":"15,11","prod518":"55","prod406":"11","prod515":"66","prod414":"131,11","prod484":"55","prod477":"64","prod478":"44","prod415":"66","prod412":"11","prod572":"66","prod413":"66","prod102":"44","prod495":"44","prod539":"107,11","prod70":"43","prod451":"15,11","prod14":"10","prod512":"55","prod215":"44","prod611":"15,11","prod199":"44","prod229":"65,76","prod123":"54","prod638":"15,11","prod122":"44","prod69":"55","prod389":"10,11","prod228":"57","prod534":"15,11","prod76":"56,11","prod130":"45","prod121":"44","prod131":"44","prod99":"45","prod537":"107,11","prod637":"15,11","prod470":"15,11","prod51":"43","prod464":"15,11","prod608":"55","prod600":"15,11","prod449":"56,11","prod480":"56,11","prod610":"15,11","prod465":"56,11","prod574":"56,11","prod10":"10","prod481":"76,44","prod108":"44","prod467":"15,11","prod418":"127,126","prod221":"44","prod75":"56,11","prod214":"45","prod78":"56,11","prod633":"127,126","prod616":"15,11","prod101":"54","prod613":"15,11","prod343":"44","prod71":"44","prod196":"54","prod434":"15,11","prod589":"15,11","prod614":"15,11","prod506":"15,11","prod107":"15,11","prod607":"57","prod197":"44","prod68":"44,45","prod601":"15,11","prod416":"44","prod639":"15,11","prod169":"44","prod198":"44","prod72":"54","prod588":"15,11","prod385":"44","prod344":"57","prod612":"15,11","prod634":"127,126","prod48":"55","prod289":"44,76","prod194":"44","prod166":"44","prod150":"44","prod598":"15","prod547":"127","prod288":"44,76","prod224":"45","prod54":"44,45","prod57":"54","prod124":"44","prod219":"44","prod200":"44","prod421":"15,11","prod530":"55","prod195":"44","prod509":"56,11,43","prod151":"44,57","prod602":"15,11","prod599":"15,11","prod128":"44","prod603":"15,11","prod597":"76","prod420":"126,127","prod417":"127,126","prod114":"44","prod469":"15,11","prod483":"55","prod641":"15,11","prod77":"56,11","prod462":"56,11","prod505":"11","prod606":"57","prod472":"44","prod119":"45","prod12":"10","prod471":"44","prod92":"11","prod426":"15,11","prod468":"56,11","prod640":"15,11","prod533":"55","prod126":"44,57","prod419":"126,127","prod528":"55","prod125":"44","prod523":"55","prod524":"55","prod53":"44,45","prod98":"44","prod120":"44","prod532":"55","prod403":"11","prod475":"15,11","prod627":"44","prod525":"55","prod447":"44","prod461":"15,11","prod450":"44","prod527":"55","prod225":"57","prod233":"57","prod446":"56,11","prod626":"54","prod103":"54,44","prod622":"44,57","prod476":"107,11","prod522":"55","prod645":"15,11","prod516":"66","prod21":"15,11","prod422":"55","prod104":"44","prod486":"55","prod423":"44","prod531":"55","prod20":"15,11","prod565":"133,127","prod526":"55","prod644":"10","prod570":"15,11","prod453":"57","prod218":"44","prod605":"15,11","prod425":"57","prod84":"15,11","prod191":"44","prod497":"15,11","prod520":"55","prod129":"44","prod643":"10","prod564":"131,11","prod232":"66","prod455":"15,11","prod485":"55","prod604":"15,11","prod211":"44","prod190":"44,129","prod226":"57","prod217":"57","prod567":"15","prod621":"44,57","prod444":"56,11","prod591":"15,11","prod154":"57,44","prod227":"44","prod205":"107,11","prod445":"107,11","prod590":"15,11","prod496":"107,11","prod568":"15","prod548":"11","prod85":"55"}};
+var productOptionPriceJson = {"optdtl555":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 1021-MP"},"optdtl331":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU9 L.Grey"},"optdtl173":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 15 HG. Yellow"},"optdtl1876":{"publicprice":"30.00","dealerprice":"30.00","sellunittype":"sf","clientprice":"30.00","formula":"","cost":"0.00","name":"Galaxy Series"},"optdtl170":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 13 P.Green"},"optdtl2030":{"publicprice":"16.80","dealerprice":"16.80","sellunittype":"sf","clientprice":"16.80","formula":"","cost":"0.00","name":"Galaxy Series 16.80"},"optdtl402":{"publicprice":"0.50","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"MP3017 Chocolate Metalic"},"optdtl323":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU1 Meico Silver"},"optdtl1825":{"publicprice":"8.00","dealerprice":"8.00","sellunittype":"u","clientprice":"8.00","formula":"","cost":"0.00","name":"Gloss"},"optdtl577":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0006-SP LS RED"},"optdtl389":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3004 Everest White"},"optdtl188":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0012-SP"},"optdtl547":{"publicprice":"0.00","dealerprice":"200.00","sellunittype":"u","clientprice":"220.00","formula":null,"cost":"0.00","name":"RZ 0001-SPP.White"},"optdtl572":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 00011-SP"},"optdtl607":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW3002"},"optdtl578":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0007-SP MET GREY"},"optdtl571":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 00010-SP"},"optdtl332":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU10 Autum"},"optdtl386":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3001 Silver Metalic"},"optdtl397":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3012 Viva Red"},"optdtl563":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0002-SP"},"optdtl544":{"publicprice":"0.00","dealerprice":"204.00","sellunittype":"u","clientprice":"224.00","formula":null,"cost":"0.00","name":"RZ 00010-SPBrown Grey"},"optdtl180":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-504 (L.Grey)"},"optdtl605":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW8004"},"optdtl168":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 11 Br.Red"},"optdtl184":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-502 (Black)"},"optdtl408":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MPW-803 Light Zebrano Wood"},"optdtl587":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 6043 MP"},"optdtl1761":{"publicprice":"5.00","dealerprice":"4.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"EU 22 Magic White"},"optdtl335":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU13 P.Green"},"optdtl554":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 3040-MP"},"optdtl169":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 12 S.Orange"},"optdtl396":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3011 Powder Green"},"optdtl2007":{"publicprice":"17.00","dealerprice":"17.00","sellunittype":"sf","clientprice":"17.00","formula":"","cost":"0.00","name":"Galaxy Series 17.00"},"optdtl409":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MPW-804 Talisa Plum Wood"},"optdtl336":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU14 Viva Red"},"optdtl2036":{"publicprice":"0.70","dealerprice":"0.60","sellunittype":"in","clientprice":"0.70","formula":"","cost":"0.00","name":"Powder Coat"},"optdtl676":{"publicprice":"18.50","dealerprice":"18.50","sellunittype":"sf","clientprice":"18.50","formula":"","cost":"0.00","name":"Galaxy Series 18.50"},"optdtl537":{"publicprice":"0.00","dealerprice":"213.00","sellunittype":"u","clientprice":"233.00","formula":null,"cost":"0.00","name":"RZ 0003-SPCreamy Green"},"optdtl606":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW3001"},"optdtl406":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MPW-801 White ASH Wood"},"optdtl183":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-814 (Maroon)"},"optdtl2037":{"publicprice":"16.00","dealerprice":"16.00","sellunittype":"sf","clientprice":"16.00","formula":"","cost":"0.00","name":"Galaxy Series 16.00"},"optdtl675":{"publicprice":"18.00","dealerprice":"18.00","sellunittype":"sf","clientprice":"18.00","formula":"","cost":"0.00","name":"Galaxy Series18.00"},"optdtl597":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1006"},"optdtl678":{"publicprice":"20.00","dealerprice":"20.00","sellunittype":"sf","clientprice":"20.00","formula":"","cost":"0.00","name":"Galaxy Series 20.00"},"optdtl1874":{"publicprice":"15.00","dealerprice":"15.00","sellunittype":"sf","clientprice":"15.00","formula":"","cost":"0.00","name":"Galaxy Series 15.00"},"optdtl2038":{"publicprice":"23.00","dealerprice":"23.00","sellunittype":"sf","clientprice":"23.00","formula":"","cost":"0.00","name":"Galaxy Series 23.00"},"optdtl2040":{"publicprice":"22.50","dealerprice":"22.50","sellunittype":"sf","clientprice":"22.50","formula":"","cost":"0.00","name":"Galaxy Series  22.50"},"optdtl395":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3010 Summer Red"},"optdtl536":{"publicprice":"0.00","dealerprice":"204.00","sellunittype":"u","clientprice":"224.00","formula":null,"cost":"0.00","name":"RZ 0002-SPLs Lemon"},"optdtl538":{"publicprice":"0.00","dealerprice":"207.00","sellunittype":"u","clientprice":"227.00","formula":null,"cost":"0.00","name":"RZ 0004-SPLight Orange"},"optdtl159":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 2 M.Silver"},"optdtl391":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3006 Metalic Gold"},"optdtl539":{"publicprice":"0.00","dealerprice":"216.00","sellunittype":"u","clientprice":"236.00","formula":null,"cost":"0.00","name":"RZ 0005-SPWild Iris"},"optdtl339":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU17 Beige"},"optdtl2020":{"publicprice":"6.00","dealerprice":"6.00","sellunittype":"sf","clientprice":"6.00","formula":"","cost":"0.00","name":"Both sides"},"optdtl172":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 14 Viva Red"},"optdtl179":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-402 (White)"},"optdtl328":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU6 M.Gold"},"optdtl580":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0009-SP LS COMET"},"optdtl398":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3013 Champagne Cream"},"optdtl325":{"publicprice":"1.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"EU3 Pearl White"},"optdtl590":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 3040 MP"},"optdtl407":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MPW-802 Light OAK Wood"},"optdtl576":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0005-SP WILD IRIS"},"optdtl674":{"publicprice":"17.50","dealerprice":"17.50","sellunittype":"sf","clientprice":"17.50","formula":"","cost":"0.00","name":"Galaxy Series 17.50"},"optdtl573":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0002-SP LS LEMON"},"optdtl399":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3014 Lily Beige"},"optdtl1872":{"publicprice":"1.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"Multiboard"},"optdtl2039":{"publicprice":"11.00","dealerprice":"11.00","sellunittype":"sf","clientprice":"11.00","formula":"","cost":"0.00","name":"Galaxy Series 11.00"},"optdtl171":{"publicprice":"1.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"Custom Colour"},"optdtl330":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU8 Charcoal"},"optdtl340":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU18 Apple Green"},"optdtl2026":{"publicprice":"0.45","dealerprice":"0.45","sellunittype":"in","clientprice":"0.45","formula":"","cost":"0.00","name":"Oblique"},"optdtl394":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3009 Light Grey"},"optdtl574":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0003-SP CREAMY GREEN"},"optdtl553":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 1058-MP"},"optdtl1762":{"publicprice":"5.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"EU 22 Magic White"},"optdtl589":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 1058 MP"},"optdtl596":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1005"},"optdtl324":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU2 M.Silver"},"optdtl2029":{"publicprice":"8.00","dealerprice":"6.50","sellunittype":"sf","clientprice":"8.00","formula":"","cost":"0.00","name":"Both sides (404)"},"optdtl552":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 0820-MP"},"optdtl186":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 19 P.Black"},"optdtl575":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0004-SP LIGHT ORANGE"},"optdtl400":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3015 Apple Green"},"optdtl550":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 6044-MP"},"optdtl165":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 8 Charcoal"},"optdtl549":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 5005-MP"},"optdtl602":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW8001"},"optdtl1869":{"publicprice":"22.00","dealerprice":"22.00","sellunittype":"sf","clientprice":"22.00","formula":"","cost":"0.00","name":"Galaxy Series 22.00"},"optdtl2027":{"publicprice":"15.50","dealerprice":"15.50","sellunittype":"sf","clientprice":"15.50","formula":"","cost":"0.00","name":"Galaxy Series 15.50"},"optdtl392":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3007 Solic Black"},"optdtl603":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW8002"},"optdtl594":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1003"},"optdtl164":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 7 P.Blue"},"optdtl569":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0008-SP"},"optdtl1822":{"publicprice":"1.00","dealerprice":"1.00","sellunittype":"u","clientprice":"1.00","formula":"","cost":"0.00","name":"Handle (m)"},"optdtl680":{"publicprice":"21.00","dealerprice":"21.00","sellunittype":"sf","clientprice":"21.00","formula":"","cost":"0.00","name":"Galaxy Series 21.00"},"optdtl540":{"publicprice":"0.00","dealerprice":"207.00","sellunittype":"u","clientprice":"227.00","formula":null,"cost":"0.00","name":"RZ 0006-SPLS Red"},"optdtl600":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1009"},"optdtl582":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 00011-SP DARK BROWN"},"optdtl1821":{"publicprice":"2.00","dealerprice":"2.00","sellunittype":"u","clientprice":"2.00","formula":"","cost":"0.00","name":"Handle (G)"},"optdtl568":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0007-SP"},"optdtl599":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1008"},"optdtl588":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0820MP"},"optdtl401":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3016 Powder Blue"},"optdtl390":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3005 Metalic Brown"},"optdtl592":{"publicprice":"6.00","dealerprice":"6.00","sellunittype":"ft","clientprice":"6.00","formula":"","cost":"0.00","name":"Oblique Handle(w)"},"optdtl679":{"publicprice":"20.50","dealerprice":"20.50","sellunittype":"sf","clientprice":"20.50","formula":"","cost":"0.00","name":"Galaxy Series 20.50"},"optdtl162":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 5 M.Brown"},"optdtl410":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"Custom Colour"},"optdtl338":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU16 Cream"},"optdtl190":{"publicprice":"0.40","dealerprice":"0.40","sellunittype":"u","clientprice":"0.40","formula":"","cost":"0.00","name":"Width"},"optdtl2022":{"publicprice":"5.00","dealerprice":"5.00","sellunittype":"sf","clientprice":"5.00","formula":"","cost":"0.00","name":"Colour"},"optdtl385":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2 502"},"optdtl598":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1007"},"optdtl551":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 6043-MP"},"optdtl405":{"publicprice":"0.50","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"MP3020 Green Metalic"},"optdtl543":{"publicprice":"0.00","dealerprice":"199.00","sellunittype":"u","clientprice":"219.00","formula":null,"cost":"0.00","name":"RZ 0009-SPLS Comet"},"optdtl329":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU7 P.Blue"},"optdtl327":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU5 M.Brown"},"optdtl181":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-266 (Orange)"},"optdtl326":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU4 P.White"},"optdtl581":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 00010-SPGREY MS 87"},"optdtl2021":{"publicprice":"6.00","dealerprice":"6.00","sellunittype":"sf","clientprice":"6.00","formula":"","cost":"0.00","name":"Gloss"},"optdtl548":{"publicprice":"0.00","dealerprice":"185.00","sellunittype":"u","clientprice":"205.00","formula":null,"cost":"0.00","name":"RZ 8018-MP"},"optdtl337":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU15 HG.Yellow"},"optdtl393":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3008 Charcoal Vios"},"optdtl595":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1004"},"optdtl1824":{"publicprice":"7.00","dealerprice":"7.00","sellunittype":"u","clientprice":"7.00","formula":"","cost":"0.00","name":"Matt Colour"},"optdtl334":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU12 S.Orange"},"optdtl388":{"publicprice":"0.50","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"MP3003 Pear White"},"optdtl1868":{"publicprice":"21.50","dealerprice":"21.50","sellunittype":"sf","clientprice":"21.50","formula":"","cost":"0.00","name":"Galaxy Series 21.50"},"optdtl583":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 00012-SP P. BLACK"},"optdtl175":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 17 Beige"},"optdtl2035":{"publicprice":"16.50","dealerprice":"16.50","sellunittype":"sf","clientprice":"16.50","formula":"","cost":"0.00","name":"Galaxy Series 16.50"},"optdtl593":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1002"},"optdtl383":{"publicprice":"5.50","dealerprice":"5.50","sellunittype":"ft","clientprice":"5.50","formula":"","cost":"0.00","name":"Oblique Handle(Dealer)"},"optdtl404":{"publicprice":"0.50","dealerprice":"0.50","sellunittype":"sf","clientprice":"0.50","formula":"","cost":"0.00","name":"MP3019 Black Metalic"},"optdtl546":{"publicprice":"0.00","dealerprice":"202.00","sellunittype":"u","clientprice":"222.00","formula":null,"cost":"0.00","name":"RZ 00012-SPP. Black"},"optdtl182":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"G2-135 (Red)"},"optdtl579":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0008-SP LIGHT BROWN"},"optdtl591":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 1021 MP"},"optdtl585":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 5005 MP"},"optdtl167":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 10 Autumn"},"optdtl333":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU11 Br.Red"},"optdtl541":{"publicprice":"0.00","dealerprice":"201.00","sellunittype":"u","clientprice":"221.00","formula":null,"cost":"0.00","name":"RZ 0007-SPMet Grey"},"optdtl570":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0009-SP"},"optdtl586":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 6044 MP"},"optdtl566":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0005-SP"},"optdtl747":{"publicprice":"19.00","dealerprice":"19.00","sellunittype":"sf","clientprice":"19.00","formula":"","cost":"0.00","name":"Galaxy Series 19.00"},"optdtl677":{"publicprice":"19.50","dealerprice":"19.50","sellunittype":"sf","clientprice":"19.50","formula":"","cost":"0.00","name":"Galaxy Series 19.50"},"optdtl384":{"publicprice":"0.60","dealerprice":"0.50","sellunittype":"in","clientprice":"0.60","formula":"","cost":"0.00","name":"Oblique Handle(F)"},"optdtl604":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GW8003"},"optdtl161":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 4 P.White"},"optdtl174":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 16 Cream"},"optdtl158":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 1 Meico Silver"},"optdtl565":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0004-SP"},"optdtl160":{"publicprice":"1.00","dealerprice":"0.50","sellunittype":"sf","clientprice":"1.00","formula":"","cost":"0.00","name":"EU 3 Pearl White"},"optdtl176":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 18 Apple Green"},"optdtl564":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0003-SP"},"optdtl163":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 6 M.Gold"},"optdtl542":{"publicprice":"0.00","dealerprice":"202.00","sellunittype":"u","clientprice":"222.00","formula":null,"cost":"0.00","name":"RZ 0008-SPLight Brown"},"optdtl1823":{"publicprice":"7.00","dealerprice":"7.00","sellunittype":"u","clientprice":"7.00","formula":"","cost":"0.00","name":"Matt White"},"optdtl601":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"GS 1010"},"optdtl166":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"EU 9 L.Grey"},"optdtl545":{"publicprice":"0.00","dealerprice":"201.00","sellunittype":"u","clientprice":"221.00","formula":null,"cost":"0.00","name":"RZ 00011-SPDark Brown"},"optdtl584":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 8018 MP"},"optdtl189":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"u","clientprice":"0.00","formula":"","cost":"0.00","name":"None"},"optdtl567":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"RZ 0006-SP"},"optdtl387":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3002 Star Silver"},"optdtl403":{"publicprice":"0.00","dealerprice":"0.00","sellunittype":"sf","clientprice":"0.00","formula":"","cost":"0.00","name":"MP3018 Comet Grey"}};
+</script></div>
+
+			
+
+<div id='CustomiseDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<table width='100%' class='listTable'>
+		<thead>
+			<tr>
+				<th>
+					Panel:<input type='textbox' size='5' name='col' style='text-align: right;'>  &nbsp;&nbsp;&nbsp;					
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id='customiseContent'></td></tr>
+		</tbody>
+	</table>
+</div>
+
+<div id='approvalDialog' class='dialogView' style='width: 500px; height:60px;display: none' title="Authorization">
+	<table id='customCloneAddTable' width='100%' class='listTable'>
+		<thead>
+		<tr><th colspan="2" id="authorizeMsg"></th></tr>
+		</thead>
+		<tr><th>User ID</th><td><input type="text" name="userid" id="userid" /></td></tr>
+		<tr><th>Password</th><td><input type="password" name="password" id="password" /></td></tr>
+	</table>
+</div>
+
+<div id='customCloneAddDialog' class='dialogView' style='width: 920px; height:100%;display: none'>
+	<form id="customCloneAddForm" class="validateForm">
+		<input type="hidden" id="mfgtdtransdetailid" name="mfgtdtransdetailid" value="">
+		<input type="hidden" id="mfgtdcustomisedata" name="mfgtdcustomisedata" value="">
+		<input type="hidden" id="mfgtdcost" name="mfgtdcost" value="">
+		<input type="hidden" id="mfgtdcostsubtotal" name="mfgtdcostsubtotal" value="">		
+		<input type='hidden' id="mfgtdwidth" name='mfgtdwidth' value="">
+		<input type='hidden' id="mfgtdheight" name='mfgtdheight' value="">
+		<input type="hidden" id="mfgtdstatus" name='mfgtdstatus' value="A">
+		
+		<table id='customCloneAddTable' width='100%' class='listTable'>
+			<col width="130">
+			<col width="250">
+			<col width="100">
+			<col width="250">
+			<tr>
+				<th>Product</th>
+				<td>
+					<select id='mfgtdprodid' selected name='mfgtdprodid'><option value=''>--- Product ---</option><OPTGROUP LABEL='404'><option value='579'>Galaxy Series c/w code 404</option><option value='582'>Galaxy Series c/w code 404- 25tmm</option><option value='583'>Galaxy Series c/w code 404- 25tmm (Full)</option><option value='580'>Galaxy Series c/w code 404- Both Sides</option><option value='581'>Galaxy Series c/w code 404- Expose</option><option value='618'>Galaxy Series c/w code RYS1002</option><option value='619'>Galaxy Series c/w code RYS1002- Both Sides</option><option value='620'>Galaxy Series c/w code RYS1002- Expose</option><option value='632'>Galaxy Series c/w code RYS1002- Expose New</option><option value='597'>Galaxy Series code 404</option></OPTGROUP><OPTGROUP LABEL='Acrylic Sheet Only'><option value='494'>2.0tmm Acrylic cut size c/w edging polish</option><option value='495'>3mm Acrylic Sheet (cut sizes)</option><option value='103'>Acrylic Sheet  Sprayed Paint Only (2.0mm CUT SIZE)</option><option value='104'>Acrylic Sheet (2.5mm CUT SIZE)</option><option value='164'>Acrylic Sheet (Clear) 2.0tmm</option><option value='384'>Supply Matt Acrylic c/w cut size only</option></OPTGROUP><OPTGROUP LABEL='Aino'><option value='166'>(Aino) Galaxy Series-Shelf Panel</option><option value='120'>(Aino)Acrylic Door c/w Galaxy Series</option><option value='122'>(Aino)Expose area at back of panel</option><option value='121'>(Aino)Galaxy Series c/w Both Sides</option><option value='450'>Door Panel c/w Both Side Acrylic</option><option value='472'>Galaxy Panel</option><option value='563'>Panel Over-Lap</option><option value='447'>Solid Panel c/w Both Sides</option></OPTGROUP><OPTGROUP LABEL='G2-402 (A)'><option value='646'>G2- 402 (A)  Solid White</option><option value='648'>G2-402 (A) Solid White / Both Side</option><option value='647'>G2-402 (A) Solid White / Expose</option></OPTGROUP><OPTGROUP LABEL='Galaxy Sense'><option value='200'>Expose Area at 2nd (2.5tmm)</option><option value='198'>Expose Area at 2nd side</option><option value='195'>Galaxy Sense</option><option value='207'>Galaxy Sense -BothSides</option><option value='211'>Galaxy Sense 2.5t (c)</option><option value='199'>Galaxy Sense 2.5tmm</option><option value='208'>Galaxy Sense2.5mm -BothSides</option></OPTGROUP><OPTGROUP LABEL='Galaxy Series'><option value='196'>2.0 Galaxy Series c/w 36tmm</option><option value='218'>2.0 Galaxy Series c/w 36tmm-Both Sides</option><option value='197'>2.5 Galaxy Series c/w 36tmm</option><option value='219'>2.5 Galaxy Series c/w 36tmm-Both Sides</option><option value='190'>Acrylic Door - 3G Series</option><option value='72'>Acrylic Door c/w Both Side (2.00mm)</option><option value='71'>Acrylic Door c/w Both Side (2.50mm)</option><option value='53'>Acrylic Door c/w Galaxy Series (2.00mm)</option><option value='478'>Acrylic Door c/w Galaxy Series (2.5mm)</option><option value='57'>Expose area at back panel (Min 1/Sqft) 2.0mm</option><option value='626'>Expose area at back panel (Min 1/Sqft) 2.0mm-new</option><option value='98'>Expose area at back panel (Min 1/Sqft) 2.5mm</option><option value='627'>Expose area at back panel (Min 1/Sqft) 2.5mm-new</option><option value='488'>Expose Area c/w 16mm thickness</option><option value='215'>Galaxy c/w 2tone ABS</option><option value='169'>Galaxy Door Panel Design</option><option value='481'>Galaxy Serier c/w Both sides</option><option value='229'>Galaxy Series 1.2</option><option value='288'>Galaxy Series 2.0t</option><option value='289'>Galaxy Series 2.5t</option><option value='232'>Galaxy Series wood Grain</option><option value='516'>Galaxy Series wood Grain (36mmt)</option><option value='517'>Galaxy Series wood Grain (36mmt-Bothsides)</option><option value='515'>Galaxy Series wood Grain (Expose Area)</option><option value='415'>Galaxy Wood Gain c/w Both Sides</option><option value='128'>L-Shape Corner Infill</option><option value='129'>L-Shape Corner Infill c/w AL.Handle</option></OPTGROUP><OPTGROUP LABEL='Handle'><option value='460'>30 degree Handle</option><option value='487'>AL. Built In Handle (Champagne)</option><option value='153'>AL. Handle - 5 meter</option><option value='214'>AL. Handle only</option><option value='162'>AL.Handle 17'00"</option><option value='119'>Aluminium Built In handle</option><option value='99'>Oblique Handle (45 degree)</option><option value='130'>Oblique Handle (45 degree)-(D)</option><option value='224'>Oblique Handle (F)</option></OPTGROUP><OPTGROUP LABEL='Others'><option value='413'>3G - Woodgain</option><option value='622'>402 Acrylic Laminate +Labour Charges ( Board supply by customer )Box</option><option value='385'>Acrylic + 6mm Plywood</option><option value='108'>Acrylic Laminate +Labour Charges  ( Board supply by customer )</option><option value='621'>Acrylic Laminate +Labour Charges ( Board supply by customer ) Box</option><option value='416'>Acrylic Panel c/w C1 Profile(3mm)</option><option value='227'>Acrylic Panel c/w C1 Profiles</option><option value='150'>Acrylic Panel w/o Edge</option><option value='477'>Acrylic Sheet 2.0tmm x 4' x 8'</option><option value='400'>Al. Handle EP-3405</option><option value='402'>Al.Edging EP-2800</option><option value='343'>Crystal 1</option><option value='471'>Galaxy Panel c/w 25tmm</option><option value='152'>Modify size + Labour Charge</option><option value='194'>Supply Acrylic & L.B only</option><option value='572'>Supply Acrylic Sheet & Labour Only (Woodgain)</option><option value='423'>Supply Paint Only</option><option value='230'>Supply Paint Works</option><option value='448'>Supply Panel Board c/w 30 degree</option><option value='221'>Trimx 1</option><option value='63'>Ventilation Hole c/w Acrylic Finishing</option><option value='106'>Ventilation Hole Only</option><option value='0'>[Custom Product]</option></OPTGROUP><OPTGROUP LABEL='PU Finishing'><option value='466'>Expose Area</option><option value='547'>PU Gloss c/w 36tmm</option><option value='420'>PU Gloss Colour</option><option value='633'>PU Gloss Colour -new</option><option value='419'>PU Gloss White</option><option value='565'>PU High Gloss White c/w customer board</option><option value='418'>PU Matt Colour</option><option value='634'>PU Matt Colour-new</option><option value='417'>PU Matt White</option><option value='615'>Supply Paint Works only (colour)</option></OPTGROUP><OPTGROUP LABEL='Winsco'><option value='126'>(W)Acrylic Door c/w Galaxy Series</option><option value='154'>(W)Acrylic Door c/w Galaxy Series - 36mmthk</option><option value='151'>(W)Acrylic Door c/w Galaxy Series -Both Sides</option><option value='453'>Acrylic Door c/w Both Sides</option><option value='383'>Food Waste Disposal</option><option value='233'>Galaxy 1.5</option><option value='217'>Galaxy Both Sides (Solid)</option><option value='225'>Galaxy Sense 2.0t</option><option value='606'>Galaxy Sense 2.0t ( Both Sides)</option><option value='226'>Galaxy Sense 2.5t</option><option value='607'>Galaxy Sense 2.5t ( Both Sides)</option><option value='228'>Galaxy Series c/w 36tmm (B)</option><option value='344'>Galaxy Wood Grain</option><option value='425'>Supply Acrylic & Labour Only (matt)</option><option value='191'>Winsco Galaxy Series-Solid</option></select></OPTGROUP> 
+					<div id='chargeProduct'></div>
+				</td>
+				<th>Custom Name</th>
+				<td><input type='text' id='mfgtdprodname' name='mfgtdprodname' class='' size='40' maxlength='200' value=''/></td>
+			</tr>
+			<tr>
+				<th>Measurement <br>(w x h)</th>				
+				<td>
+					<input type='text' id='mfgtdmeasurement' name='mfgtdmeasurement' class='' size='30' maxlength='50' value=''/>
+					<a href="#" id="customizeLink" style="display:none;color:#000000;">Customize</a>
+				</td>
+				<th>Quantity</th>
+				<td><input type='text' id='mfgtdqty' name='mfgtdqty' class='validate[required]' size='8' maxlength='10' value=''/></td>
+			</tr>
+			<tr>
+				<th>Option 1</th>
+				<td id="mfgtdopt1"></td>
+				<th>Option 2</th>
+				<td id="mfgtdopt2"></td>
+			</tr>
+			<tr>
+				<th>Option 3</th>
+				<td id="mfgtdopt3"></td>
+				<th></th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>SqFt / Unit</th>
+				<td><input type='text' id='mfgtdunit' name='mfgtdunit' class='' size='8' maxlength='15' value=''/></td>
+				<th>Unit Price</th>
+				<td><input type='text' id='mfgtdprice' name='mfgtdprice' class='' size='8' maxlength='15' value=''/> <span id="customprice" style="display: none;font-weight: bold;"></span></td>
+			</tr>
+			<tr>
+				<th>Discount</th>
+				<td><input type='text' id='mfgtddiscount' name='mfgtddiscount' class='' size='8' maxlength='15' value=''/></td>
+				<th>Subtotal</th>
+				<td><input type='text' id='mfgtdsellsubtotal' name='mfgtdsellsubtotal' class='' size='10' maxlength='15' value=''/></td>
+			</tr>
+			<tr>
+				<th>Width (mm)</th>
+				<td>
+					<span id="mfgtdwidth"></span>
+					
+				</td>
+				<th>Height (mm)</th>
+				<td>
+					<span id='mfgtdheight'></span>					
+				</td>
+			</tr>
+			<tr>
+				<th>Remarks</th>
+				<td colspan="3">
+					<input type="text" id='mfgtdremark' name='mfgtdremark' size="70">
+				</td>				
+			</tr>			
+		</table>
+	</form>
+</div>
+	
+	<!-- Box Content: End -->
+	
+</div>
+<!-- 100% Box Grid Container: End -->
+
+
+<!-- Footer Grid: Start -->
+<div class="grid_24">
+
+	<!-- Footer: Start -->
+	<div id="footer">
+		
+		<p class="left">
+			Copyright &#169; 2011 <a href="">Forest Web Solution</a>. 
+			Powered by <a href="http://themeforest.net/user/Kaasper/?ref=kaasper">Simplpan</a>.
+		</p>		
+		
+	</div>
+	<!-- Footer: End -->
+	
+</div>
+<!-- Footer Grid: End -->
+
+</div>
+<!-- End: Page Wrap -->	
+	<!-- jQuery libs - Rest are found in the head section (at top) -->	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.poshytip.min.js"></script>	
+	<script type="text/javascript" src="/themes/admin/simplplan/js/jquery.dataTables.min.js"></script>	
+	<!-- <script type="text/javascript" src="/themes/admin/simplplan/js/jquery.uniform.min.js"></script> -->
+	
+	
+	<!-- jQuery Customization -->
+	<script type="text/javascript" src="/themes/admin/simplplan/js/custom.js"></script>
+	
+	<!-- FWS -->
+	
+
+<script type="text/javascript">
+	var customEntryButton = {};	
+	var editTR;
+	var isEditing = false;
+	var productPricejsonArray = [];
+	
+	function beforeAdd(){
+		productPricejsonArray = [];
+	}
+	function afterJson(json){
+		if(_companyid=='megatrend' && (json.rc=='0' || json.rc=='1')){
+			alert("Please remember to update this invoice at Eurotrend");
+		}
+	}
+	
+	function calculateTotal(){
+		var price, discount;
+		var grandtotal = 0;
+		var globaldiscount = $("#entryForm").find("input[name=discount]").val().trim();
+		var gstCode = $("#entryForm").find("select[name=gst_code]").val();
+		var status = "";
+		// If Percentage
+		var perc = 0;	
+		if(globaldiscount.indexOf("%")!=-1){
+			perc = parseFloat(globaldiscount.substring(0,globaldiscount.length-1));
+		}	
+		if(globaldiscount==''){
+			globaldiscount=0;
+		}	
+				
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			status = $(this).find("input[name$=row-status]").val();
+			if(status!='D'){
+				price = parseFloat($(this).find("input[id$=sellsubtotal]").val());			
+				grandtotal += price;
+			}			
+		});
+		
+		if(perc>0){
+			globaldiscount = grandtotal * (perc / 100);
+		}
+		globaldiscount = ajaxUtil.roundNumber(parseFloat(globaldiscount),2);
+				
+		//alert("grandtotal = "+grandtotal+", globaldiscount="+globaldiscount);
+		var gstTotal = (grandtotal-globaldiscount) * 0.06;
+		if(gstCode==""){
+			gstTotal = 0;
+		}
+		
+		var finalTotal = ajaxUtil.roundNumber(grandtotal-globaldiscount+gstTotal,2);
+		//alert("gstTotal = "+gstTotal);
+		$("#entryForm").find("#gst_amt").val(ajaxUtil.roundNumber(gstTotal, 2));
+		$("#entryForm").find("#grandtotal").html(finalTotal);
+		$("#entryForm").find("#grandtotalinput").val(finalTotal);
+		$("#entryForm").find("input[name=discount]").val(globaldiscount);
+	}
+	
+	// Get new set of price list when change customer or type.
+	function reCalculatePrice(){
+		var mainForm = $("#entryForm");
+		var prodidArray = [];
+		var isFactoryArray = [];
+		var prodid, price, discount;
+		var reCalculate = false;
+		
+		$('tbody[id=mfgtdEntryTableBody] tr').each(function(i){
+			prodid = $(this).find("input[id$=prodid]").val();
+			price = parseFloat($(this).find("input[id$=price]").val());
+			discount = parseFloat($(this).find("input[id$=discount]").val()); 
+			if(prodid!='0' && price==0 && discount==0){
+				reCalculate = true;
+			}
+		});
+		if(reCalculate){
+			var prodJson;
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=prodid]").each(function(i){
+				if($(this).val()!='0'){
+					prodJson = eval('productMainjson.data.prod'+$(this).val());					
+					prodidArray.push($(this).val());
+					isFactoryArray.push(prodJson.factory);
+				}
+			});
+		}else{
+		 	return;
+		}		
+		ajaxUtil.showPanel("", "Recalculating...", null);	
+		var query = "return=json&action1=priceenq";
+		query += "&customerid="+mainForm.find("input[name=customerid]").val();
+		query += "&custtype="+mainForm.find("select[name=custtype]").val();
+		query += "&prodid="+prodidArray;		
+		query += "&factory="+isFactoryArray;
+		
+		ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+			handleCheckPriceCallback(json);
+			mfgUtil.doCalculate($("#mfgtdEntryTableBody"));
+			calculateTotal();
+		}, adminUtil.handleFallback);
+	}
+	
+	function showCustomPriceSpan(priceJson){
+		var unit = $("#customCloneAddForm #mfgtdunit").val();			
+		
+		if(priceJson){					
+			for (p in priceJson) {    
+				if(	priceJson[p].orderto >= unit){				
+					if(priceJson[p].original!=priceJson[p].price){
+						//$("#customprice").html("Original Price ["+priceJson[p].original+"]");
+						$("#customprice").html("Custom Price");
+						$("#customprice").show();
+						$("#mfgtdprice").attr("style","background-color:#E1F5A9;font-weight:bold;");
+					}else{
+						$("#customprice").hide();
+						$("#mfgtdprice").attr("style","");
+					}
+				}								
+				break;
+			}																										
+		}	
+	}
+	
+	function checkPrice(){
+		var form = $("#customCloneAddForm");
+		var mainForm = $("#entryForm");
+		var prodid = form.find("select[name$=prodid]").val();
+		var prodJson = eval('productMainjson.data.prod'+prodid);		
+		if(!productPricejsonArray[prodid]){
+			ajaxUtil.showPanel("", $('#js-processing-request').html(), null);
+			var query = "return=json&action1=priceenq";
+			query += "&customerid="+mainForm.find("input[name=customerid]").val();
+			query += "&custtype="+mainForm.find("select[name=custtype]").val();
+			query += "&prodid="+prodid;
+			query += "&factory="+prodJson.factory;
+			form.find("input[id$=qty]").focus();			
+			ajaxUtil.postJsonQuery("mfg_custproduct.htm", query, function(json){
+				handleCheckPriceCallback(json);
+				mfgUtil.doCalculate($("#customCloneAddForm"));
+				showCustomPriceSpan(productPricejsonArray[prodid]);				
+			}, adminUtil.handleFallback);
+		}else{
+			mfgUtil.doCalculate($("#customCloneAddForm"));
+			showCustomPriceSpan(productPricejsonArray[prodid]);
+		}			
+	}
+	
+	function handleCheckPriceCallback(json) {										
+		//var prodid = $("#customCloneAddForm").find("select[name$=prodid]").val();
+				
+		for (id in json.data) {
+			prodid = id.substr(4);
+			productPricejsonArray[prodid] = eval('json.data.'+id);							
+		}
+		
+		ajaxUtil.hidePanel();
+		/*
+		for(var i=0; i<len; i++){
+			prodid = json.prod[i].prodid;			
+			productPricejsonArray[prodid] = json.prod[i];				
+			productPricejson = json.prod[i];
+		}
+		
+		mfgUtil.doCalculate($("#customCloneAddForm"));		
+		*/
+	}
+	
+	// For Customer
+	var lastCustomerEnter='';
+	function processAfterAutoComplete(json){	
+		var form = $("#entryForm");
+		var customerid = form.find("input[name=customerid]").val();
+		var customerid_ori = form.find("input[name=customerid_ori]").val();
+		var custtype = form.find("select[name=custtype]").val();
+		form.find("input[name=attn]").val(json.contactperson);				
+		form.find("select[name=salesby]").val(json.salesby);
+		form.find("select[name=terms]").val(json.terms);
+		form.find("select[name=custtype]").val(json.type);		
+		$("textarea[name=note]").val(json.note);					
+		customerid_ori = (customerid_ori=='')?lastCustomerEnter:customerid_ori;				
+		if((customerid_ori!='' && customerid!=customerid_ori) || custtype!=json.type){		
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){				
+				$(this).val("0");
+			});
+			reCalculatePrice();
+		}			
+		
+		lastCustomerEnter = customerid;
+		
+		var query = "return=json&action1=chkoutstanding";
+		query += "&customerid="+lastCustomerEnter;
+		
+		ajaxUtil.postJsonQuery("customer.htm", query, function(json){
+			//var totalOutStanding = parseFloat(json.data.monththerest); Customer request to change to 61 Days. 4/2/2015
+			var totalOutStanding = parseFloat(json.data.minus3month) + parseFloat(json.data.monththerest);			
+			if(totalOutStanding>0){
+				authorizationLogin(totalOutStanding);								
+			}			
+		}, adminUtil.handleFallback);		
+	}
+	
+	var authorizedFlag = false;
+	
+	function authorizationLogin(totalOutStanding){
+		authorizedFlag = false;
+		$("#userid").val("");
+		$("#password").val("");
+		
+		$("#authorizeMsg").html("More than 3 months overdue: RM "+totalOutStanding+", manager authorization required.");
+		var dialog_buttons = {};
+		
+		dialog_buttons["Authorize"] = function(){		
+			var loginQuery = "return=json&action1=authorization&usergroup=1&userid="+$("#userid").val()+"&password="+$("#password").val();	
+			ajaxUtil.postJsonQuery("login.htm", loginQuery, function(json){				
+				if(json.rc!="0"){
+					alert("Authorization Failed. Please check again.");	
+				}else{
+					authorizedFlag = true;
+					$("#approvalDialog").dialog('close');
+				}								
+			}, adminUtil.handleFallback);			
+			return;																
+		}; 
+		$("#approvalDialog").dialog({
+  			close: function( event, ui ) {
+  				if(authorizedFlag==false){
+  					adminUtil.hideEntryEvent();
+  				}
+  			}  			
+		});
+		if($("#entryForm").find("input[name=customerid_value]").val()!="cash"){
+			$("#approvalDialog").dialog({'buttons': dialog_buttons, 'height': 300});
+			$("#approvalDialog").dialog('open');
+		}
+	}
+	
+	function processEdit(json){
+		productPricejsonArray = [];
+		mfgUtil.fieldDefault($('tbody[id=mfgtdEntryTableBody]').find("tr"), true);		
+		mfgUtil.createGroup(json);
+		reCalculatePrice();
+		calculateTotal();
+	}
+	
+	function beforeSave(){		
+		mfgUtil.updateGroup();
+	}
+	
+	function customCloneAdd(buttonName){
+		var dialog_buttons = {};		
+		dialog_buttons[buttonName] = function(){
+			var newClone;			
+			if(isEditing){				
+				newClone = editTR;
+			}else{
+				newClone = adminUtil.rowClone($("#mfgtdEntryTableBody"),false);
+			}
+			var srcName, srcValue, srcType, trgtObj;
+		
+			$("#customCloneAddForm").find("input, select").each(function(i){
+				srcName = $(this).attr("name");
+				srcType = $(this).attr("type");
+				srcValue = $(this).val();				
+				trgtObj = newClone.find("input[name="+srcName+"]");				
+				trgtObj.val(srcValue);
+				
+				if(trgtObj.attr("type")=="hidden"){					
+					if(srcType=='select-one' && srcValue!=""){							
+						if("mfgtdprodid"==srcName && srcValue=="0"){
+							srcValue = $("#customCloneAddForm").find("#mfgtdprodname").val() + " " + $(this).find("option:selected").text();
+						}else{																
+							srcValue = $(this).find("option:selected").text();
+						}						
+					}										
+					newClone.find("span[name="+srcName+"]").html(srcValue);
+				}				
+			});
+			
+			// Reset			
+			resetField();
+	   		
+	   		if("Update"==buttonName){
+	   			$("#customCloneAddDialog").dialog('close');
+	   		}	   		
+	   		
+	   		calculateTotal();
+		};			
+		
+		mfgUtil.fieldDefault($("#customCloneAddForm"), false);		
+		
+		$("#customCloneAddDialog").dialog('option', 'buttons', dialog_buttons);		
+		$("#customCloneAddDialog").dialog('open');
+	}
+	
+	function customCloneEdit(tr){
+		editTR = tr;
+		var srcName, srcType, srcValue, trgtObj;
+
+		isEditing = true;
+		srcValue = tr.find("input[name$=prodid]").val();		
+		trgtObj = $("#customCloneAddForm").find("[name$=prodid]");		
+		trgtObj.val(srcValue);				
+		mfgUtil.loadProductOption(srcValue);
+		
+		tr.find("input, select").each(function(i){
+			srcName = $(this).attr("name");
+			srcType = $(this).attr("type");
+			srcValue = $(this).val();			
+			trgtObj = $("#customCloneAddForm").find("[name="+srcName+"]");
+			trgtObj.val(srcValue);						
+			if("hidden"==trgtObj.attr("type")){
+				trgtObj = $("#customCloneAddForm").find("span[name="+srcName+"]");
+				if(trgtObj)	trgtObj.html(srcValue);
+			}									
+		});			
+		if($("#customCloneAddForm").find("[name$=price]").val()==0){			
+			mfgUtil.calculate($("#customCloneAddForm"));
+		}
+		// Show customise link
+		if($("#customCloneAddForm").find("[name$=customisedata]").val()!=""){
+			$("#customizeLink").show();
+		}
+		customCloneAdd("Update");
+	}
+	
+	function resetField(){
+		//$("#customizeLink").hide();
+		// Reset Fields			   		  				   
+   		$("#customCloneAddForm").find('input:not([name$=status])').val('');
+   		$("#customCloneAddForm").find('#mfgtdwidth').html('');
+   		$("#customCloneAddForm").find('#mfgtdheight').html('');
+   		$("#customprice").hide();
+   		$("#mfgtdprice").attr("style","");
+	}
+	
+	function afterCloneDelete(){		
+		calculateTotal();
+	}
+	
+	function pageInit(){
+		$("#sortable").sortable();	
+		$("#sortable").disableSelection();	
+		
+		$("#customizeLink").click(function(event){
+			mfgUtil.buildTableEntry($(event.target));
+			event.preventDefault();
+		});
+   		/*
+		customEntryButton['Calculate'] = function(){
+			calculateAll(); // custom.js
+			mfgUtil.updateGroup();
+		};			
+		*/
+		$("tr[id$=Clone]").find("input[name*='opt']").each(function(i){						
+			$(this).parent().attr("id", $(this).attr("id"));		
+			//$(this).parent().empty();	
+		});		
+		
+		$("#mfg_transactionModuleEntry").bind("click", function(event){						
+			var element = event.target;
+			if(element.id=='action.clone.add.custom'){
+				// Reset Fields			   		  				   
+		   		resetField()
+		   		$("#customCloneAddForm").find("[name$=prodid]").change();		
+		   		isEditing = false;		
+				customCloneAdd("Add");	
+				event.preventDefault();	return;
+			}					
+		});
+		
+		// Click to Edit 
+		$('tbody[id=mfgtdEntryTableBody]').bind("click", function(event){						
+			var element = event.target;
+			// Reset Fields			   		  		
+			if($(element).attr("name")=="mfgtdprodid"){	   
+		   		resetField()
+		   		isEditing = true;
+				customCloneEdit($(element).parents("tr"));
+				event.preventDefault();	return;
+			}			
+		});
+		
+		$("#mfg_transactionModuleEntry").find("select[id=custtype]").bind("change", (function(event){
+			$('tbody[id=mfgtdEntryTableBody]').find("input[id$=price]").each(function(i){				
+				$(this).val("0");
+			});
+			
+			reCalculatePrice();
+		}));		
+		
+		$("#mfg_transactionModuleEntry").find("input[name=discount], select[name=gst_code]").bind("change", function(event){							
+			calculateTotal();		
+		});
+				
+	}
+	
+	$(document).ready(pageInit());
+</script>
+<style>
+	.customPanel{
+		border:double;		
+	}
+	#optSpan{		 
+		 width: 100%;
+		 height: 100%;
+	}
+	#customContainer input{
+		 text-align: right;  		  
+	}
+	
+	.customSpan{
+		border-style: ridge;
+		border-width: 2px;
+		float:left;
+		background: #002233;	
+		color: #fff;	
+	}
+	
+	.headerSpan{
+		border: none;
+		float:left;
+		background: #FFF;
+	}
+	#chargeOpt, #chargeProduct{
+		font-weight: bold;
+	}
+	
+	#customCloneAddTable{font-size:1em;}
+	
+	#CustomiseDialog{
+		font-size: 0.8em;
+	}
+</style>
+
+<div style="display: none"><span id="js-processing-request"><div id='loadingDiv' style='width: 250px; height: 100px;'><span></span><img width='32' height='32' src='http://www.forestwebsolution.com/components/images/ajax-loader.gif' />&nbsp;&nbsp;Processing...</div></span><span id="js-required">This field is required. </span></div></body>
+</html>
